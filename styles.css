@@ -293,3 +293,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .port-location-note strong{color:#f0f9ff}
 .port-location-note a{display:inline-block;color:#76ecdc;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:720px){.port-location-note{font-size:11px;padding:10px 12px;line-height:1.7}}
+
+/* Public-facing pin identification on the existing real product rear photo */
+.pin-marked-board .board-image{position:relative;display:block;padding:10px;overflow:hidden;background:#aebcc9}
+.pin-marked-board .board-image img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;mix-blend-mode:multiply}
+.board-photo-gallery .board-photo-card:not(.pin-marked-board) .board-image img{height:auto;max-height:none;object-fit:contain}
+.pin-chip{position:absolute;z-index:2;transform:translate(-50%,-145%);display:inline-flex;align-items:center;justify-content:center;min-width:45px;height:29px;padding:2px 9px;font-size:12px;line-height:1;white-space:nowrap;font-weight:850;border-radius:8px;border:2px solid currentColor;box-shadow:0 2px 10px #0009;pointer-events:none}
+.pin-chip::after{content:"";position:absolute;left:calc(50% - 4px);bottom:-19px;width:9px;height:9px;border-radius:50%;background:currentColor;outline:3px solid #0c2237}
+.pin-chip-p3{left:34.5%;top:75.5%;color:#f59a93;background:#243348}
+.pin-chip-p2{left:53.4%;top:75.5%;color:#44deec;background:#243348}
+.pin-marked-board figcaption span{font-size:12px;line-height:1.7}
+.pin-marked-board figcaption b{font-weight:800;color:#e4f9ff}
+.wiring-figure figcaption{font-size:12px;line-height:1.7;margin-top:10px}
+@media(max-width:720px){
+ .pin-marked-board .board-image img,.board-photo-gallery .board-photo-card:not(.pin-marked-board) .board-image img{height:auto;max-height:none}
+ .pin-chip{font-size:11px;min-width:40px;height:26px}
+}
