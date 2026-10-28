@@ -7,6 +7,14 @@
 2. 펌웨어 바이너리 및 적합한 부트로더/파티션 구성
 3. 안전한 복구 방법과 버전 이력
 4. ESP Web Tools 설치용 manifest.json
-5. 원본 OBI 프로젝트와 관련 라이선스 확인
+5. 원본 OBI 프로젝트 (Martin Jansson, MIT License) 및 기타 실제 사용 라이브러리의 저작권·라이선스 고지 확인
 
 검증되지 않은 바이너리나 설치 주소를 추측해 배포하지 않습니다.
+
+## 원본 프로젝트
+
+- Open Battery Information — Martin Jansson: https://github.com/mnh-jansson/open-battery-information
+- 라이선스: https://github.com/mnh-jansson/open-battery-information/blob/main/LICENSE.md (MIT)
+- 원본 저작권 표기: Copyright (c) 2024 Martin Jansson
+
+실제 펌웨어를 배포할 때 원본 코드와 함께 제공되는 저작권 및 허가 고지가 누락되지 않도록 확인해야 합니다.
