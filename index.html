@@ -11,14 +11,14 @@
   <meta name="theme-color" content="#071323">
   <title>MAYDAY OBI | 마끼다 LXT 배터리 전용 펌웨어 센터</title>
   <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=20261029-clean">
+  <link rel="stylesheet" href="styles.css?v=20261029-wiring">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
       <a href="#top" class="wordmark" aria-label="MAYDAY OBI 홈"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="brand-logo" width="48" height="48"><span>MAYDAY<span class="brand-accent"> OBI</span></span></a>
-      <nav aria-label="주요 메뉴" class="nav-links"><a href="#firmware">펌웨어</a><a href="#hardware">제작 보드</a><a href="#bms-reference">지원 BMS</a><a href="#credits">원본·라이선스</a></nav>
+      <nav aria-label="주요 메뉴" class="nav-links"><a href="#firmware">펌웨어</a><a href="#hardware">제작 보드</a><a href="#wiring">배선도</a><a href="#bms-reference">지원 BMS</a><a href="#credits">원본·라이선스</a></nav>
       <a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer" class="nav-youtube"><span class="play-symbol">▶</span> YouTube <span aria-hidden="true">↗</span></a>
     </div>
     <nav class="mobile-section-nav container" aria-label="모바일 빠른 이동"><a href="#firmware">펌웨어</a><a href="#hardware">제작 보드</a><a href="#bms-reference">지원 BMS</a><a href="#credits">출처</a></nav>
@@ -57,6 +57,11 @@
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
       <div class="section-heading"><div class="section-kicker">HARDWARE</div><h2 id="hardware-title">제작에 사용한 보드</h2><p>ESP32-S3 기반 3.5인치 터치스크린 보드입니다. <strong>마끼다 LXT 전용</strong>이며, 같은 ESP32-S3라도 화면·터치 칩·핀 배치가 다른 보드는 호환되지 않을 수 있습니다.</p></div>
       <div class="board-photo-gallery"><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-front.jpg" alt="ESP32-S3 3.5인치 보드 전면, 제조사 기본 예제 메뉴 화면" width="360" height="329" loading="lazy"></div><figcaption><strong>전면</strong><span>3.5인치 터치 디스플레이 · 사진의 메뉴는 제조사 기본 화면</span></figcaption></figure><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-back.jpg" alt="ESP32-S3 3.5인치 보드 후면 커넥터 설명: USB Type-C, BOOT, RESET, JST1.25, HC1.0, 스피커 단자" width="360" height="315" loading="lazy"></div><figcaption><strong>후면</strong><span>USB-C · BOOT/RESET · 배터리 및 확장 커넥터 위치 안내</span></figcaption></figure></div><details class="hardware-details"><summary>후면 커넥터 상세 보기</summary><p>사진 표기 기준: USB-C, BOOT, RESET(사진에는 Rest로 표기), JST1.25 2P·4P·8P, HC1.0 4P, 스피커 연결 단자. 실제 GPIO 핀맵 및 전기적 사양을 확인한 자료는 아닙니다. 제품 사진의 기본 메뉴는 MAYDAY OBI 실행 화면이 아닙니다.</p></details>
+      <figure class="wiring-figure" id="wiring">
+        <div class="wiring-figure-head"><div><span class="section-kicker">WIRING REFERENCE</span><h3>ESP32-S3 ↔ 마끼다 LXT 연결 안내도</h3></div><a href="assets/mayday-obi-lxt-wiring.svg" target="_blank" rel="noopener noreferrer">확대해서 보기 ↗</a></div>
+        <a href="assets/mayday-obi-lxt-wiring.svg" target="_blank" rel="noopener noreferrer" class="wiring-image-link" aria-label="마끼다 LXT와 ESP32-S3 연결 배선도 확대"><img src="assets/mayday-obi-lxt-wiring.svg" width="1600" height="980" loading="lazy" alt="MAYDAY OBI ESP32-S3 3.5인치와 마끼다 LXT 연결 참고도. 이전 펌웨어 설정 기준 GPIO5 DATA, GPIO6 ENABLE, P3 GND 공통접지, 3.3V 4.7k옴 DATA 풀업. 배터리 18V B+는 절대 연결 금지."></a>
+        <figcaption>이 연결도는 JC3248W535 계열 보드 핀맵과 KST 배선 사례를 참고했습니다. <strong>GPIO5·GPIO6은 이전 메이데이 소스 설정 기준</strong>이며 최신 펌웨어와 실제 연결 케이블을 확인해야 합니다. <strong>18V 배터리 B+를 ESP32에 연결하지 마세요.</strong> 배터리 커넥터는 보는 방향에 따라 핀 위치가 뒤바뀌므로 그림의 단자 모양을 실물 배선 위치로 사용하지 마세요.</figcaption>
+      </figure>
       <div class="hardware-purchase"><div><strong>제작에 사용한 ESP32 보드 구매 링크</strong><p>제작자가 실제 구매한 제품 링크입니다. 판매 옵션과 부품 사양은 구매 전 반드시 확인하세요. 동일 ESP32-S3 칩을 사용해도 보드별 핀맵·디스플레이 칩에 따라 호환되지 않을 수 있습니다.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">AliExpress 구매 링크 ↗</a></div>
       <div class="warning"><strong>주의</strong><span>마끼다 XGT·CXT 등 다른 플랫폼이나 타사 배터리용 도구가 아닙니다. LXT도 모든 모델에 대한 동작을 보장하지 않습니다. 현재는 호환 보드 모델을 확정하지 않았으므로 다른 ESP32-S3 보드나 KST 2.8인치 보드에 임의로 설치하지 마세요.</span></div>
       <div class="bms-reference" id="bms-reference">
