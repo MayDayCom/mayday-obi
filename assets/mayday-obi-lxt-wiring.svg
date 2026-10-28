@@ -75,9 +75,9 @@
 <circle cx="1074" cy="387" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
 <circle cx="1250" cy="387" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
 <text x="585" y="360" font-size="17" fill="#ff8a8c" class="b">4.7kΩ 풀업</text>
-<rect x="826" y="547" width="498" height="71" rx="10" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
-<text x="849" y="575" font-size="20" fill="#ff8a8c" class="b">B+ (18V) → ESP32 연결 금지</text>
-<text x="849" y="600" font-size="15" fill="#acc3d5" >통신 단자와 전원 단자를 혼동하지 마세요.</text>
+<rect x="826" y="629" width="498" height="70" rx="10" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
+<text x="849" y="659" font-size="20" fill="#ff8a8c" class="b">B+ (18V) → ESP32 연결 금지</text>
+<text x="849" y="685" font-size="15" fill="#acc3d5" >통신 단자와 전원 단자를 혼동하지 마세요.</text>
 <rect x="46" y="751" width="1304" height="88" rx="13" fill="#133248" stroke="#35556a" stroke-width="1.5"/>
 <text x="71" y="789" font-size="20" fill="#61e2cc" class="b">방향 기준</text>
 <text x="198" y="788" font-size="18" fill="#eaf5ff" >B− 주 음극  →  노란 커넥터 1번부터 7번 순서</text>
