@@ -44,3 +44,16 @@
 .footer-brand-text{display:flex;flex-direction:column;gap:2px}
 .footer-brand-text strong,.footer-brand-text span{display:block}
 @media(max-width:420px){.brand-logo{width:42px;height:42px}.footer-brand-logo{width:42px;height:42px}}
+
+
+/* Upstream Makita LXT BMS reference */
+.bms-reference{margin:32px 0;padding:28px;border:1px solid #345a78;border-radius:18px;background:linear-gradient(140deg,#132b43,#0b1a2a)}
+.bms-title h3{font-size:clamp(22px,3vw,30px);margin:9px 0}.bms-title p{color:var(--muted);max-width:950px}.bms-title p strong,.bms-notice strong{color:#f4fbff}
+.bms-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.bms-box{border:1px solid #365169;border-radius:14px;padding:20px;background:#0b1c30}.bms-box h4{font-size:14px;line-height:1.6;margin:0 0 16px}.bms-supported h4{color:#6ce5c5}.bms-unsupported h4{color:#ffc18b}
+.bms-box ul{list-style:none;margin:0;padding:0}.bms-box li{padding:11px 0;border-top:1px solid #ffffff1a;display:flex;align-items:start;flex-direction:column;gap:1px}
+.bms-box li strong{font-size:13px}.bms-box li small{font-size:11px;color:#a4bbcf}
+.bms-notice{font-size:12px;color:#c1d0df;line-height:1.9;background:#29364a;padding:15px 17px;border-left:3px solid #e7ad60;border-radius:6px}
+.bms-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.bms-links a{color:#74e6d8;font-weight:700;font-size:12px;padding:9px 12px;border:1px solid #3a7797;border-radius:8px}
+.bms-links a:hover{background:#35e0c51b}.bms-footnote{font-size:11px;color:#9bb2c5;margin:15px 0 0}
+@media(max-width:720px){.bms-reference{padding:19px}.bms-columns{grid-template-columns:1fr}.bms-box{padding:16px}.bms-links{flex-direction:column}.bms-links a{text-align:center}}
