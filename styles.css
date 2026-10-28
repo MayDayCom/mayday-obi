@@ -272,3 +272,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .wiring-figure figcaption{font-size:12px;line-height:1.8;color:#b1c7da;margin-top:13px}
 .wiring-figure figcaption strong{color:#f2f7fc}
 @media(max-width:720px){.wiring-figure{padding:11px;margin:19px 0}.wiring-figure-head{padding:3px 4px}.wiring-figure-head h3{font-size:19px}.wiring-figure-head>a{font-size:11px}.wiring-figure figcaption{font-size:11px}}
+
+/* Simple hand-checkable wiring schematic: dedicated desktop and mobile SVGs */
+.wiring-desktop,.wiring-open-desktop{display:block}
+.wiring-mobile,.wiring-open-mobile{display:none}
+.wiring-visual{width:100%;min-width:0}
+.wiring-image-link{display:block}
+.wiring-image-link img{width:100%;max-width:100%;height:auto;display:block;object-fit:contain}
+@media(max-width:720px){
+  .wiring-desktop,.wiring-open-desktop{display:none}
+  .wiring-mobile,.wiring-open-mobile{display:block}
+  .wiring-figure{padding:12px}
+  .wiring-figure-head{align-items:center;gap:8px}
+  .wiring-visual{max-width:100%;overflow:hidden}
+  .wiring-image-link{max-width:100%;overflow:hidden}
+}
