@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="1160" viewBox="0 0 760 1160" role="img" aria-labelledby="wiring-title wiring-desc">
-<title id="wiring-title">MAYDAY OBI 배선 연결도</title><desc id="wiring-desc">DATA GPIO5, ENABLE GPIO6, GND 공통 접지, 3.3V와 DATA 사이 4.7킬로옴 저항. 배터리 B+ 18볼트는 ESP32에 연결하지 않음. 정확한 단자 방향과 최신 펌웨어 핀맵 확인 필수.</desc>
+<title id="wiring-title">MAYDAY OBI 배선 연결도</title><desc id="wiring-desc">DATA GPIO5와 ENABLE GPIO6은 마끼다 LXT 통신 단자 한 그룹, GND는 별도 공통 접지, 3.3V와 DATA 사이 4.7킬로옴 저항. 배터리 B+ 18볼트는 ESP32에 연결하지 않음. 정확한 단자 방향과 최신 펌웨어 핀맵 확인 필수.</desc>
 <style>text{font-family:'Noto Sans KR','NanumGothic','Malgun Gothic',sans-serif;font-weight:500} .hd{font-weight:750} .sm{font-weight:500}</style>
 <rect width="760" height="1160" fill="#081c2b"/>
 <text x="37" y="53" font-size="33" fill="#e9f5ff" class="hd">MAYDAY OBI</text>
@@ -40,13 +40,16 @@
 <rect x="32" y="782" width="696" height="204" rx="18" fill="#102a3e" stroke="#35556a" stroke-width="2"/>
 <text x="55" y="817" font-size="22" fill="#e9f5ff" class="hd">마끼다 LXT 배터리</text>
 <circle cx="295" cy="820" r="8" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
-<rect x="217" y="841" width="156" height="95" rx="11" fill="#132f43" stroke="#44deec" stroke-width="2"/>
-<text x="295" y="877" font-size="20" fill="#44deec" class="hd" text-anchor="middle">DATA</text>
-<text x="295" y="906" font-size="16" fill="#9eb4c5" text-anchor="middle">통신</text>
+<!-- DATA and ENABLE are a single communication-contacts group on the LXT battery. -->
+<rect x="207" y="835" width="341" height="114" rx="13" fill="#10333e" stroke="#56dacb" stroke-width="2.5"/>
+<text x="378" y="859" font-size="17" fill="#72edd7" class="hd" text-anchor="middle">통신 단자 (DATA + ENABLE)</text>
+<rect x="217" y="870" width="156" height="67" rx="9" fill="#132f43" stroke="#44deec" stroke-width="2"/>
+<text x="295" y="899" font-size="19" fill="#44deec" class="hd" text-anchor="middle">DATA</text>
+<text x="295" y="923" font-size="14" fill="#9eb4c5" text-anchor="middle">데이터 통신</text>
 <circle cx="462" cy="820" r="8" fill="#ffcd67" stroke="#081c2b" stroke-width="3"/>
-<rect x="384" y="841" width="156" height="95" rx="11" fill="#132f43" stroke="#ffcd67" stroke-width="2"/>
-<text x="462" y="877" font-size="20" fill="#ffcd67" class="hd" text-anchor="middle">ENABLE</text>
-<text x="462" y="906" font-size="16" fill="#9eb4c5" text-anchor="middle">활성화</text>
+<rect x="384" y="870" width="156" height="67" rx="9" fill="#132f43" stroke="#ffcd67" stroke-width="2"/>
+<text x="462" y="899" font-size="19" fill="#ffcd67" class="hd" text-anchor="middle">ENABLE</text>
+<text x="462" y="923" font-size="14" fill="#9eb4c5" text-anchor="middle">활성화 신호</text>
 <circle cx="629" cy="820" r="8" fill="#adc6d1" stroke="#081c2b" stroke-width="3"/>
 <rect x="551" y="841" width="156" height="95" rx="11" fill="#132f43" stroke="#adc6d1" stroke-width="2"/>
 <text x="629" y="877" font-size="20" fill="#adc6d1" class="hd" text-anchor="middle">B−</text>
