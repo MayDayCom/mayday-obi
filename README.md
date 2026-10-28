@@ -11,6 +11,24 @@
 - **하드웨어:** 특정 ESP32-S3 3.5인치 터치스크린 보드 기반이며 정확한 보드 모델 정보는 검증 후 공지
 - 보호회로 오류 해제 가능 여부 및 안전성은 모델과 배터리 상태에 따라 달라집니다.
 
+## 원본 OBI 기준 BMS 지원 목록 (참고)
+
+출처: [Martin Jansson / Open Battery Information의 Makita LXT Wiki](https://github.com/mnh-jansson/open-battery-information/wiki/Makita) (2026-07-12 편집 기준). **아래 정보는 원본 OBI의 호환성 정보이며 MAYDAY OBI 3.5인치 펌웨어의 자체 검증 완료 목록이 아닙니다.**
+
+| 원본 OBI 판정 | BMS 기판 | MCU |
+|---|---|---|
+| 지원 | LIPW014, LIPW015 | MAK02 |
+| 지원 | LIPW017 | STM32L051C8 |
+| 지원 | BL1850B-D, BL1850B, BL1840B | RL78 / RAJ240080DFP |
+| 지원 | BL1815N / BL1820 기판 | MAK01 |
+| 미지원 | LIP5002, LIPW001 | MC908JK3E |
+| 미지원 | LIPW002, 003, 005, 006, 011, 012, 013 | uPD78F0513 |
+| 미지원 | 일부 구형 BL1820 미표기 기판 | uPD78F0513 |
+
+배터리 외부 모델 번호만으로 BMS 지원 여부를 판정할 수 없습니다. 같은 배터리 모델이라도 서로 다른 BMS가 탑재될 수 있고, 진단 지원과 오류 해제 지원은 다를 수 있습니다. **LIPW017은 충전 후 재잠금 등 원본 문서상 특이사항이 있으므로 원본 Wiki 경고를 참고하세요.**
+
+KST 제작 페이지(https://ai.kenhsangtao.com/makita/)는 참조 링크로만 표기했습니다. 현재 이 페이지의 구체적인 지원 BMS 목록은 신뢰할 만큼 확인되지 않아 가져오지 않았습니다.
+
 ## 제품 참고 사진
 
 - `assets/esp32-s3-3.5-front.webp` — ESP32-S3 3.5인치 보드 전면 참고 사진
