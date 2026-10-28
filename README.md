@@ -29,6 +29,15 @@
 
 KST 제작 페이지(https://ai.kenhsangtao.com/makita/)는 참조 링크로만 표기했습니다. 현재 이 페이지의 구체적인 지원 BMS 목록은 신뢰할 만큼 확인되지 않아 가져오지 않았습니다.
 
+## ESP32-S3 ↔ Makita LXT 연결 참고도
+
+- [고해상도 배선도 (SVG)](assets/mayday-obi-lxt-wiring.svg)
+- 3.5인치 보드: **JC3248W535 계열**. P2 확장 8핀의 1번은 GPIO5, 2번은 GPIO6이며, P3 확장 4핀의 1번 GND 및 2번 3.3V를 참고합니다.
+- **과거 MAYDAY OBI 소스 설정**: GPIO5 = DATA, GPIO6 = ENABLE. 실제 배선 전에 **현재 사용 중인 펌웨어의 핀 설정을 반드시 대조**하세요.
+- 마끼다 LXT 통신 측: DATA, ENABLE, 주 음극(B-)을 연결하고, KST 사례와 같이 DATA 라인에 3.3V 기준 **4.7kΩ 풀업 저항**을 사용합니다. 배터리의 B+(약 18V)를 ESP32에 직접 연결하지 않습니다.
+- 통신 단자 번호·방향과 연결 케이블의 실제 핀 위치는 커넥터 형태/조립 방향에 따라 다르게 보일 수 있으므로, 그림에 그려진 방향만 믿고 결선하지 마세요.
+- **참고 출처:** [KST Makita Tool 설명 영상](https://www.youtube.com/watch?v=mSKKcPt2vXo), [JC3248W535 핀맵 자료](https://done.land/components/microcontroller/families/esp/esp32/developmentboards/esp32-s3/guitionjc3248w535/), [PocketOBI 배선 가이드](https://github.com/TheRepairforge/PocketOBI).
+
 ## 실제 장치 및 부품 사진
 
 - `assets/mayday-obi-running.jpg` — 사용자가 직접 촬영한 **실제 MAYDAY OBI v1.0d 실행 사진** (원본 JPG를 변환하거나 재생성하지 않고 그대로 등록)
