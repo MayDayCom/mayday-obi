@@ -18,3 +18,20 @@
 .credit-detail{font-size:12px;line-height:1.9}
 .source-note a{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:700px){.hardware-purchase{flex-direction:column;align-items:stretch;padding:20px}.hardware-purchase .btn{width:100%}.credits-panel{padding:20px}.credit-links{flex-direction:column}.credit-links a{justify-content:center}}
+
+
+/* ESP32-S3 board photos: product demo UI is not MAYDAY firmware */
+.hero-product-photo{position:relative;z-index:2;width:min(100%,490px);padding:16px;margin:0;background:#0f2339;border:1px solid #305472;border-radius:20px;box-shadow:0 24px 70px #0008}
+.hero-product-photo img{display:block;width:100%;height:auto;object-fit:contain;border-radius:13px;background:#fff}
+.hero-product-photo figcaption{font-size:11px;line-height:1.65;text-align:center;color:var(--muted);margin-top:12px}
+.hero-visual:not(.photo-fallback) .device,.hero-visual:not(.photo-fallback) .visual-caption{display:none}
+.hero-visual.photo-fallback .hero-product-photo{display:none}
+.board-photo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0 16px}
+.board-photo-card{margin:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#10243a}
+.board-image{background:#fff;display:grid;place-items:center;min-height:260px;padding:18px}
+.board-image img{width:100%;height:auto;max-height:355px;object-fit:contain}
+.board-photo-card figcaption{padding:18px 20px 20px;display:flex;flex-direction:column;gap:5px}
+.board-photo-card figcaption strong{font-size:15px;color:#eaf4ff}
+.board-photo-card figcaption span,.board-photo-note{font-size:12px;color:var(--muted);line-height:1.75}
+.board-photo-note{margin:0 0 25px}
+@media(max-width:650px){.hero-product-photo{padding:10px}.board-photo-gallery{grid-template-columns:1fr;gap:14px}.board-image{min-height:170px;padding:10px}.board-photo-card figcaption{padding:12px 15px}}
