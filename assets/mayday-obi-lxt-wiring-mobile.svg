@@ -55,12 +55,10 @@
 <text x="652" y="985" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">7</text>
 <rect x="635" y="994" width="34" height="45" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
 <path d="M652 1001 V1033" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="204" y="1100" width="493" height="117" rx="11" fill="#15354a" stroke="#355c70" stroke-width="1.5"/>
-<text x="226" y="1130" font-size="22" fill="#eaf5ff" class="b">마끼다 LXT 배터리</text>
-<text x="226" y="1157" font-size="16" fill="#61e2cc" class="b">통신 단자 (DATA + ENABLE)</text>
-<text x="226" y="1184" font-size="15" fill="#acc3d5" >B−는 통신 1번 왼쪽의 별도 단자</text>
-<text x="229" y="1208" font-size="17" fill="#3ddbe5" class="b">2번 DATA</text>
-<text x="522" y="1208" font-size="17" fill="#f8c861" class="b">6번 ENABLE</text>
+<rect x="204" y="1100" width="493" height="83" rx="11" fill="#15354a" stroke="#355c70" stroke-width="1.5"/>
+<text x="226" y="1133" font-size="21" fill="#3ddbe5" class="b">2번 DATA</text>
+<text x="523" y="1133" font-size="21" fill="#f8c861" class="b">6번 ENABLE</text>
+<text x="226" y="1165" font-size="17" fill="#eaf5ff" class="b">마끼다 LXT 배터리 · 통신 단자 (DATA + ENABLE)</text>
 <rect x="50" y="1235" width="650" height="52" rx="8" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
 <text x="73" y="1269" font-size="19" fill="#ff8a8c" class="b">B+ (18V)는 ESP32에 절대 연결 금지</text>
 <path d="M120 350 V960" stroke="#b5cbd4" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
