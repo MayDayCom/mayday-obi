@@ -11,7 +11,7 @@
   <meta name="theme-color" content="#071323">
   <title>MAYDAY OBI | 마끼다 LXT 배터리 전용 펌웨어 센터</title>
   <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=20261029-wiring">
+  <link rel="stylesheet" href="styles.css?v=20261029-direct-v2">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
@@ -60,15 +60,15 @@
       <figure class="wiring-figure" id="wiring">
         <div class="wiring-figure-head">
           <div><span class="section-kicker">CONNECTION GUIDE</span><h3>ESP32-S3 ↔ 마끼다 LXT 배선 연결</h3></div>
-          <a class="wiring-open-desktop" href="assets/mayday-obi-lxt-wiring.svg" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
-          <a class="wiring-open-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
+          <a class="wiring-open-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-direct-v2" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
+          <a class="wiring-open-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-direct-v2" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
         </div>
         <div class="wiring-visual">
-          <a class="wiring-image-link wiring-desktop" href="assets/mayday-obi-lxt-wiring.svg" target="_blank" rel="noopener noreferrer" aria-label="ESP32-S3와 마끼다 LXT 연결도를 크게 보기">
-            <img src="assets/mayday-obi-lxt-wiring.svg" width="1400" height="790" loading="lazy" alt="P3 3.3V에서 4.7k옴 풀업 저항을 거쳐 P2 GPIO5 DATA 라인에 연결합니다. P2 GPIO6 ENABLE과 P3 GND는 각각 배터리 ENABLE과 B 마이너스에 연결.">
+          <a class="wiring-image-link wiring-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-direct-v2" target="_blank" rel="noopener noreferrer" aria-label="ESP32-S3와 마끼다 LXT 연결도를 크게 보기">
+            <img src="assets/mayday-obi-lxt-wiring.svg?v=20261029-direct-v2" width="1400" height="790" loading="lazy" alt="P3 3.3V에서 4.7k옴 풀업 저항을 거쳐 P2 GPIO5 DATA 라인에 연결합니다. P2 GPIO6 ENABLE과 P3 GND는 각각 배터리 ENABLE과 B 마이너스에 연결.">
           </a>
-          <a class="wiring-image-link wiring-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 세로 배선도 크게 보기">
-            <img src="assets/mayday-obi-lxt-wiring-mobile.svg" width="760" height="1160" loading="lazy" alt="스마트폰용 배선도: ESP32-S3 P3 3.3V에서 4.7k옴 저항으로 DATA 풀업, GPIO5에서 DATA, GPIO6에서 ENABLE, GND에서 배터리 B 마이너스로 연결.">
+          <a class="wiring-image-link wiring-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-direct-v2" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 세로 배선도 크게 보기">
+            <img src="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-direct-v2" width="760" height="1160" loading="lazy" alt="스마트폰용 배선도: ESP32-S3 P3 3.3V에서 4.7k옴 저항으로 DATA 풀업, GPIO5에서 DATA, GPIO6에서 ENABLE, GND에서 배터리 B 마이너스로 연결.">
           </a>
         </div>
         <figcaption>각 연결선을 실제로 이어진 모습으로 나타낸 <strong>배선 참고도</strong>입니다. <strong>4.7kΩ 저항은 3.3V와 DATA 사이</strong>에 연결합니다. 보드 P2·P3의 단자 번호는 JC3248W535 핀맵 기준이며, <strong>GPIO5/6은 이전 MAYDAY OBI 코드 기준</strong>입니다. 최신 펌웨어 설정과 배터리 단자 방향을 반드시 확인하세요. <strong>18V B+ 단자는 ESP32에 연결하지 않습니다.</strong></figcaption>
