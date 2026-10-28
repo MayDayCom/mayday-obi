@@ -260,3 +260,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .board-photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
   .board-photo-card .board-image img{height:165px;max-height:165px}
 }
+
+
+/* MAYDAY OBI wiring reference - scalable vector, mobile-friendly */
+.wiring-figure{margin:25px 0 22px;padding:19px;border:1px solid #38617b;border-radius:16px;background:linear-gradient(140deg,#112b42,#0b1e30)}
+.wiring-figure-head{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:14px}
+.wiring-figure-head h3{font-size:clamp(19px,2.4vw,27px);line-height:1.35;margin:7px 0 0}
+.wiring-figure-head>a{border:1px solid #4b8895;padding:8px 13px;border-radius:9px;color:#85f0e0;font-size:12px;font-weight:800}
+.wiring-image-link{display:block;line-height:0;border:1px solid #34536a;overflow:hidden;border-radius:10px;background:#071422}
+.wiring-image-link img{width:100%;height:auto;display:block}
+.wiring-figure figcaption{font-size:12px;line-height:1.8;color:#b1c7da;margin-top:13px}
+.wiring-figure figcaption strong{color:#f2f7fc}
+@media(max-width:720px){.wiring-figure{padding:11px;margin:19px 0}.wiring-figure-head{padding:3px 4px}.wiring-figure-head h3{font-size:19px}.wiring-figure-head>a{font-size:11px}.wiring-figure figcaption{font-size:11px}}
