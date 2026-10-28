@@ -287,3 +287,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .wiring-visual{max-width:100%;overflow:hidden}
   .wiring-image-link{max-width:100%;overflow:hidden}
 }
+
+/* Photograph-backed physical P2/P3 connector guidance */
+.port-location-note{margin:0 0 13px;padding:11px 14px;border-radius:9px;border:1px solid #375e72;background:#132e41;color:#c5d9e5;font-size:12px;line-height:1.8}
+.port-location-note strong{color:#f0f9ff}
+.port-location-note a{display:inline-block;color:#76ecdc;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:720px){.port-location-note{font-size:11px;padding:10px 12px;line-height:1.7}}
