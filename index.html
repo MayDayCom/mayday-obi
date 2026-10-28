@@ -56,6 +56,26 @@
       <div class="section-heading"><div class="section-kicker">03 / COMPATIBILITY</div><h2 id="hardware-title">지원 하드웨어 · 대상 배터리</h2><p>이 프로젝트는 <strong>마끼다 LXT 시리즈 배터리 전용</strong>입니다. 다른 브랜드나 마끼다의 다른 배터리 플랫폼은 지원 대상으로 안내하지 않습니다. LXT 내부에서도 배터리 모델과 보호회로(BMS)에 따라 지원 범위가 다를 수 있습니다. 또한 ESP32-S3 보드의 화면·터치 칩·핀 배치가 다르면 정상 작동하지 않을 수 있습니다.</p></div>
       <div class="board-photo-gallery"><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-front.jpg" alt="ESP32-S3 3.5인치 보드 전면, 제조사 기본 예제 메뉴 화면" width="360" height="329" loading="lazy"></div><figcaption><strong>전면</strong><span>3.5인치 터치 디스플레이 · 사진의 메뉴는 제조사 기본 화면</span></figcaption></figure><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-back.jpg" alt="ESP32-S3 3.5인치 보드 후면 커넥터 설명: USB Type-C, BOOT, RESET, JST1.25, HC1.0, 스피커 단자" width="360" height="315" loading="lazy"></div><figcaption><strong>후면</strong><span>USB-C · BOOT/RESET · 배터리 및 확장 커넥터 위치 안내</span></figcaption></figure></div><p class="board-photo-note"><strong>후면 사진의 표기:</strong> USB Type-C, BOOT, RESET(사진 표기: Rest), JST1.25 2P 배터리 커넥터, JST1.25 4P, JST1.25 4P 전원, JST1.25 8P I/O, HC1.0 4P, 스피커 단자. 사진에 기재된 포트 명칭을 옮긴 것이며 실제 GPIO 핀맵·전기적 사양을 확인한 것은 아닙니다. 위 이미지는 판매용 제품 참고 사진으로 실제 MAYDAY OBI 작동 화면을 보여주지 않습니다.</p>
       <div class="spec-grid"><div class="spec-card"><span class="spec-label">BATTERY PLATFORM</span><strong>Makita LXT</strong><small>모델·보호회로별 지원 범위 검증 예정</small></div><div class="spec-card"><span class="spec-label">MCU</span><strong>ESP32-S3</strong><small>검증된 실제 보드만 지원 예정</small></div><div class="spec-card"><span class="spec-label">DISPLAY</span><strong>3.5” TOUCH</strong><small>컨트롤러 모델·해상도 확인 예정</small></div><div class="spec-card"><span class="spec-label">FIRMWARE</span><strong>개발·검증 중</strong><small>배포 버전 추후 공지</small></div></div>
+      <div class="bms-reference" id="bms-reference">
+        <div class="bms-title"><span class="section-kicker">REFERENCE / UPSTREAM OBI</span><h3>마끼다 LXT BMS 호환성 참고표</h3><p>아래는 <strong>Martin Jansson의 원본 OBI GitHub Wiki</strong>에 공개된 BMS 기준 자료입니다. <strong>MAYDAY OBI 3.5인치 펌웨어에서 모든 항목을 검증했다는 의미가 아닙니다.</strong> 실제 호환성은 기판의 MCU와 펌웨어 버전, 배터리 상태에 따라 달라질 수 있습니다.</p></div>
+        <div class="bms-columns">
+          <div class="bms-box bms-supported"><h4>원본 OBI: 지원으로 표시된 기판</h4><ul>
+            <li><strong>LIPW014 · LIPW015</strong><small>MAK02</small></li>
+            <li><strong>LIPW017</strong><small>STM32L051C8 · 특이사항 있음</small></li>
+            <li><strong>BL1850B-D · BL1850B · BL1840B</strong><small>RL78 / RAJ240080DFP</small></li>
+            <li><strong>BL1815N / BL1820 기판</strong><small>MAK01</small></li>
+          </ul></div>
+          <div class="bms-box bms-unsupported"><h4>원본 OBI: 미지원으로 표시된 기판</h4><ul>
+            <li><strong>LIP5002 · LIPW001</strong><small>MC908JK3E</small></li>
+            <li><strong>LIPW002 · 003 · 005 · 006</strong><small>uPD78F0513</small></li>
+            <li><strong>LIPW011 · 012 · 013</strong><small>uPD78F0513</small></li>
+            <li><strong>일부 구형 BL1820 기판</strong><small>미표기 PCB · uPD78F0513</small></li>
+          </ul></div>
+        </div>
+        <p class="bms-notice"><strong>중요:</strong> 배터리 외부의 BL 모델명만으로 지원 여부를 확정할 수 없습니다. 동일 모델에도 다른 BMS 기판이 탑재될 수 있으며, 정보 읽기와 오류 해제는 별도 기능입니다. 원본 문서의 LIPW017에는 충전 후 다시 잠기면 알려진 해결법이 없다는 주의사항도 있습니다. 손상된 셀·퓨즈·배선 문제는 오류 기록을 지우더라도 해결되지 않습니다.</p>
+        <div class="bms-links"><a href="https://github.com/mnh-jansson/open-battery-information/wiki/Makita" target="_blank" rel="noopener noreferrer">Martin Jansson 원본 BMS 목록 ↗</a><a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener noreferrer">Open Battery Information GitHub ↗</a><a href="https://ai.kenhsangtao.com/makita/" target="_blank" rel="noopener noreferrer">베트남 KST 프로젝트 (참고) ↗</a></div>
+        <p class="bms-footnote">출처: 원본 OBI Makita Wiki (2026-07-12 편집본). KST의 마끼다 전용 페이지는 현재 상세 사양을 직접 검증하지 못하여, 해당 페이지의 지원 BMS 항목을 이 표에 추가하지 않았습니다. 향후 MAYDAY OBI 자체 테스트 결과는 별도 표시할 예정입니다.</p>
+      </div>
       <div class="hardware-purchase"><div><strong>제작에 사용한 ESP32 보드 구매 링크</strong><p>제작자가 실제 구매한 제품 링크입니다. 판매 옵션과 부품 사양은 구매 전 반드시 확인하세요. 동일 ESP32-S3 칩을 사용해도 보드별 핀맵·디스플레이 칩에 따라 호환되지 않을 수 있습니다.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">AliExpress 구매 링크 ↗</a></div>
       <div class="warning"><strong>주의</strong><span>마끼다 XGT·CXT 등 다른 플랫폼이나 타사 배터리용 도구가 아닙니다. LXT도 모든 모델에 대한 동작을 보장하지 않습니다. 현재는 호환 보드 모델을 확정하지 않았으므로 다른 ESP32-S3 보드나 KST 2.8인치 보드에 임의로 설치하지 마세요.</span></div>
     </div></section>
