@@ -57,3 +57,120 @@
 .bms-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.bms-links a{color:#74e6d8;font-weight:700;font-size:12px;padding:9px 12px;border:1px solid #3a7797;border-radius:8px}
 .bms-links a:hover{background:#35e0c51b}.bms-footnote{font-size:11px;color:#9bb2c5;margin:15px 0 0}
 @media(max-width:720px){.bms-reference{padding:19px}.bms-columns{grid-template-columns:1fr}.bms-box{padding:16px}.bms-links{flex-direction:column}.bms-links a{text-align:center}}
+
+
+/* 2026-10-29 visual refresh · real photographed OBI device */
+:root{--focus:#9debdc}
+html{scroll-padding-top:110px}
+section[id],div[id="bms-reference"]{scroll-margin-top:110px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+.nav-links a,.mobile-section-nav a{transition:color .15s ease}
+.nav-links a:hover,.mobile-section-nav a:hover{color:var(--teal)}
+.mobile-section-nav{display:none}
+.site-header{box-shadow:0 6px 22px #00000025}
+.nav-bar{gap:14px}
+.nav-links{gap:18px}
+.nav-youtube{white-space:nowrap}
+.hero{grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);gap:32px;min-height:0;padding:72px 0 84px}
+.hero h1{font-size:clamp(44px,5.15vw,72px);line-height:1.2;letter-spacing:-.06em;margin:20px 0 22px;overflow-wrap:keep-all;word-break:keep-all}
+.hero-subtitle{font-size:15px;line-height:1.92;max-width:580px;word-break:keep-all}
+.hero-facts{gap:13px 21px;margin-top:30px;padding-top:20px}
+.hero-facts span{white-space:normal}
+.hero-visual{min-height:0;display:block}
+.hero-product-photo{width:100%;max-width:100%;padding:12px;background:linear-gradient(150deg,#122c45,#0c1d30);border:1px solid #365b75;border-radius:19px;box-shadow:0 18px 50px #0007}
+.hero-actual-photo img{display:block;width:100%;height:auto;aspect-ratio:1536 / 709;object-fit:contain;object-position:center;border-radius:9px;background:#02060b}
+.hero-actual-photo figcaption{text-align:left;font-size:11px;line-height:1.7;margin-top:12px;padding:0 2px;color:#b0c4d6}
+.real-photo-badge{font-size:11px;line-height:1.5;font-weight:800;letter-spacing:.015em;color:#80f4d7;margin:2px 0 12px;padding:0 2px}
+.real-photo-badge .status-dot{width:7px;height:7px;margin-right:6px}
+.section{padding:76px 0}
+.section-heading{margin-bottom:29px}
+.section-heading h2{font-size:clamp(27px,3vw,42px);line-height:1.32;margin:10px 0 12px}
+.section-heading p{line-height:1.9;max-width:780px}
+.info-card,.release-main,.release-side,.spec-card{border-color:#34516b;border-radius:15px}
+.info-card{min-height:200px}
+.info-card h3{margin-top:24px}
+.spec-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.spec-card{padding:22px 16px}
+.spec-card strong{font-size:20px;line-height:1.35;overflow-wrap:anywhere}
+.release-main h3{font-size:25px;line-height:1.35;overflow-wrap:anywhere}
+.board-photo-gallery{gap:16px;margin-top:29px}
+.board-photo-card{border-color:#36536b}
+.board-photo-card .board-image{background:#fff}
+.bms-reference{margin:28px 0;padding:25px;border-color:#3a627a}
+.bms-box{background:#0a1e30}
+.bms-footnote{line-height:1.8}
+.hardware-purchase{margin:26px 0}
+.warning{line-height:1.9;align-items:flex-start}
+.steps{gap:15px}
+.faq{margin-top:42px}
+.faq summary{line-height:1.6}
+.credits-panel{background:linear-gradient(135deg,#132b40,#0b1e2e)}
+.callout{padding:35px}
+@media (max-width:960px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+  .hero h1{font-size:clamp(38px,5.2vw,60px)}
+  .hero-subtitle{font-size:14px}
+  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-links{gap:12px;font-size:11px}
+}
+@media (max-width:720px){
+  .container{width:min(calc(100% - 34px),560px)}
+  .nav-bar{min-height:62px}
+  .brand-logo{width:40px;height:40px}
+  .wordmark{font-size:16px;letter-spacing:.02em;gap:8px}
+  .nav-youtube{padding:7px 10px}
+  .mobile-section-nav{display:flex;gap:23px;align-items:center;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;border-top:1px solid #ffffff12;padding-top:10px;padding-bottom:11px;white-space:nowrap;font-size:12px;color:#acc4d4}
+  .mobile-section-nav::-webkit-scrollbar{display:none}
+  .mobile-section-nav a{flex:0 0 auto}
+  .hero{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:42px 0 56px}
+  .hero h1{font-size:clamp(36px,9.2vw,51px);line-height:1.17;letter-spacing:-.05em;margin:13px 0 20px}
+  .eyebrow{font-size:10px;letter-spacing:.09em}
+  .hero-subtitle{font-size:14px;line-height:1.82}
+  .hero-cta{gap:9px;margin-top:20px}
+  .hero-cta .btn{flex:1 1 140px;padding:11px 12px;gap:5px;font-size:12px}
+  .hero-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:24px;padding-top:16px}
+  .hero-facts span{font-size:11px;padding:8px 10px;border:1px solid #2c485f;border-radius:8px;background:#14263b50}
+  .hero-facts strong{display:block;margin-bottom:1px}
+  .hero-visual{min-height:0}
+  .hero-product-photo{padding:9px;border-radius:13px}
+  .hero-actual-photo img{border-radius:7px}
+  .hero-actual-photo figcaption{font-size:10px;line-height:1.7}
+  .real-photo-badge{font-size:10px;margin-bottom:9px}
+  .section{padding:56px 0}
+  .section-heading h2{font-size:clamp(26px,7vw,34px)}
+  .section-heading p{font-size:13px}
+  .story-grid,.spec-grid,.release-layout{grid-template-columns:1fr}
+  .info-card,.release-main,.release-side,.spec-card{padding:20px}
+  .info-card h3{margin-top:18px}
+  .board-photo-gallery{grid-template-columns:1fr;gap:13px}
+  .board-image{min-height:0;padding:12px}
+  .board-photo-note{font-size:11px}
+  .bms-reference{padding:18px;margin:22px 0}
+  .bms-title h3{font-size:23px}
+  .bms-columns{grid-template-columns:1fr;gap:12px}
+  .bms-box{padding:16px}
+  .bms-box li strong{overflow-wrap:anywhere}
+  .bms-notice{padding:12px}
+  .hardware-purchase{flex-direction:column;align-items:stretch;padding:18px}
+  .hardware-purchase .btn{width:100%}
+  .warning{padding:14px;gap:10px}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .step h3{font-size:15px}
+  .faq{margin-top:34px}
+  .faq summary{font-size:13px}
+  .credits-panel{padding:18px}
+  .credit-heading strong{font-size:17px}
+  .credit-links{flex-direction:column}
+  .credit-links a{justify-content:center}
+  .footer-callout{padding-top:0}
+  .callout{display:block;padding:22px}
+  .callout h2{font-size:24px}
+  .footer-line{flex-direction:column;align-items:flex-start;gap:18px}
+}
+@media (max-width:365px){
+  .container{width:calc(100% - 28px)}
+  .wordmark{font-size:14px}
+  .nav-youtube{font-size:10px}
+  .hero h1{font-size:35px}
+  .hero-cta .btn{flex-basis:100%}
+}
