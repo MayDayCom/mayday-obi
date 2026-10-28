@@ -1,100 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="diagramTitle diagramDescription">
-<title id="diagramTitle">MAYDAY OBI 3.5인치 ESP32-S3와 마끼다 LXT 배터리 연결 참고도</title>
-<desc id="diagramDescription">JC3248W535 P2 8핀 확장단자 Pin1 GPIO5는 배터리 데이터, Pin2 GPIO6은 Enable, P3 Pin1 GND는 배터리 B 마이너스에 연결. P3 Pin2 3.3볼트는 4.7킬로옴 풀업 저항을 통하여 데이터 신호에 연결. 배터리 B 플러스 18볼트는 ESP32 연결 금지. 신호핀의 실제 위치와 최신 펌웨어는 연결 전에 확인 필요.</desc>
-<defs>
- <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071422"/><stop offset="1" stop-color="#0d2339"/></linearGradient>
- <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#122b42"/><stop offset="1" stop-color="#0d2135"/></linearGradient>
- <linearGradient id="device" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#202f40"/><stop offset="1" stop-color="#060e17"/></linearGradient>
- <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173f73"/><stop offset="1" stop-color="#08192e"/></linearGradient>
- <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".3"/></filter>
- <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" stroke="#7198b1" stroke-opacity=".07" fill="none"/></pattern>
- <style>
- text{font-family:'NanumSquare','Noto Sans KR','Malgun Gothic',sans-serif;fill:#e9f4ff}
- .sm{font-size:20px}.xs{font-size:16px}.md{font-size:23px}.large{font-size:28px}.heavy{font-weight:800}.muted{fill:#afc5d7}.cyan{fill:#3be1df}.amber{fill:#ffcb67}.red{fill:#ff7d88}.panel{fill:url(#card);stroke:#355b75;stroke-width:2}
- </style>
-</defs>
-<rect width="1600" height="980" fill="url(#bg)"/><rect width="1600" height="980" fill="url(#grid)"/>
-<rect x="48" y="42" width="8" height="77" rx="4" fill="#37d9d1"/>
-<text x="77" y="87" font-size="43" font-weight="800">MAYDAY <tspan fill="#34e4de">OBI</tspan> <tspan fill="#d6e9fb">배선 연결 안내</tspan></text>
-<text x="78" y="125" class="sm muted">ESP32-S3 3.5인치 (JC3248W535)  ↔  Makita LXT 통신 단자</text>
-<rect x="1264" y="57" width="284" height="43" rx="21" fill="#184c53" stroke="#34c7ba" stroke-width="1.2"/>
-<text x="1406" y="84" font-size="17" font-weight="800" text-anchor="middle" fill="#83f2d9">핀맵 확인용 참고도</text>
-<rect x="52" y="180" width="516" height="555" rx="24" class="panel" filter="url(#shadow)"/>
-<rect x="1030" y="180" width="518" height="555" rx="24" class="panel" filter="url(#shadow)"/>
-<text x="82" y="222" class="large heavy">ESP32-S3 · 3.5인치 보드</text>
-<text x="82" y="255" class="xs muted">JC3248W535 계열 / 제조사 핀맵 참고</text>
-<rect x="86" y="285" width="310" height="380" rx="18" fill="url(#device)" stroke="#516b80" stroke-width="4"/>
-<rect x="104" y="306" width="274" height="240" rx="8" fill="url(#screen)" stroke="#536a80"/>
-<rect x="123" y="324" width="235" height="39" rx="7" fill="#172e4d"/>
-<text x="135" y="350" font-size="17" font-weight="800">메이데이 마끼다 OBI</text>
-<rect x="123" y="377" width="111" height="68" rx="9" fill="#214d7d"/>
-<rect x="246" y="377" width="111" height="68" rx="9" fill="#214d7d"/>
-<rect x="123" y="455" width="111" height="69" rx="9" fill="#214d7d"/>
-<rect x="246" y="455" width="111" height="69" rx="9" fill="#148b6b"/>
-<text x="178" y="418" class="xs" text-anchor="middle">배터리 정보</text>
-<text x="302" y="418" class="xs" text-anchor="middle">셀 전압</text>
-<text x="178" y="498" class="xs" text-anchor="middle">오류 확인</text>
-<text x="302" y="498" class="xs" text-anchor="middle">데이터 읽기</text>
-<text x="239" y="593" class="md heavy" text-anchor="middle">터치스크린</text>
-<text x="239" y="619" class="xs muted" text-anchor="middle">화면은 이해를 돕는 간략도</text>
-<rect x="408" y="297" width="137" height="88" rx="11" fill="#0c233a" stroke="#3fe2df"/>
-<text x="421" y="321" class="xs muted">P2 · 8핀 IO</text>
-<text x="421" y="348" class="sm heavy cyan">1번 · GPIO5</text>
-<text x="421" y="370" class="xs cyan">DATA</text>
-<rect x="408" y="398" width="137" height="86" rx="11" fill="#0c233a" stroke="#f0c25d"/>
-<text x="421" y="423" class="xs muted">P2 · 8핀 IO</text>
-<text x="421" y="450" class="sm heavy amber">2번 · GPIO6</text>
-<text x="421" y="472" class="xs amber">ENABLE</text>
-<rect x="408" y="498" width="137" height="83" rx="11" fill="#0c233a" stroke="#b6cfda"/>
-<text x="421" y="524" class="xs muted">P3 · 4핀 IO</text>
-<text x="421" y="549" class="sm heavy">1번 · GND</text>
-<rect x="408" y="599" width="137" height="80" rx="11" fill="#0c233a" stroke="#fa9b99"/>
-<text x="421" y="623" class="xs muted">P3 · 4핀 IO</text>
-<text x="421" y="651" class="sm heavy red">2번 · 3.3V</text>
-<path d="M545 342 H1030" fill="none" stroke="#37e5e0" stroke-width="7" stroke-linecap="round"/>
-<path d="M545 444 H1030" fill="none" stroke="#f4c86a" stroke-width="7" stroke-linecap="round"/>
-<path d="M545 542 H1030" fill="none" stroke="#b3cedc" stroke-width="7" stroke-linecap="round"/>
-<circle cx="769" cy="342" r="10" fill="#3be1df" stroke="#082230" stroke-width="3"/>
-<rect x="636" y="185" width="264" height="60" rx="12" fill="#192c43" stroke="#f39598" stroke-width="2"/>
-<text x="768" y="209" text-anchor="middle" class="xs muted">3.3V 공급: P3 · 2번</text>
-<text x="768" y="234" text-anchor="middle" class="sm heavy red">DATA 풀업 전원</text>
-<path d="M769 245 V262" stroke="#f29ba3" stroke-width="6"/>
-<rect x="754" y="262" width="30" height="42" rx="6" fill="#f4d9a7" stroke="#a47f51" stroke-width="2"/>
-<path d="M758 272 H780 M758 282 H780 M758 292 H780" stroke="#b67c42" stroke-width="3"/>
-<path d="M769 304 V342" stroke="#f29ba3" stroke-width="6"/>
-<text x="799" y="279" class="sm heavy">4.7kΩ</text>
-<text x="799" y="305" class="xs muted">저항 · DATA → 3.3V</text>
-<rect x="641" y="365" width="248" height="42" rx="21" fill="#0a3641" stroke="#37b9c7" stroke-width="1.6"/>
-<text x="765" y="393" text-anchor="middle" class="sm heavy cyan">DATA · 통신선</text>
-<rect x="642" y="460" width="247" height="42" rx="21" fill="#4a3824" stroke="#d9aa4e" stroke-width="1.6"/>
-<text x="765" y="488" text-anchor="middle" class="sm heavy amber">ENABLE · 활성화</text>
-<rect x="642" y="559" width="247" height="42" rx="21" fill="#263c4a" stroke="#88aebf" stroke-width="1.6"/>
-<text x="765" y="587" text-anchor="middle" class="sm heavy">GND · 기준 접지</text>
-<text x="1060" y="221" class="large heavy">마끼다 LXT 배터리</text>
-<text x="1060" y="252" class="xs muted">통신 단자와 주 음극(B-)에 연결</text>
-<rect x="1085" y="276" width="410" height="63" rx="12" fill="#090e17" stroke="#6e7c89" stroke-width="3"/>
-<rect x="1096" y="291" width="388" height="36" rx="6" fill="#d4b147"/>
-<g fill="#16212a"><rect x="1111" y="297" width="39" height="25" rx="4"/><rect x="1162" y="297" width="39" height="25" rx="4"/><rect x="1213" y="297" width="39" height="25" rx="4"/><rect x="1264" y="297" width="39" height="25" rx="4"/><rect x="1315" y="297" width="39" height="25" rx="4"/><rect x="1366" y="297" width="39" height="25" rx="4"/><rect x="1417" y="297" width="39" height="25" rx="4"/></g>
-<rect x="1166" y="302" width="31" height="16" rx="3" fill="#34dedb"/>
-<rect x="1370" y="302" width="31" height="16" rx="3" fill="#ffc861"/>
-<text x="1290" y="361" text-anchor="middle" class="xs muted">통신단자 개념도 · 실물 핀 방향은 확인 필요</text>
-<rect x="1065" y="390" width="432" height="65" rx="13" fill="#0d2b3c" stroke="#368e9b"/>
-<text x="1091" y="419" class="md heavy cyan">DATA</text><text x="1091" y="444" class="xs muted">통신 핀 2 · 방향 확인</text>
-<rect x="1065" y="469" width="432" height="65" rx="13" fill="#2e2b25" stroke="#b58d48"/>
-<text x="1091" y="500" class="md heavy amber">ENABLE</text><text x="1091" y="525" class="xs muted">통신 핀 6 · 방향 확인</text>
-<rect x="1065" y="552" width="432" height="65" rx="13" fill="#233443" stroke="#7ca0b1"/>
-<text x="1091" y="582" class="md heavy">B- / 주 음극</text><text x="1091" y="604" class="xs muted">배터리 메인 음극 단자</text>
-<path d="M1030 342 H1044 V422 H1065" stroke="#37e5e0" fill="none" stroke-width="6" stroke-linejoin="round"/>
-<path d="M1030 444 H1047 V502 H1065" stroke="#f4c86a" fill="none" stroke-width="6" stroke-linejoin="round"/>
-<path d="M1030 542 H1048 V583 H1065" stroke="#b3cedc" fill="none" stroke-width="6" stroke-linejoin="round"/>
-<rect x="1070" y="638" width="422" height="72" rx="12" fill="#4b1e2c" stroke="#f07882" stroke-width="2"/>
-<circle cx="1104" cy="674" r="17" stroke="#ff7e8e" stroke-width="3" fill="none"/><path d="M1095 665 L1113 683 M1113 665 L1095 683" stroke="#ff7e8e" stroke-width="4" stroke-linecap="round"/>
-<text x="1135" y="667" class="sm heavy red">B+ / 배터리 18V</text>
-<text x="1135" y="694" class="xs" fill="#ffd4da">ESP32에 절대 연결 금지</text>
-<rect x="54" y="755" width="1493" height="181" rx="19" fill="#112b40" stroke="#31566c" stroke-width="2"/>
-<text x="82" y="798" class="md heavy">연결 전 꼭 확인하세요</text>
-<g font-size="19"><circle cx="92" cy="830" r="6" fill="#42decf"/><text x="113" y="837">메이데이 이전 코드 기준: DATA = GPIO5, ENABLE = GPIO6 · 현재 펌웨어 핀 설정과 일치하는지 재확인</text>
-<circle cx="92" cy="866" r="6" fill="#42decf"/><text x="113" y="874">KST 2.8인치와 다른 보드입니다. KST GPIO2/3 배선을 3.5인치에 그대로 적용하지 마세요.</text>
-<circle cx="92" cy="903" r="6" fill="#ff9f81"/><text x="113" y="911">배터리/어댑터 방향에 따라 통신 단자 번호가 반대로 보일 수 있습니다. 실물 핀과 공통 GND를 확인하세요.</text></g>
-<text x="1550" y="958" font-size="15" fill="#90acc1" text-anchor="end">자료: KST Makita Tool · JC3248W535 보드 핀맵 · Open Battery Information / PocketOBI</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="790" viewBox="0 0 1400 790" role="img" aria-labelledby="wiring-title wiring-desc">
+<title id="wiring-title">MAYDAY OBI 배선 연결도</title><desc id="wiring-desc">DATA GPIO5, ENABLE GPIO6, GND 공통 접지, 3.3V와 DATA 사이 4.7킬로옴 저항. 배터리 B+ 18볼트는 ESP32에 연결하지 않음. 정확한 단자 방향과 최신 펌웨어 핀맵 확인 필수.</desc>
+<style>text{font-family:'Noto Sans KR','NanumGothic','Malgun Gothic',sans-serif;font-weight:500} .hd{font-weight:750} .sm{font-weight:500}</style>
+<rect width="1400" height="790" fill="#081c2b"/>
+<text x="68" y="65" font-size="40" fill="#e9f5ff" class="hd">MAYDAY OBI</text>
+<text x="340" y="65" font-size="34" fill="#e9f5ff" >배선 연결 안내</text>
+<text x="68" y="100" font-size="18" fill="#9eb4c5" >ESP32-S3 3.5인치 ↔ Makita LXT 통신선  |  예시 배선 · 실물 핀 방향 확인 필수</text>
+<rect x="60" y="145" width="400" height="498" rx="18" fill="#102a3e" stroke="#35556a" stroke-width="2"/>
+<rect x="945" y="145" width="390" height="498" rx="18" fill="#102a3e" stroke="#35556a" stroke-width="2"/>
+<text x="90" y="187" font-size="27" fill="#e9f5ff" class="hd">ESP32-S3 · 3.5인치</text>
+<text x="90" y="217" font-size="17" fill="#9eb4c5" >JC3248W535 · P2 / P3 확장 단자</text>
+<text x="976" y="187" font-size="27" fill="#e9f5ff" class="hd">마끼다 LXT 배터리</text>
+<text x="976" y="217" font-size="17" fill="#9eb4c5" >통신 단자 · 배터리 주 음극</text>
+<rect x="90" y="250" width="340" height="75" rx="11" fill="#132f43" stroke="#ff828b" stroke-width="2"/>
+<text x="113" y="280" font-size="18" fill="#9eb4c5" >P3 · 2번</text>
+<text x="113" y="307" font-size="22" fill="#ff828b" class="hd">3.3V 전원</text>
+<circle cx="460" cy="288" r="7" fill="#ff828b" stroke="#081c2b" stroke-width="3"/>
+<rect x="90" y="342" width="340" height="75" rx="11" fill="#132f43" stroke="#44deec" stroke-width="2"/>
+<text x="113" y="372" font-size="18" fill="#9eb4c5" >P2 · 1번</text>
+<text x="113" y="399" font-size="22" fill="#44deec" class="hd">GPIO5 / DATA</text>
+<circle cx="460" cy="380" r="7" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
+<rect x="90" y="434" width="340" height="75" rx="11" fill="#132f43" stroke="#ffcd67" stroke-width="2"/>
+<text x="113" y="464" font-size="18" fill="#9eb4c5" >P2 · 2번</text>
+<text x="113" y="491" font-size="22" fill="#ffcd67" class="hd">GPIO6 / ENABLE</text>
+<circle cx="460" cy="472" r="7" fill="#ffcd67" stroke="#081c2b" stroke-width="3"/>
+<rect x="90" y="526" width="340" height="75" rx="11" fill="#132f43" stroke="#adc6d1" stroke-width="2"/>
+<text x="113" y="556" font-size="18" fill="#9eb4c5" >P3 · 1번</text>
+<text x="113" y="583" font-size="22" fill="#adc6d1" class="hd">GND / 공통 접지</text>
+<circle cx="460" cy="564" r="7" fill="#adc6d1" stroke="#081c2b" stroke-width="3"/>
+<path d="M460 380 H945" fill="none" stroke="#44deec" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M460 472 H945" fill="none" stroke="#ffcd67" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M460 564 H945" fill="none" stroke="#adc6d1" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M460 288 H630" fill="none" stroke="#ff828b" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="630" y="273" width="90" height="30" rx="8" fill="#f3d4a9" stroke="#e2b982" stroke-width="2"/>
+<path d="M645 278 V298" stroke="#9b6244" stroke-width="4"/>
+<path d="M657 278 V298" stroke="#b37c4d" stroke-width="4"/>
+<path d="M669 278 V298" stroke="#9b6244" stroke-width="4"/>
+<path d="M681 278 V298" stroke="#b37c4d" stroke-width="4"/>
+<path d="M693 278 V298" stroke="#9b6244" stroke-width="4"/>
+<path d="M720 288 H768 V380" fill="none" stroke="#ff828b" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="768" cy="380" r="10" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
+<text x="632" y="258" font-size="18" fill="#ff828b" class="hd">4.7kΩ 풀업</text>
+<text x="640" y="417" font-size="17" fill="#9eb4c5" >DATA 와 3.3V 사이</text>
+<rect x="975" y="342" width="325" height="75" rx="10" fill="#133048" stroke="#44deec" stroke-width="2"/>
+<text x="999" y="374" font-size="23" fill="#44deec" class="hd">DATA</text>
+<text x="999" y="402" font-size="17" fill="#9eb4c5" >통신 신호</text>
+<circle cx="945" cy="380" r="7" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
+<rect x="975" y="434" width="325" height="75" rx="10" fill="#133048" stroke="#ffcd67" stroke-width="2"/>
+<text x="999" y="466" font-size="23" fill="#ffcd67" class="hd">ENABLE</text>
+<text x="999" y="494" font-size="17" fill="#9eb4c5" >활성화 신호</text>
+<circle cx="945" cy="472" r="7" fill="#ffcd67" stroke="#081c2b" stroke-width="3"/>
+<rect x="975" y="526" width="325" height="75" rx="10" fill="#133048" stroke="#adc6d1" stroke-width="2"/>
+<text x="999" y="558" font-size="23" fill="#adc6d1" class="hd">B− / GND</text>
+<text x="999" y="586" font-size="17" fill="#9eb4c5" >배터리 주 음극</text>
+<circle cx="945" cy="564" r="7" fill="#adc6d1" stroke="#081c2b" stroke-width="3"/>
+<rect x="972" y="605" width="325" height="42" rx="9" fill="#482637" stroke="#e7828b" stroke-width="1.5"/>
+<text x="991" y="633" font-size="19" fill="#ff828b" class="hd">B+ (18V) → 연결 금지</text>
+<rect x="60" y="681" width="1275" height="76" rx="12" fill="#123043" stroke="#35556a" stroke-width="1.5"/>
+<text x="88" y="711" font-size="20" fill="#5bd8c3" class="hd">배선 전 확인</text>
+<text x="88" y="740" font-size="17" fill="#e9f5ff" >배터리 단자 번호·배열은 어댑터마다 다를 수 있습니다. 실제 핀 배치와 펌웨어 GPIO 설정을 확인하세요.</text>
 </svg>
