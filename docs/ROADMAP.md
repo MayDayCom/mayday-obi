@@ -8,7 +8,8 @@
 - [ ] 화면 드라이버, 터치 IC, 플래시 크기, PSRAM, 핀맵 확인
 - [ ] 빌드 산출물과 펌웨어 구성/오프셋 검증
 - [ ] 백업·복구 절차 및 다른 하드웨어 설치 차단
-- [ ] 원저작자/라이선스와 오픈소스 의무 검토
+- [x] Open Battery Information 원저작자 Martin Jansson 및 원본 MIT 라이선스 링크 표기
+- [ ] 실제 펌웨어에 포함된 모든 외부 코드/라이브러리 라이선스 검증 및 고지 반영
 - [ ] 실기기 테스트 및 릴리스
 - [ ] ESP Web Tools 설치 매니페스트 연동
 
@@ -20,3 +21,13 @@ ESP32-S3라는 칩 이름만 같다고 호환되는 것은 아닙니다. 정확�
 
 ## 예정된 웹 설치 방식
 ESP Web Tools의 manifest.json과 검증된 .bin 파일을 사용하는 형태를 계획하고 있습니다. 현재 홈페이지에서 설치 버튼은 비활성화 상태입니다.
+
+## 구매 보드 참고 링크
+
+- 제작자가 실제 사용한 ESP32-S3 3.5인치 보드: https://s.click.aliexpress.com/e/_c4naCAr1
+- 구매 링크가 동일 보드 하드웨어를 영구적으로 보장하지는 않습니다. 판매 옵션과 상세 사양을 별도로 검증해야 합니다.
+
+## 원본
+
+- Martin Jansson, Open Battery Information: https://github.com/mnh-jansson/open-battery-information
+- 원본 저작권: Copyright (c) 2024 Martin Jansson · MIT License
