@@ -56,7 +56,7 @@
 <text x="54" y="1239" font-size="18" fill="#ff8a8c" class="strong">B+ (18V)는 ESP32에 연결 금지</text>
 <path d="M294 346 V795 H220 V1035" fill="none" stroke="#3ddbe5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M465 346 V770 H528 V1035" fill="none" stroke="#f8c861" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M636 346 V1157 H548" fill="none" stroke="#b5cbd4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M636 346 V1131" fill="none" stroke="#b5cbd4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M123 346 V443" fill="none" stroke="#ff8a8c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="109" y="444" width="28" height="72" rx="5" fill="#f3d49f" stroke="#bb965b" stroke-width="2"/>
 <path d="M114 454 H133" fill="none" stroke="#a06d42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -74,7 +74,7 @@
 <circle cx="636" cy="346" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
 <circle cx="220" cy="1035" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
 <circle cx="528" cy="1035" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
-<circle cx="548" cy="1157" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
+<circle cx="636" cy="1131" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
 <rect x="200" y="992" width="40" height="47" rx="5" fill="#13606d" stroke="#3ddbe5" stroke-width="2.6"/>
 <rect x="508" y="992" width="40" height="47" rx="5" fill="#60521c" stroke="#f8c861" stroke-width="2.6"/>
 <text x="220" y="1024" font-size="21" fill="#eaf5ff" text-anchor="middle" class="strong">2</text>
