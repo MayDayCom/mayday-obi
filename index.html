@@ -6,13 +6,14 @@
   <meta name="theme-color" content="#071323">
   <meta name="description" content="MAYDAY OBI — ESP32-S3 3.5인치 터치스크린 기반 마끼다 LXT 배터리 전용 진단 프로젝트. 제작 이야기, 지원 하드웨어 및 펌웨어 배포 준비 안내.">
   <title>MAYDAY OBI | 마끼다 LXT 배터리 전용 펌웨어 센터</title>
+  <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
-      <a href="#top" class="wordmark" aria-label="MAYDAY OBI 홈"><span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="6" width="15" height="12" rx="3"/><path d="M19 10h2v4h-2M7 12h3l2-3 2 6 2-3h1"/></svg></span><span>MAYDAY<span class="brand-accent"> OBI</span></span></a>
+      <a href="#top" class="wordmark" aria-label="MAYDAY OBI 홈"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="brand-logo" width="48" height="48"><span>MAYDAY<span class="brand-accent"> OBI</span></span></a>
       <nav aria-label="주요 메뉴" class="nav-links"><a href="#story">개발 이야기</a><a href="#firmware">펌웨어</a><a href="#hardware">지원 보드</a><a href="#guide">설치 안내</a></nav>
       <a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer" class="nav-youtube"><span class="play-symbol">▶</span> YouTube <span aria-hidden="true">↗</span></a>
     </div>
@@ -28,17 +29,8 @@
         <div class="hero-facts"><span><strong>Makita LXT</strong> 전용</span><span><strong>ESP32-S3</strong> 컨트롤러</span><span><strong>3.5인치</strong> 터치 디스플레이</span><span><strong>약 한 달</strong> 개발 여정</span></div>
       </div>
       <div class="hero-visual" aria-label="ESP32-S3 3.5인치 보드 실물 참고 사진. 화면은 제조사 기본 데모이며 MAYDAY OBI가 아닙니다.">
-        <figure class="hero-product-photo"><img src="assets/esp32-s3-3.5-front.webp" alt="MAYDAY OBI 개발에 사용된 ESP32-S3 3.5인치 터치스크린 보드 전면 제품 참고 사진" width="360" height="329" onerror="this.closest('.hero-visual').classList.add('photo-fallback')"><figcaption>제작에 사용한 보드의 제품 사진 · 화면은 기본 데모 UI로, MAYDAY OBI 실행 화면이 아닙니다.</figcaption></figure>
-        <div class="glow"></div>
-        <div class="device-shadow"></div>
-        <div class="device"><div class="screen">
-          <div class="screen-top"><span class="screen-mark"><span class="tiny-dot"></span> MAYDAY OBI</span><span>DEMO UI</span></div>
-          <div class="screen-title">MAKITA LXT DIAGNOSTIC <small>화면 예시</small></div>
-          <div class="battery-panel"><div class="battery-symbol"><div class="battery-level"></div></div><div><span class="screen-label">LXT BATTERY STATUS</span><strong>READY</strong><small>실제 측정 데이터가 아닙니다</small></div></div>
-          <div class="screen-stats"><div><span>BOARD</span><strong>ESP32-S3</strong></div><div><span>DISPLAY</span><strong>3.5”</strong></div></div>
-          <div class="screen-footer"><span>INFO</span><span>DIAGNOSTIC</span><span>SETTINGS</span></div>
-        </div></div>
-        <div class="visual-caption"><span class="caption-line"></span> CONCEPT INTERFACE · NOT ACTUAL FIRMWARE</div>
+        <figure class="hero-product-photo"><img src="assets/esp32-s3-3.5-front.jpg" alt="MAYDAY OBI 개발에 사용된 ESP32-S3 3.5인치 터치스크린 보드 전면 제품 참고 사진" width="360" height="329" ><figcaption>제작에 사용한 보드의 제품 사진 · 화면은 기본 데모 UI로, MAYDAY OBI 실행 화면이 아닙니다.</figcaption></figure>
+        
       </div>
     </section>
 
@@ -62,7 +54,7 @@
 
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
       <div class="section-heading"><div class="section-kicker">03 / COMPATIBILITY</div><h2 id="hardware-title">지원 하드웨어 · 대상 배터리</h2><p>이 프로젝트는 <strong>마끼다 LXT 시리즈 배터리 전용</strong>입니다. 다른 브랜드나 마끼다의 다른 배터리 플랫폼은 지원 대상으로 안내하지 않습니다. LXT 내부에서도 배터리 모델과 보호회로(BMS)에 따라 지원 범위가 다를 수 있습니다. 또한 ESP32-S3 보드의 화면·터치 칩·핀 배치가 다르면 정상 작동하지 않을 수 있습니다.</p></div>
-      <div class="board-photo-gallery"><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-front.webp" alt="ESP32-S3 3.5인치 보드 전면, 제조사 기본 예제 메뉴 화면" width="360" height="329" loading="lazy"></div><figcaption><strong>전면</strong><span>3.5인치 터치 디스플레이 · 사진의 메뉴는 제조사 기본 화면</span></figcaption></figure><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-back.webp" alt="ESP32-S3 3.5인치 보드 후면 커넥터 설명: USB Type-C, BOOT, RESET, JST1.25, HC1.0, 스피커 단자" width="360" height="315" loading="lazy"></div><figcaption><strong>후면</strong><span>USB-C · BOOT/RESET · 배터리 및 확장 커넥터 위치 안내</span></figcaption></figure></div><p class="board-photo-note"><strong>후면 사진의 표기:</strong> USB Type-C, BOOT, RESET(사진 표기: Rest), JST1.25 2P 배터리 커넥터, JST1.25 4P, JST1.25 4P 전원, JST1.25 8P I/O, HC1.0 4P, 스피커 단자. 사진에 기재된 포트 명칭을 옮긴 것이며 실제 GPIO 핀맵·전기적 사양을 확인한 것은 아닙니다. 위 이미지는 판매용 제품 참고 사진으로 실제 MAYDAY OBI 작동 화면을 보여주지 않습니다.</p>
+      <div class="board-photo-gallery"><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-front.jpg" alt="ESP32-S3 3.5인치 보드 전면, 제조사 기본 예제 메뉴 화면" width="360" height="329" loading="lazy"></div><figcaption><strong>전면</strong><span>3.5인치 터치 디스플레이 · 사진의 메뉴는 제조사 기본 화면</span></figcaption></figure><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-back.jpg" alt="ESP32-S3 3.5인치 보드 후면 커넥터 설명: USB Type-C, BOOT, RESET, JST1.25, HC1.0, 스피커 단자" width="360" height="315" loading="lazy"></div><figcaption><strong>후면</strong><span>USB-C · BOOT/RESET · 배터리 및 확장 커넥터 위치 안내</span></figcaption></figure></div><p class="board-photo-note"><strong>후면 사진의 표기:</strong> USB Type-C, BOOT, RESET(사진 표기: Rest), JST1.25 2P 배터리 커넥터, JST1.25 4P, JST1.25 4P 전원, JST1.25 8P I/O, HC1.0 4P, 스피커 단자. 사진에 기재된 포트 명칭을 옮긴 것이며 실제 GPIO 핀맵·전기적 사양을 확인한 것은 아닙니다. 위 이미지는 판매용 제품 참고 사진으로 실제 MAYDAY OBI 작동 화면을 보여주지 않습니다.</p>
       <div class="spec-grid"><div class="spec-card"><span class="spec-label">BATTERY PLATFORM</span><strong>Makita LXT</strong><small>모델·보호회로별 지원 범위 검증 예정</small></div><div class="spec-card"><span class="spec-label">MCU</span><strong>ESP32-S3</strong><small>검증된 실제 보드만 지원 예정</small></div><div class="spec-card"><span class="spec-label">DISPLAY</span><strong>3.5” TOUCH</strong><small>컨트롤러 모델·해상도 확인 예정</small></div><div class="spec-card"><span class="spec-label">FIRMWARE</span><strong>개발·검증 중</strong><small>배포 버전 추후 공지</small></div></div>
       <div class="hardware-purchase"><div><strong>제작에 사용한 ESP32 보드 구매 링크</strong><p>제작자가 실제 구매한 제품 링크입니다. 판매 옵션과 부품 사양은 구매 전 반드시 확인하세요. 동일 ESP32-S3 칩을 사용해도 보드별 핀맵·디스플레이 칩에 따라 호환되지 않을 수 있습니다.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">AliExpress 구매 링크 ↗</a></div>
       <div class="warning"><strong>주의</strong><span>마끼다 XGT·CXT 등 다른 플랫폼이나 타사 배터리용 도구가 아닙니다. LXT도 모든 모델에 대한 동작을 보장하지 않습니다. 현재는 호환 보드 모델을 확정하지 않았으므로 다른 ESP32-S3 보드나 KST 2.8인치 보드에 임의로 설치하지 마세요.</span></div>
@@ -85,6 +77,6 @@
 
     <section class="section footer-callout"><div class="container"><div class="callout"><div><span class="section-kicker">BUILT BY MAYDAY</span><h2>한 달간의 시행착오도<br>기록으로 남깁니다.</h2><p>마끼다 LXT 배터리 전용 진단 프로젝트의 개발 과정과 실제 작동 테스트는 배터리스트 메이데이 채널에서 소개합니다.</p></div><a href="https://www.youtube.com/@batterist_mayday" class="btn btn-primary" target="_blank" rel="noopener noreferrer">유튜브 채널 보기 ↗</a></div></div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-line"><div><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY · Project preview</span></div><div><a href="#credits">원본·라이선스</a><a href="https://github.com/MayDayCom" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
+  <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY · Project preview</span></span></div><div><a href="#credits">원본·라이선스</a><a href="https://github.com/MayDayCom" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
 </body>
 </html>
