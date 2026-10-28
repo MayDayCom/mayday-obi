@@ -27,7 +27,8 @@
         <div class="hero-cta"><a class="btn btn-primary" href="#story">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#firmware">펌웨어 배포 안내 <span aria-hidden="true">↓</span></a></div>
         <div class="hero-facts"><span><strong>Makita LXT</strong> 전용</span><span><strong>ESP32-S3</strong> 컨트롤러</span><span><strong>3.5인치</strong> 터치 디스플레이</span><span><strong>약 한 달</strong> 개발 여정</span></div>
       </div>
-      <div class="hero-visual" aria-label="3.5인치 디스플레이를 추상화한 디자인 목업. 실제 펌웨어 화면이 아닙니다.">
+      <div class="hero-visual" aria-label="ESP32-S3 3.5인치 보드 실물 참고 사진. 화면은 제조사 기본 데모이며 MAYDAY OBI가 아닙니다.">
+        <figure class="hero-product-photo"><img src="assets/esp32-s3-3.5-front.webp" alt="MAYDAY OBI 개발에 사용된 ESP32-S3 3.5인치 터치스크린 보드 전면 제품 참고 사진" width="360" height="329" onerror="this.closest('.hero-visual').classList.add('photo-fallback')"><figcaption>제작에 사용한 보드의 제품 사진 · 화면은 기본 데모 UI로, MAYDAY OBI 실행 화면이 아닙니다.</figcaption></figure>
         <div class="glow"></div>
         <div class="device-shadow"></div>
         <div class="device"><div class="screen">
@@ -61,6 +62,7 @@
 
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
       <div class="section-heading"><div class="section-kicker">03 / COMPATIBILITY</div><h2 id="hardware-title">지원 하드웨어 · 대상 배터리</h2><p>이 프로젝트는 <strong>마끼다 LXT 시리즈 배터리 전용</strong>입니다. 다른 브랜드나 마끼다의 다른 배터리 플랫폼은 지원 대상으로 안내하지 않습니다. LXT 내부에서도 배터리 모델과 보호회로(BMS)에 따라 지원 범위가 다를 수 있습니다. 또한 ESP32-S3 보드의 화면·터치 칩·핀 배치가 다르면 정상 작동하지 않을 수 있습니다.</p></div>
+      <div class="board-photo-gallery"><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-front.webp" alt="ESP32-S3 3.5인치 보드 전면, 제조사 기본 예제 메뉴 화면" width="360" height="329" loading="lazy"></div><figcaption><strong>전면</strong><span>3.5인치 터치 디스플레이 · 사진의 메뉴는 제조사 기본 화면</span></figcaption></figure><figure class="board-photo-card"><div class="board-image"><img src="assets/esp32-s3-3.5-back.webp" alt="ESP32-S3 3.5인치 보드 후면 커넥터 설명: USB Type-C, BOOT, RESET, JST1.25, HC1.0, 스피커 단자" width="360" height="315" loading="lazy"></div><figcaption><strong>후면</strong><span>USB-C · BOOT/RESET · 배터리 및 확장 커넥터 위치 안내</span></figcaption></figure></div><p class="board-photo-note">위 이미지는 구매한 보드의 제품 참고 사진입니다. 후면 라벨은 물리적 단자의 위치를 보여주며, 전기적 GPIO 핀 배치나 펌웨어 호환성을 보증하지 않습니다.</p>
       <div class="spec-grid"><div class="spec-card"><span class="spec-label">BATTERY PLATFORM</span><strong>Makita LXT</strong><small>모델·보호회로별 지원 범위 검증 예정</small></div><div class="spec-card"><span class="spec-label">MCU</span><strong>ESP32-S3</strong><small>검증된 실제 보드만 지원 예정</small></div><div class="spec-card"><span class="spec-label">DISPLAY</span><strong>3.5” TOUCH</strong><small>컨트롤러 모델·해상도 확인 예정</small></div><div class="spec-card"><span class="spec-label">FIRMWARE</span><strong>개발·검증 중</strong><small>배포 버전 추후 공지</small></div></div>
       <div class="hardware-purchase"><div><strong>제작에 사용한 ESP32 보드 구매 링크</strong><p>제작자가 실제 구매한 제품 링크입니다. 판매 옵션과 부품 사양은 구매 전 반드시 확인하세요. 동일 ESP32-S3 칩을 사용해도 보드별 핀맵·디스플레이 칩에 따라 호환되지 않을 수 있습니다.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">AliExpress 구매 링크 ↗</a></div>
       <div class="warning"><strong>주의</strong><span>마끼다 XGT·CXT 등 다른 플랫폼이나 타사 배터리용 도구가 아닙니다. LXT도 모든 모델에 대한 동작을 보장하지 않습니다. 현재는 호환 보드 모델을 확정하지 않았으므로 다른 ESP32-S3 보드나 KST 2.8인치 보드에 임의로 설치하지 마세요.</span></div>
