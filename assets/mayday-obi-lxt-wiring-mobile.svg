@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1160" viewBox="0 0 760 1160" role="img" aria-labelledby="wiring-title wiring-desc">
+<title id="wiring-title">MAYDAY OBI 배선 연결도</title><desc id="wiring-desc">DATA GPIO5, ENABLE GPIO6, GND 공통 접지, 3.3V와 DATA 사이 4.7킬로옴 저항. 배터리 B+ 18볼트는 ESP32에 연결하지 않음. 정확한 단자 방향과 최신 펌웨어 핀맵 확인 필수.</desc>
+<style>text{font-family:'Noto Sans KR','NanumGothic','Malgun Gothic',sans-serif;font-weight:500} .hd{font-weight:750} .sm{font-weight:500}</style>
+<rect width="760" height="1160" fill="#081c2b"/>
+<text x="37" y="53" font-size="33" fill="#e9f5ff" class="hd">MAYDAY OBI</text>
+<text x="37" y="91" font-size="25" fill="#e9f5ff" class="hd">마끼다 LXT 연결 안내</text>
+<text x="37" y="121" font-size="15" fill="#9eb4c5" >3.5인치 ESP32-S3 · 선이 이어지는 위치를 따라보세요</text>
+<rect x="32" y="153" width="696" height="255" rx="18" fill="#102a3e" stroke="#35556a" stroke-width="2"/>
+<text x="55" y="185" font-size="22" fill="#e9f5ff" class="hd">ESP32-S3 · P2 / P3 커넥터</text>
+<rect x="55" y="208" width="146" height="146" rx="13" fill="#132f43" stroke="#ff828b" stroke-width="2"/>
+<text x="128" y="251" font-size="21" fill="#ff828b" text-anchor="middle" class="hd">3.3V</text>
+<text x="128" y="284" font-size="15" fill="#9eb4c5" text-anchor="middle">P3 · 2번</text>
+<circle cx="128" cy="354" r="8" fill="#ff828b" stroke="#081c2b" stroke-width="3"/>
+<rect x="222" y="208" width="146" height="146" rx="13" fill="#132f43" stroke="#44deec" stroke-width="2"/>
+<text x="295" y="251" font-size="21" fill="#44deec" text-anchor="middle" class="hd">DATA</text>
+<text x="295" y="284" font-size="15" fill="#9eb4c5" text-anchor="middle">P2 · GPIO5</text>
+<circle cx="295" cy="354" r="8" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
+<rect x="389" y="208" width="146" height="146" rx="13" fill="#132f43" stroke="#ffcd67" stroke-width="2"/>
+<text x="462" y="251" font-size="21" fill="#ffcd67" text-anchor="middle" class="hd">ENABLE</text>
+<text x="462" y="284" font-size="15" fill="#9eb4c5" text-anchor="middle">P2 · GPIO6</text>
+<circle cx="462" cy="354" r="8" fill="#ffcd67" stroke="#081c2b" stroke-width="3"/>
+<rect x="556" y="208" width="146" height="146" rx="13" fill="#132f43" stroke="#adc6d1" stroke-width="2"/>
+<text x="629" y="251" font-size="21" fill="#adc6d1" text-anchor="middle" class="hd">GND</text>
+<text x="629" y="284" font-size="15" fill="#9eb4c5" text-anchor="middle">P3 · 1번</text>
+<circle cx="629" cy="354" r="8" fill="#adc6d1" stroke="#081c2b" stroke-width="3"/>
+<path d="M295 355 V820" fill="none" stroke="#44deec" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M462 355 V820" fill="none" stroke="#ffcd67" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M629 355 V820" fill="none" stroke="#adc6d1" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M128 355 V470" fill="none" stroke="#ff828b" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="115" y="470" width="26" height="70" rx="5" fill="#f3d4a9" stroke="#dfb481" stroke-width="2"/>
+<path d="M119 482 H138" stroke="#9b6244" stroke-width="4"/>
+<path d="M119 494 H138" stroke="#b37c4d" stroke-width="4"/>
+<path d="M119 506 H138" stroke="#9b6244" stroke-width="4"/>
+<path d="M119 518 H138" stroke="#b37c4d" stroke-width="4"/>
+<path d="M119 530 H138" stroke="#9b6244" stroke-width="4"/>
+<path d="M128 540 V595 H295" fill="none" stroke="#ff828b" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="295" cy="595" r="10" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
+<text x="55" y="454" font-size="20" fill="#ff828b" class="hd">4.7kΩ</text>
+<text x="55" y="478" font-size="16" fill="#9eb4c5" >풀업 저항</text>
+<rect x="32" y="782" width="696" height="204" rx="18" fill="#102a3e" stroke="#35556a" stroke-width="2"/>
+<text x="55" y="817" font-size="22" fill="#e9f5ff" class="hd">마끼다 LXT 배터리</text>
+<circle cx="295" cy="820" r="8" fill="#44deec" stroke="#081c2b" stroke-width="3"/>
+<rect x="217" y="841" width="156" height="95" rx="11" fill="#132f43" stroke="#44deec" stroke-width="2"/>
+<text x="295" y="877" font-size="20" fill="#44deec" class="hd" text-anchor="middle">DATA</text>
+<text x="295" y="906" font-size="16" fill="#9eb4c5" text-anchor="middle">통신</text>
+<circle cx="462" cy="820" r="8" fill="#ffcd67" stroke="#081c2b" stroke-width="3"/>
+<rect x="384" y="841" width="156" height="95" rx="11" fill="#132f43" stroke="#ffcd67" stroke-width="2"/>
+<text x="462" y="877" font-size="20" fill="#ffcd67" class="hd" text-anchor="middle">ENABLE</text>
+<text x="462" y="906" font-size="16" fill="#9eb4c5" text-anchor="middle">활성화</text>
+<circle cx="629" cy="820" r="8" fill="#adc6d1" stroke="#081c2b" stroke-width="3"/>
+<rect x="551" y="841" width="156" height="95" rx="11" fill="#132f43" stroke="#adc6d1" stroke-width="2"/>
+<text x="629" y="877" font-size="20" fill="#adc6d1" class="hd" text-anchor="middle">B−</text>
+<text x="629" y="906" font-size="16" fill="#9eb4c5" text-anchor="middle">주 음극</text>
+<text x="55" y="967" font-size="18" fill="#ff828b" class="hd">B+ (18V)는 ESP32에 연결 금지</text>
+<rect x="32" y="1018" width="696" height="114" rx="12" fill="#143246" stroke="#35556a" stroke-width="1.4"/>
+<text x="52" y="1051" font-size="19" fill="#5bd8c3" class="hd">연결 전 확인</text>
+<text x="52" y="1082" font-size="17" fill="#e9f5ff" >단자 순서와 실물 방향을 먼저 확인하세요.</text>
+<text x="52" y="1111" font-size="15" fill="#9eb4c5" >최신 펌웨어의 GPIO5 / GPIO6 설정도 재확인하세요.</text>
+</svg>
