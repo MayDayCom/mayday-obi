@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1410" viewBox="0 0 760 1410" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1460" viewBox="0 0 760 1460" role="img" aria-labelledby="title description">
 <title id="title">MAYDAY OBI — 마끼다 LXT 통신 단자 2번 DATA, 6번 ENABLE, 왼쪽 B− 연결도</title>
 <desc id="description">마끼다 LXT 노란색 7접점 통신 커넥터의 왼쪽 1번 접점 바로 왼쪽에 별도 B− 주 음극 단자를 배치했습니다. 2번은 DATA, 6번은 ENABLE. ESP32 GND는 B−에, GPIO5는 DATA에, GPIO6은 ENABLE에 연결하는 기존 메이데이 코드 참고도이며 실제 전기적 호환성 확인이 필요합니다. 3.3V와 DATA 사이 4.7k옴 풀업 저항. B+ 18V 직접 연결 절대 금지.</desc>
 <style>text{font-family:'Noto Sans KR','Malgun Gothic','Nanum Gothic',sans-serif}.b{font-weight:750}</style>
-<rect width="760" height="1410" fill="#081c2b"/>
+<rect width="760" height="1460" fill="#081c2b"/>
 <text x="32" y="57" font-size="35" fill="#eaf5ff" class="b">MAYDAY OBI</text>
 <text x="32" y="99" font-size="27" fill="#eaf5ff" class="b">마끼다 LXT 통신 단자 연결</text>
 <text x="32" y="131" font-size="17" fill="#acc3d5" >B− 주 음극은 1번 접점 왼쪽에 별도 표시</text>
@@ -24,15 +24,15 @@
 <text x="637" y="261" font-size="20" fill="#f8c861" text-anchor="middle" class="b">ENABLE</text>
 <text x="637" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P2 · GPIO6</text>
 <circle cx="636" cy="350" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
-<rect x="30" y="828" width="700" height="413" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
-<text x="227" y="871" font-size="23" fill="#eaf5ff" class="b">마끼다 LXT 배터리</text>
-<text x="227" y="896" font-size="15" fill="#acc3d5" >주 음극(B−) 왼쪽 · 통신핀 1~7 오른쪽</text>
+<rect x="30" y="882" width="700" height="421" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
+<!-- Title moved BELOW the connector where no wires cross it. -->
+<!-- Orientation label relocated BELOW all pin terminals. -->
 <rect x="43" y="959" width="150" height="113" rx="11" fill="#183444" stroke="#b5cbd4" stroke-width="2.4"/>
 <text x="118" y="999" font-size="25" fill="#b5cbd4" text-anchor="middle" class="b">B−</text>
 <text x="118" y="1030" font-size="16" fill="#eaf5ff" text-anchor="middle">주 음극</text>
 <text x="118" y="1052" font-size="13" fill="#acc3d5" text-anchor="middle">별도 단자</text>
 <rect x="202" y="924" width="495" height="158" rx="13" fill="#10313c" stroke="#61e2cc" stroke-width="2.5"/>
-<text x="223" y="955" font-size="17" fill="#61e2cc" class="b">노란색 통신 단자 (DATA + ENABLE)</text>
+<!-- Communication terminal description appears below connector, not on signal wires. -->
 <rect x="211" y="968" width="470" height="88" rx="10" fill="#66511f" stroke="#b8924d" stroke-width="2"/>
 <text x="232" y="985" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">1</text>
 <rect x="215" y="994" width="34" height="45" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
@@ -55,10 +55,14 @@
 <text x="652" y="985" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">7</text>
 <rect x="635" y="994" width="34" height="45" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
 <path d="M652 1001 V1033" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="224" y="1114" font-size="19" fill="#3ddbe5" class="b">2번 DATA</text>
-<text x="526" y="1114" font-size="19" fill="#f8c861" class="b">6번 ENABLE</text>
-<rect x="50" y="1160" width="650" height="52" rx="8" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
-<text x="73" y="1194" font-size="19" fill="#ff8a8c" class="b">B+ (18V)는 ESP32에 절대 연결 금지</text>
+<rect x="204" y="1100" width="493" height="117" rx="11" fill="#15354a" stroke="#355c70" stroke-width="1.5"/>
+<text x="226" y="1130" font-size="22" fill="#eaf5ff" class="b">마끼다 LXT 배터리</text>
+<text x="226" y="1157" font-size="16" fill="#61e2cc" class="b">통신 단자 (DATA + ENABLE)</text>
+<text x="226" y="1184" font-size="15" fill="#acc3d5" >B−는 통신 1번 왼쪽의 별도 단자</text>
+<text x="229" y="1208" font-size="17" fill="#3ddbe5" class="b">2번 DATA</text>
+<text x="522" y="1208" font-size="17" fill="#f8c861" class="b">6번 ENABLE</text>
+<rect x="50" y="1235" width="650" height="52" rx="8" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
+<text x="73" y="1269" font-size="19" fill="#ff8a8c" class="b">B+ (18V)는 ESP32에 절대 연결 금지</text>
 <path d="M120 350 V960" stroke="#b5cbd4" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M292 350 V441" stroke="#ff8a8c" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="278" y="441" width="28" height="70" rx="5" fill="#e9ce9a" stroke="#b98c53" stroke-width="2"/>
@@ -76,8 +80,8 @@
 <circle cx="582" cy="1037" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
 <text x="219" y="435" font-size="18" fill="#ff8a8c" class="b">4.7kΩ</text>
 <text x="219" y="461" font-size="14" fill="#acc3d5" >풀업 저항</text>
-<rect x="30" y="1271" width="700" height="111" rx="12" fill="#133248" stroke="#35556a" stroke-width="1.4"/>
-<text x="53" y="1306" font-size="20" fill="#61e2cc" class="b">확인</text>
-<text x="53" y="1337" font-size="16" fill="#eaf5ff" >통신 커넥터를 반대로 보면 접점 번호도 반대입니다.</text>
-<text x="53" y="1364" font-size="15" fill="#acc3d5" >최신 GPIO 설정과 ENABLE 회로를 검증한 후 연결하세요.</text>
+<rect x="30" y="1324" width="700" height="110" rx="12" fill="#133248" stroke="#35556a" stroke-width="1.4"/>
+<text x="53" y="1359" font-size="20" fill="#61e2cc" class="b">연결 전 확인</text>
+<text x="53" y="1390" font-size="16" fill="#eaf5ff" >커넥터 반대쪽에서 보면 접점 번호도 반대입니다.</text>
+<text x="53" y="1417" font-size="15" fill="#acc3d5" >최신 GPIO 설정과 ENABLE 회로를 검증하세요.</text>
 </svg>
