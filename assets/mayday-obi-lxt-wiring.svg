@@ -1,83 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="wiring-title wiring-desc">
-<title id="wiring-title">MAYDAY OBI 마끼다 LXT 실물 단자 위치 표시 배선도</title>
-<desc id="wiring-desc">마끼다 LXT 배터리 노란색 통신 커넥터, B- 주음극 기준 방향에서 2번 DATA, 6번 ENABLE 접점 강조. ESP32-S3 GPIO5 DATA, GPIO6 ENABLE은 기존 개발 설정의 예시이며 검증 필요. 배터리 주 음극과 ESP32 GND 연결 및 3.3V와 DATA 간 4.7킬로옴 풀업 저항. 18V B+는 절대 ESP32에 연결하지 마세요. 커넥터 방향과 펌웨어 핀 번호는 실물 확인 후 사용하세요.</desc>
-<style>text{font-family:'Noto Sans KR','Malgun Gothic','Nanum Gothic',sans-serif} .strong{font-weight:750} .small{font-weight:500}</style>
-<rect x="0" y="0" width="1400" height="900" rx="0" fill="#081c2b" stroke="#081c2b" stroke-width="0"/>
-
-<text x="60" y="62" font-size="39" fill="#eaf5ff" class="strong">MAYDAY OBI</text>
-<text x="345" y="62" font-size="34" fill="#eaf5ff" class="strong">마끼다 LXT 통신 단자 연결</text>
-<text x="60" y="96" font-size="18" fill="#adc4d5" >노란색 7접점 커넥터: 2번 DATA / 6번 ENABLE · 주 음극 B−는 별도 단자</text>
-<rect x="50" y="140" width="405" height="568" rx="19" fill="#10283b" stroke="#36566b" stroke-width="2"/>
-<rect x="937" y="140" width="408" height="568" rx="19" fill="#10283b" stroke="#36566b" stroke-width="2"/>
-<text x="78" y="184" font-size="26" fill="#eaf5ff" class="strong">ESP32-S3 · 3.5인치</text>
-<text x="78" y="213" font-size="16" fill="#adc4d5" >P2·P3 확장 커넥터 · 코드 핀맵 확인</text>
-<rect x="75" y="250" width="338" height="74" rx="12" fill="#14334b" stroke="#ff8a8c" stroke-width="2"/>
-<text x="96" y="278" font-size="18" fill="#adc4d5" >P3 · 2번</text>
-<text x="96" y="307" font-size="23" fill="#ff8a8c" class="strong">3.3V 전원</text>
-<rect x="75" y="348" width="338" height="74" rx="12" fill="#14334b" stroke="#3ddbe5" stroke-width="2"/>
-<text x="96" y="376" font-size="18" fill="#adc4d5" >P2 · 1번</text>
-<text x="96" y="405" font-size="23" fill="#3ddbe5" class="strong">GPIO5 / DATA</text>
-<rect x="75" y="446" width="338" height="74" rx="12" fill="#14334b" stroke="#f8c861" stroke-width="2"/>
-<text x="96" y="474" font-size="18" fill="#adc4d5" >P2 · 2번</text>
-<text x="96" y="503" font-size="23" fill="#f8c861" class="strong">GPIO6 / ENABLE</text>
-<rect x="75" y="544" width="338" height="74" rx="12" fill="#14334b" stroke="#b5cbd4" stroke-width="2"/>
-<text x="96" y="572" font-size="18" fill="#adc4d5" >P3 · 1번</text>
-<text x="96" y="601" font-size="23" fill="#b5cbd4" class="strong">GND / 주 음극 기준</text>
-<text x="966" y="184" font-size="26" fill="#eaf5ff" class="strong">마끼다 LXT 배터리</text>
-<text x="966" y="213" font-size="16" fill="#adc4d5" >주 음극 B−측을 1번으로 보는 단자 배열</text>
-<rect x="969" y="250" width="342" height="180" rx="15" fill="#102d3b" stroke="#61e2cc" stroke-width="2.5"/>
-<text x="987" y="280" font-size="18" fill="#61e2cc" class="strong">노란색 통신 커넥터 · 1~7번</text>
-<rect x="979" y="300" width="324" height="77" rx="9" fill="#6b571e" stroke="#ac8938" stroke-width="2"/>
-<text x="994" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">1</text>
-<rect x="977" y="322" width="34" height="40" rx="5" fill="#273e52" stroke="#627180" stroke-width="1.5"/>
-<path d="M994 329 V355" stroke="#8ba0af" stroke-width="5" stroke-linecap="round"/>
-<text x="1042" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">2</text>
-<rect x="1025" y="322" width="34" height="40" rx="5" fill="#135766" stroke="#3ddbe5" stroke-width="3"/>
-<path d="M1042 329 V355" stroke="#3ddbe5" stroke-width="5" stroke-linecap="round"/>
-<text x="1090" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">3</text>
-<rect x="1073" y="322" width="34" height="40" rx="5" fill="#273e52" stroke="#627180" stroke-width="1.5"/>
-<path d="M1090 329 V355" stroke="#8ba0af" stroke-width="5" stroke-linecap="round"/>
-<text x="1138" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">4</text>
-<rect x="1121" y="322" width="34" height="40" rx="5" fill="#273e52" stroke="#627180" stroke-width="1.5"/>
-<path d="M1138 329 V355" stroke="#8ba0af" stroke-width="5" stroke-linecap="round"/>
-<text x="1186" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">5</text>
-<rect x="1169" y="322" width="34" height="40" rx="5" fill="#273e52" stroke="#627180" stroke-width="1.5"/>
-<path d="M1186 329 V355" stroke="#8ba0af" stroke-width="5" stroke-linecap="round"/>
-<text x="1234" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">6</text>
-<rect x="1217" y="322" width="34" height="40" rx="5" fill="#635021" stroke="#f8c861" stroke-width="3"/>
-<path d="M1234 329 V355" stroke="#f8c861" stroke-width="5" stroke-linecap="round"/>
-<text x="1282" y="309" font-size="16" fill="#adc4d5" text-anchor="middle">7</text>
-<rect x="1265" y="322" width="34" height="40" rx="5" fill="#273e52" stroke="#627180" stroke-width="1.5"/>
-<path d="M1282 329 V355" stroke="#8ba0af" stroke-width="5" stroke-linecap="round"/>
-<text x="1001" y="410" font-size="18" fill="#3ddbe5" class="strong">2번 · DATA</text>
-<text x="1169" y="410" font-size="18" fill="#f8c861" class="strong">6번 · ENABLE</text>
-<rect x="970" y="552" width="335" height="80" rx="12" fill="#173244" stroke="#b5cbd4" stroke-width="2"/>
-<text x="994" y="583" font-size="22" fill="#b5cbd4" class="strong">B− / 주 음극</text>
-<text x="994" y="609" font-size="16" fill="#adc4d5" >노란 커넥터와 별도 금속 단자</text>
-<rect x="970" y="646" width="335" height="44" rx="8" fill="#4b2839" stroke="#ff8a8c" stroke-width="1.5"/>
-<text x="990" y="674" font-size="19" fill="#ff8a8c" class="strong">B+ (18V) → 연결 금지</text>
-<path d="M455 385 H1042 V363" fill="none" stroke="#3ddbe5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M455 483 H1234 V363" fill="none" stroke="#f8c861" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M455 581 H970" fill="none" stroke="#b5cbd4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M455 287 H578" fill="none" stroke="#ff8a8c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="578" y="273" width="95" height="29" rx="7" fill="#e9ce9a" stroke="#ad8258" stroke-width="1.5"/>
-<path d="M590 279 V296" fill="none" stroke="#996239" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M605 279 V296" fill="none" stroke="#b47f4c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M620 279 V296" fill="none" stroke="#996239" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M635 279 V296" fill="none" stroke="#b47f4c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M650 279 V296" fill="none" stroke="#996239" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M673 287 H757 V385" fill="none" stroke="#ff8a8c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="757" cy="385" r="9" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
-<text x="575" y="258" font-size="17" fill="#ff8a8c" class="strong">4.7kΩ 풀업</text>
-<circle cx="455" cy="287" r="8" fill="#ff8a8c" stroke="#081c2b" stroke-width="3"/>
-<circle cx="455" cy="385" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
-<circle cx="455" cy="483" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
-<circle cx="455" cy="581" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
-<circle cx="1042" cy="363" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
-<circle cx="1234" cy="363" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
-<circle cx="970" cy="581" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
-<rect x="50" y="747" width="1295" height="118" rx="14" fill="#14334a" stroke="#36566b" stroke-width="1.5"/>
-<text x="76" y="783" font-size="21" fill="#61e2cc" class="strong">단자 위치 확인</text>
-<text x="76" y="814" font-size="18" fill="#eaf5ff" >노란 커넥터 2번=DATA, 6번=ENABLE. 표시한 좌우 방향은 B−측을 1번으로 정렬한 개념도입니다.</text>
-<text x="76" y="842" font-size="16" fill="#adc4d5" >실제 커넥터·어댑터를 뒤집어 보면 번호가 반대로 보일 수 있습니다. 전원 연결 전 실물 핀맵을 확인하세요.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="870" viewBox="0 0 1400 870" role="img" aria-labelledby="title description">
+<title id="title">MAYDAY OBI — 마끼다 LXT 통신 단자 2번 DATA, 6번 ENABLE, 왼쪽 B− 연결도</title>
+<desc id="description">마끼다 LXT 노란색 7접점 통신 커넥터의 왼쪽 1번 접점 바로 왼쪽에 별도 B− 주 음극 단자를 배치했습니다. 2번은 DATA, 6번은 ENABLE. ESP32 GND는 B−에, GPIO5는 DATA에, GPIO6은 ENABLE에 연결하는 기존 메이데이 코드 참고도이며 실제 전기적 호환성 확인이 필요합니다. 3.3V와 DATA 사이 4.7k옴 풀업 저항. B+ 18V 직접 연결 절대 금지.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Nanum Gothic',sans-serif}.b{font-weight:750}</style>
+<rect width="1400" height="870" fill="#081c2b"/>
+<text x="54" y="65" font-size="40" fill="#eaf5ff" class="b">MAYDAY OBI</text>
+<text x="346" y="65" font-size="33" fill="#eaf5ff" class="b">LXT 통신 단자 연결</text>
+<text x="54" y="102" font-size="18" fill="#acc3d5" >주 음극(B−)  |  1 2 3 4 5 6 7번 통신 커넥터  |  B+ 방향</text>
+<rect x="46" y="143" width="405" height="565" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
+<rect x="798" y="143" width="552" height="565" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
+<text x="74" y="185" font-size="26" fill="#eaf5ff" class="b">ESP32-S3 · 3.5인치</text>
+<text x="74" y="213" font-size="16" fill="#acc3d5" >P2 / P3 핀 번호는 보드·코드 확인</text>
+<rect x="72" y="250" width="337" height="74" rx="11" fill="#14334b" stroke="#b5cbd4" stroke-width="2"/>
+<text x="93" y="277" font-size="18" fill="#acc3d5" >P3 · 1번</text>
+<text x="93" y="305" font-size="22" fill="#b5cbd4" class="b">GND (공통 접지)</text>
+<circle cx="452" cy="288" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
+<rect x="72" y="348" width="337" height="74" rx="11" fill="#14334b" stroke="#ff8a8c" stroke-width="2"/>
+<text x="93" y="375" font-size="18" fill="#acc3d5" >P3 · 2번</text>
+<text x="93" y="403" font-size="22" fill="#ff8a8c" class="b">3.3V 전원</text>
+<circle cx="452" cy="386" r="8" fill="#ff8a8c" stroke="#081c2b" stroke-width="3"/>
+<rect x="72" y="446" width="337" height="74" rx="11" fill="#14334b" stroke="#3ddbe5" stroke-width="2"/>
+<text x="93" y="473" font-size="18" fill="#acc3d5" >P2 · 1번</text>
+<text x="93" y="501" font-size="22" fill="#3ddbe5" class="b">GPIO5 / DATA</text>
+<circle cx="452" cy="484" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
+<rect x="72" y="544" width="337" height="74" rx="11" fill="#14334b" stroke="#f8c861" stroke-width="2"/>
+<text x="93" y="571" font-size="18" fill="#acc3d5" >P2 · 2번</text>
+<text x="93" y="599" font-size="22" fill="#f8c861" class="b">GPIO6 / ENABLE</text>
+<circle cx="452" cy="582" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
+<text x="825" y="184" font-size="26" fill="#eaf5ff" class="b">마끼다 LXT 배터리</text>
+<text x="825" y="213" font-size="16" fill="#acc3d5" >B− 옆이 통신 커넥터 1번</text>
+<rect x="827" y="307" width="145" height="124" rx="12" fill="#183444" stroke="#b5cbd4" stroke-width="2.3"/>
+<text x="899" y="353" font-size="29" fill="#b5cbd4" text-anchor="middle" class="b">B−</text>
+<text x="899" y="383" font-size="17" fill="#eaf5ff" text-anchor="middle">주 음극</text>
+<text x="899" y="409" font-size="13" fill="#acc3d5" text-anchor="middle">별도 금속 단자</text>
+<rect x="997" y="258" width="327" height="193" rx="14" fill="#10313c" stroke="#61e2cc" stroke-width="2.5"/>
+<text x="1016" y="288" font-size="18" fill="#61e2cc" class="b">통신 단자 · 1~7번</text>
+<rect x="1007" y="316" width="308" height="84" rx="9" fill="#64511f" stroke="#bc9243" stroke-width="2"/>
+<text x="1030" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">1</text>
+<rect x="1015" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1030 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1074" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">2</text>
+<rect x="1059" y="340" width="30" height="47" rx="5" fill="#145969" stroke="#3ddbe5" stroke-width="3"/>
+<path d="M1074 347 V381" stroke="#3ddbe5" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1118" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">3</text>
+<rect x="1103" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1118 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1162" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">4</text>
+<rect x="1147" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1162 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1206" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">5</text>
+<rect x="1191" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1206 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1250" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">6</text>
+<rect x="1235" y="340" width="30" height="47" rx="5" fill="#665124" stroke="#f8c861" stroke-width="3"/>
+<path d="M1250 347 V381" stroke="#f8c861" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1294" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">7</text>
+<rect x="1279" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1294 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1017" y="430" font-size="18" fill="#3ddbe5" class="b">2번 DATA</text>
+<text x="1160" y="430" font-size="18" fill="#f8c861" class="b">6번 ENABLE</text>
+<path d="M973 371 H991" stroke="#b5cbd4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 288 H784 V370 H827" stroke="#b5cbd4" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 385 H581" stroke="#ff8a8c" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="581" y="371" width="92" height="28" rx="6" fill="#e9ce9a" stroke="#b98c53" stroke-width="2"/>
+<path d="M595 376 V393" stroke="#8d623f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M610 376 V393" stroke="#bb8254" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M625 376 V393" stroke="#8d623f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M640 376 V393" stroke="#bb8254" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M655 376 V393" stroke="#8d623f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M673 385 H752 V483" stroke="#ff8a8c" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 483 H1074 V387" stroke="#3ddbe5" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 581 H1250 V387" stroke="#f8c861" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="752" cy="483" r="10" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
+<circle cx="827" cy="370" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
+<circle cx="1074" cy="387" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
+<circle cx="1250" cy="387" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
+<text x="585" y="360" font-size="17" fill="#ff8a8c" class="b">4.7kΩ 풀업</text>
+<rect x="826" y="547" width="498" height="71" rx="10" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
+<text x="849" y="575" font-size="20" fill="#ff8a8c" class="b">B+ (18V) → ESP32 연결 금지</text>
+<text x="849" y="600" font-size="15" fill="#acc3d5" >통신 단자와 전원 단자를 혼동하지 마세요.</text>
+<rect x="46" y="751" width="1304" height="88" rx="13" fill="#133248" stroke="#35556a" stroke-width="1.5"/>
+<text x="71" y="789" font-size="20" fill="#61e2cc" class="b">방향 기준</text>
+<text x="198" y="788" font-size="18" fill="#eaf5ff" >B− 주 음극  →  노란 커넥터 1번부터 7번 순서</text>
+<text x="198" y="815" font-size="15" fill="#acc3d5" >실물 단자 방향·버전마다 배열이 달라질 수 있습니다. 전원 연결 전 핀 배치와 최신 GPIO 설정을 검증하세요.</text>
 </svg>
