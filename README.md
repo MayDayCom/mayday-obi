@@ -1,8 +1,8 @@
-# MAYDAY OBI · Firmware Center (Outline)
+# MAYDAY OBI · Firmware Center
 
-**마끼다 LXT 배터리 전용** ESP32-S3 + 3.5인치 터치스크린 기반 **MAYDAY OBI** 프로젝트를 소개하고 추후 펌웨어를 배포하기 위한 **GitHub Pages 홈페이지 초안**입니다.
+**마끼다 LXT 배터리 전용** ESP32-S3 + 3.5인치 터치스크린 기반 **MAYDAY OBI** 프로젝트를 소개하고 추후 펌웨어를 배포하기 위한 **GitHub Pages 홈페이지**입니다.
 
-> **현재 상태: 디자인/구조 프리뷰.** 펌웨어 BIN·매니페스트·웹 플래싱은 연결하지 않았습니다. 이 저장소의 초안은 설치를 수행하지 않습니다.
+> **현재 상태: 기기에서 MAYDAY OBI 실행 확인 · 펌웨어 공개 준비 중.** 실제 구동 사진을 홈페이지에 표시하고 있습니다. 일반 배포용 BIN·매니페스트·웹 플래싱은 아직 연결하지 않았습니다.
 
 ## 지원 대상
 
@@ -29,16 +29,20 @@
 
 KST 제작 페이지(https://ai.kenhsangtao.com/makita/)는 참조 링크로만 표기했습니다. 현재 이 페이지의 구체적인 지원 BMS 목록은 신뢰할 만큼 확인되지 않아 가져오지 않았습니다.
 
-## 제품 참고 사진
+## 실제 장치 및 부품 사진
 
-- `assets/esp32-s3-3.5-front.webp` — ESP32-S3 3.5인치 보드 전면 참고 사진
-- `assets/esp32-s3-3.5-back.webp` — 후면 단자 표기 참고 사진
-- 제품 사진의 화면은 제조사 기본 데모 UI이며 실제 MAYDAY OBI 펌웨어 화면이 아닙니다.
-- 후면 사진의 포트 표기는 커넥터 위치 참고용으로, 정확한 GPIO 배선도나 전기적 사양을 보증하지 않습니다.
+- `assets/mayday-obi-running.jpg` — 사용자가 직접 촬영한 **실제 MAYDAY OBI v1.0d 실행 사진** (원본 JPG를 변환하거나 재생성하지 않고 그대로 등록)
+- `assets/esp32-s3-3.5-front.jpg` — ESP32-S3 3.5인치 보드 전면 제품 사진 (제조사 기본 데모 UI)
+- `assets/esp32-s3-3.5-back.jpg` — ESP32-S3 3.5인치 보드 후면 단자 표기 제품 사진
+- `assets/batterist-mayday-logo.jpg` — 배터리스트 메이데이 원본 로고 (웹페이지에서 CSS로 원형 표시)
+
+실제 구동 사진에는 Wi-Fi 연결 성공이 표시되어 있지만, 배터리 상세 정보는 아직 읽지 않은 상태입니다. 이를 BMS 호환성 또는 오류 해제 검증 완료의 증거로 해석하지 않습니다.
+
+제품 사진의 기본 메뉴는 MAYDAY OBI 실행 화면이 아니며, 후면 단자 표기는 정확한 GPIO 배선도나 전기적 사양을 보증하지 않습니다.
 
 ## 시작하기
 
-- `index.html` : 한국어 홈페이지 (프로젝트 소개 / 배포센터 / 지원 보드 / 설치 안내)
+- `index.html` : 한국어 반응형 홈페이지 (실제 구동 사진 / 프로젝트 소개 / 배포센터 / 제작 보드 / 원본 BMS 참고표 / 설치 안내)
 - `styles.css` : 반응형 스타일
 - `docs/ROADMAP.md` : 공개 전 검증 항목
 - `firmware/README.md` : 추후 바이너리 등록 위치 안내
@@ -48,11 +52,10 @@ KST 제작 페이지(https://ai.kenhsangtao.com/makita/)는 참조 링크로만 
 
 ## GitHub Pages 배포
 
-1. 이미 생성된 `MayDayCom/mayday-obi` **공개** 저장소를 사용합니다.
-2. 이 패키지의 파일과 폴더를 저장소 **최상위(root)** 에 올립니다.
-3. 저장소의 **Settings → Pages → Build and deployment → Deploy from a branch** 를 선택합니다.
-4. 브랜치는 `main`, 폴더는 `/(root)`로 지정하고 저장합니다.
-5. 배포 성공 후 주소: `https://maydaycom.github.io/mayday-obi/` (사이트 게시 전에는 열리지 않음)
+1. 저장소 [MayDayCom/mayday-obi](https://github.com/MayDayCom/mayday-obi)를 엽니다.
+2. **Settings → Pages → Build and deployment**에서 `Deploy from a branch`를 선택합니다.
+3. 브랜치는 `main`, 폴더는 `/(root)`를 지정합니다.
+4. 공개 페이지: https://maydaycom.github.io/mayday-obi/
 
 ## 실제 설치 기능을 붙이기 전 필수 작업
 
