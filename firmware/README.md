@@ -1,22 +1,36 @@
-# MAYDAY OBI 펌웨어 (준비 중)
+# MAYDAY OBI USB 웹 설치 배포
 
-이 폴더에는 현재 설치 가능한 펌웨어가 없습니다.
+웹 설치는 ESP Web Tools를 사용합니다. 홈페이지와 설치 설정은 준비되어 있으며, 바이너리는 별도로 업로드합니다.
 
-**지원 대상:** 마끼다(Makita) LXT 시리즈 배터리 전용. 타사 배터리 및 마끼다 XGT·CXT 등 다른 플랫폼은 지원하지 않으며, LXT의 세부 모델·BMS 호환성은 검증 후 안내합니다.
+## 파일 업로드
+1. 이 폴더에 **firmware.bin** 이름으로 업로드하고 main에 반영합니다.
+2. GitHub Pages 배포가 완료되면 홈페이지의 "다시 확인"을 누릅니다.
+3. 설치 파일의 존재와 ESP32-S3 헤더가 확인되면, 지원 브라우저에서 USB 설치 기능이 활성화됩니다.
+4. 홈페이지에서 보드 확인 항목에 체크하면 설치 버튼을 누를 수 있습니다.
 
-정식 배포를 위해 필요한 것:
-1. 검증된 실제 ESP32-S3 3.5인치 보드 정확한 모델명
-2. 펌웨어 바이너리 및 적합한 부트로더/파티션 구성
-3. 안전한 복구 방법과 버전 이력
-4. ESP Web Tools 설치용 manifest.json
-5. 원본 OBI 프로젝트 (Martin Jansson, MIT License) 및 기타 실제 사용 라이브러리의 저작권·라이선스 고지 확인
+## 반드시 맞춰야 할 바이너리 형식
+- 홈페이지에 안내된 ESP32-S3 3.5인치 보드용 빌드여야 합니다.
+- **플래시 주소 0x0에 쓰는 통합 이미지**여야 합니다. 부트로더, 파티션 테이블, 앱 및 필요한 초기화 데이터를 실제 빌드의 주소에 맞춰 병합해야 합니다.
+- PlatformIO 등의 일반 앱 단독 firmware.bin을 이름만 바꿔 올리면 안 됩니다.
+- 병합은 실제 빌드의 플래시 크기·모드·주파수와 주소를 기준으로 수행하세요. 다른 보드의 설정을 복사하지 마세요.
+- 홈페이지의 헤더 검사는 파일 누락·HTML 응답·명백한 다른 칩 이미지를 걸러내는 보조 확인입니다. 통합 여부, 실제 보드의 화면/터치/PSRAM/핀맵 호환성과 동작은 보장하지 않습니다.
+- ESP Web Tools의 칩 식별은 ESP32-S3 계열을 구별할 뿐, 같은 칩을 쓴 다른 보드 모델은 구별하지 못합니다.
 
-검증되지 않은 바이너리나 설치 주소를 추측해 배포하지 않습니다.
+## 버전 관리
+manifest.json의 version은 현재 "current"입니다. 실제 버전이 확정되면 함께 수정하세요. 바이너리 경로는 manifest 기준 firmware.bin, offset은 0입니다. 다른 배포 형식을 사용할 경우 설치 스크립트의 검증 조건도 함께 수정해야 합니다.
+기존 설정 삭제는 설치 대화상자에서 사용자가 선택합니다. "지우지 않음"이 모든 버전 간 설정 보존을 보장하지는 않습니다.
 
-## 원본 프로젝트
+## 배포 확인
+- PC Chrome/Edge에서 HTTPS 홈페이지 열기 → 파일 확인 → 보드 확인 체크 → 설치 버튼 → 포트 선택 → 설치 완료 → 재부팅.
+- 실제 대상 보드로 화면, 터치, 버전 표시, USB 재연결과 실패 복구를 확인한 뒤 배포하세요.
+- 본 작업에서는 실제 바이너리 업로드 및 USB 플래시를 수행하지 않았습니다.
+- 펌웨어가 없거나 잘못된 헤더이면 설치 버튼은 비활성화됩니다. 네트워크 오류·도구 로딩 실패 시 다시 확인할 수 있습니다.
+- 배포 파일을 받을 수 있으면 Web Serial 미지원 환경에도 다운로드 링크는 제공됩니다.
+- 외부 의존성: https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module
+- 공식 문서: https://esphome.github.io/esp-web-tools/
 
-- Open Battery Information — Martin Jansson: https://github.com/mnh-jansson/open-battery-information
-- 라이선스: https://github.com/mnh-jansson/open-battery-information/blob/main/LICENSE.md (MIT)
-- 원본 저작권 표기: Copyright (c) 2024 Martin Jansson
-
-실제 펌웨어를 배포할 때 원본 코드와 함께 제공되는 저작권 및 허가 고지가 누락되지 않도록 확인해야 합니다.
+## 지원 및 출처
+마끼다 LXT 전용입니다. XGT·CXT 및 타사 플랫폼은 지원 대상이 아닙니다.
+Open Battery Information — Martin Jansson, MIT License, Copyright (c) 2024 Martin Jansson.
+원본: https://github.com/mnh-jansson/open-battery-information
+배포하는 실제 코드와 라이브러리의 라이선스 고지를 함께 유지하세요.
