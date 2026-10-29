@@ -1,4 +1,4 @@
-import './installer-theme.js?v=20261029-optional';
+import './installer-theme.js?v=20261029-ko-recovery';
 // The release contract is a merged ESP32-S3 image starting at flash address 0.
 const status = document.querySelector('#firmware-status');
 const message = document.querySelector('#firmware-message');
@@ -42,7 +42,7 @@ async function checkRelease() {
     }
     const binaryURL = new URL(build.parts[0].path, manifestURL);
     const binary = await fetch(binaryURL, {
-      cache: 'no-store', headers: {Range: 'bytes=0-31'}, signal: controller.signal
+      cache: 'no-store', headers: {Range: 'bytes=0-65571'}, signal: controller.signal
     });
     if (binary.status === 404) {
       say('펌웨어 업로드 대기', '웹 설치 기능이 준비되었습니다. 펌웨어 파일이 등록되면 설치할 수 있습니다.');
@@ -50,10 +50,20 @@ async function checkRelease() {
     }
     if (!binary.ok) throw new Error('network');
     const header = new Uint8Array(await binary.arrayBuffer());
-    // ESP image header magic and ESP32-S3 chip ID (9), not a complete firmware audit.
-    if (header.length < 24 || header[0] !== 0xe9 ||
-        header[12] !== 9 || header[13] !== 0) {
-      say('배포 파일 점검 중', '설치 파일 형식을 확인하고 있습니다. 잠시 후 다시 확인해 주세요.');
+    // This board's factory layout: bootloader 0, partition table 0x8000, app 0x10000.
+    // An ESP32-S3 app also starts with E9/chip 9, so chip detection alone is insufficient.
+    if (header.length >= 36 && header[32] === 0x32 && header[33] === 0x54 &&
+        header[34] === 0xcd && header[35] === 0xab) {
+      say('설치 파일 수정 중', '앱 단독 파일이 등록되어 USB 설치를 중단했습니다. 통합 펌웨어가 등록된 뒤 다시 확인해 주세요.');
+      return;
+    }
+    const validBoot = header[0] === 0xe9 && header[12] === 9 && header[13] === 0;
+    const validPartitions = header[0x8000] === 0xaa && header[0x8001] === 0x50;
+    const validApp = header[0x10000] === 0xe9 && header[0x1000c] === 9 &&
+      header[0x1000d] === 0 && header[0x10020] === 0x32 &&
+      header[0x10021] === 0x54 && header[0x10022] === 0xcd && header[0x10023] === 0xab;
+    if (header.length < 0x10024 || !validBoot || !validPartitions || !validApp) {
+      say('설치 파일 점검 중', '이 보드용 통합 펌웨어 구성을 확인하지 못해 설치를 중단했습니다.');
       return;
     }
     download.href = binaryURL.href;
