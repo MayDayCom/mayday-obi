@@ -1,4 +1,4 @@
-import './installer-theme.js?v=20261029-dialog';
+import './installer-theme.js?v=20261029-optional';
 // The release contract is a merged ESP32-S3 image starting at flash address 0.
 const status = document.querySelector('#firmware-status');
 const message = document.querySelector('#firmware-message');

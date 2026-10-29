@@ -64,9 +64,9 @@ const labels = new Map([
  ['Wrapping up','마무리 중'],['Installation complete!','설치가 완료되었습니다'],
  ['Installation failed','설치하지 못했습니다'],['Connecting','보드에 연결 중'],
  ['Error','연결을 확인해 주세요'],['Disconnected','USB 연결이 끊어졌습니다'],
- ['Erase device','기존 데이터 지우기'],
- ['Do you want to erase the device before installing','설치 전에 기존 데이터를 지울지 선택해 주세요. 대상:'],
- ['? All data on the device will be lost.','. 지우기를 선택하면 보드의 모든 데이터가 삭제됩니다.'],
+ ['Erase device','설치 방식 선택'],
+ ['Do you want to erase the device before installing','기존 데이터 삭제는 선택 사항입니다. 설치 대상:'],
+ ['? All data on the device will be lost.','. 체크하지 않아도 다음 단계로 진행할 수 있습니다. 체크하면 보드의 저장 설정과 데이터가 삭제됩니다.'],
  ['Erase User Data','기존 설정 지우기'],['Download Logs','로그 저장'],
  ['Reset Device','보드 재시작'],
  ['All data on the device will be erased.','보드에 저장된 모든 데이터가 지워집니다.']
@@ -87,7 +87,9 @@ function decorate(dialog) {
      while ((node = walker.nextNode())) {
        if (node.parentElement?.closest('ewt-console, input, textarea')) continue;
        const text = node.nodeValue.trim().replace(/\s+/g,' ');
-       const translated = labels.get(text);
+       const translated = text === 'Erase device' && node.parentElement?.closest('label.formfield')
+         ? '보드 저장 설정·데이터 전체 삭제 후 설치 (선택 사항)'
+         : labels.get(text);
        if (translated) node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), translated);
      }
    }
