@@ -11,7 +11,7 @@
   <meta name="theme-color" content="#071323">
   <title>MAYDAY OBI | 마끼다 LXT 배터리 진단 프로젝트</title>
   <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=20261029-visitor-clean-v1">
+  <link rel="stylesheet" href="styles.css?v=20261029-battery-1s">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
@@ -47,7 +47,7 @@
     </div></section>
 
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
-      <div class="section-heading"><div class="section-kicker">HARDWARE</div><h2 id="hardware-title">사용 보드와 배선</h2><p>ESP32-S3 · 3.5인치 터치스크린. 아래 실제 후면 사진에서 사용 포트를 확인할 수 있습니다.</p></div>
+      <div class="section-heading"><div class="section-kicker">HARDWARE</div><h2 id="hardware-title">사용 보드와 배선</h2><p>ESP32-S3 · 3.5인치 터치스크린. 실제 후면 사진과 <a class="inline-jump" href="#wiring">마끼다 통신 배선</a> · <a class="inline-jump" href="#battery-power">리튬이온 전원 배선</a>을 확인하세요.</p></div>
       <div class="board-photo-gallery">
         <figure class="board-photo-card">
           <div class="board-image"><img src="assets/esp32-s3-3.5-front.jpg" width="360" height="329" loading="lazy" alt="MAYDAY OBI에 사용한 ESP32-S3 3.5인치 터치스크린 보드 전면"></div>
@@ -82,6 +82,24 @@
         </div>
         <figcaption><strong>연결:</strong> P2 IO5 → DATA(2번), IO6 → ENABLE(6번) · P3 GND → B− · 3.3V → 4.7kΩ → DATA.</figcaption>
       </figure>
+      <section class="battery-power-guide" id="battery-power" aria-labelledby="battery-power-title">
+        <div class="battery-power-head">
+          <div><span class="section-kicker">BATTERY POWER</span><h3 id="battery-power-title">리튬이온 배터리 전원 연결</h3></div>
+          <a class="battery-open-desktop" href="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-battery-1s" target="_blank" rel="noopener noreferrer">배선도 확대 ↗</a>
+          <a class="battery-open-mobile" href="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-battery-1s" target="_blank" rel="noopener noreferrer">배선도 확대 ↗</a>
+        </div>
+        <p class="battery-power-intro">보드의 <strong>P5 배터리 단자(JST 1.25mm · 2핀)</strong>에 <strong>1셀 3.7V 리튬이온·리튬폴리머 배터리</strong>를 연결합니다. USB-C 전원으로 구동하거나 내장 충전회로로 배터리를 충전할 수도 있습니다.</p>
+        <div class="battery-power-visual">
+          <a class="battery-wiring-desktop" href="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-battery-1s" target="_blank" rel="noopener noreferrer" aria-label="실제 보드 후면 사진을 이용한 P5 1셀 리튬이온 전원 배선도 크게 보기">
+            <img src="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-battery-1s" width="1400" height="820" loading="lazy" alt="실제 ESP32-S3 보드 후면 사진의 P5 배터리 단자에 1셀 3.7V 배터리 연결. P5의 플러스는 USB-C에 가까운 접점, 마이너스는 반대쪽입니다. USB-C 전원으로 보드 사용과 배터리 충전 가능.">
+          </a>
+          <a class="battery-wiring-mobile" href="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-battery-1s" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 P5 1셀 리튬이온 배터리 연결도 크게 보기">
+            <img src="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-battery-1s" width="760" height="1390" loading="lazy" alt="P5 배터리 포트의 실제 위치와 1셀 3.7V 배터리의 플러스, 마이너스 연결 방향을 표시한 세로 배선도. USB-C 방향이 P5 플러스입니다.">
+          </a>
+        </div>
+        <p class="battery-power-caption">배터리는 <strong>1셀(1S) 보호회로 내장형</strong>을 권장합니다. 커넥터 배선 색상보다 <strong>P5의 실제 +/− 극성</strong>을 먼저 확인하세요.</p>
+        <details class="battery-power-detail"><summary>전원과 통신을 함께 사용할 때</summary><p>일부 JC3248W535 보드에서는 IO5가 배터리 전압 측정 회로와 연결되어 있습니다. P2 IO5를 마끼다 DATA로 사용하면서 P5 배터리를 연결할 경우 해당 회로의 간섭 여부를 확인하세요.</p></details>
+      </section>
       <div class="hardware-purchase"><div><strong>사용한 ESP32-S3 보드</strong><p>구매 전 보드 규격과 커넥터 구성이 사진과 같은지 확인하세요.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">보드 구매처 ↗</a></div>
       <div class="warning"><strong>사용 범위</strong><span>마끼다 LXT 전용입니다. 다른 배터리 플랫폼이나 핀 배열이 다른 보드에는 연결하지 마세요.</span></div>
       <div class="bms-reference" id="bms-reference">
