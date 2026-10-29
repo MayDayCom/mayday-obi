@@ -1,3 +1,4 @@
+import './installer-theme.js?v=20261029-dialog';
 // The release contract is a merged ESP32-S3 image starting at flash address 0.
 const status = document.querySelector('#firmware-status');
 const message = document.querySelector('#firmware-message');
@@ -64,7 +65,7 @@ async function checkRelease() {
     say('USB 설치 준비 중', '설치 도구를 불러오고 있습니다.');
     clearTimeout(timer);
     await Promise.race([
-      import('https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module'),
+      import('https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-button.js?module'),
       new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('library')), 15000); })
     ]);
     installer.setAttribute('manifest', manifestURL.href);
