@@ -97,15 +97,18 @@ if (root) {
         terminal: {clean(){}, writeLine:log, write:log}
       });
       say('ESP32 확인 중', '칩 종류를 읽고 있습니다. 부팅 모드 전환 후 다시 시도해야 할 수도 있습니다.');
-      // Try preselected BOOT mode; avoid relying on platform-specific USB reset lines.
-      const chip = await loader.main('no_reset');
+      // Attempt automatic bootloader entry first. ESP32-S3 native USB can use
+      // USB-JTAG reset; a CDC bridge normally uses DTR/RTS auto-reset.
+      const resetMode = usbMode.value === 'vendor' ? 'usb_reset' : 'default_reset';
+      log('자동 다운로드 모드 진입 시도: ' + resetMode);
+      const chip = await loader.main(resetMode);
       if (!/ESP32-S3/i.test(String(chip))) {
         throw new Error('이 펌웨어는 ESP32-S3 전용입니다. 인식 결과: ' + String(chip));
       }
       connected = true;
       say('ESP32-S3 연결 성공', '칩을 인식했습니다. 기록하려면 아래 확인 항목을 체크하세요.');
     } catch (err) {
-      say('연결 실패', describeError(err) + ' BOOT 버튼을 누른 채 RESET을 누르고 BOOT을 놓은 다음 재시도해 보세요.', true);
+      say('연결 실패', describeError(err) + ' 자동 연결에 실패했습니다. 그때만 BOOT을 누른 채 RESET을 짧게 누르고 BOOT을 놓은 뒤 다시 시도해 보세요.', true);
       await cleanup();
     } finally {
       busy = false;
@@ -186,7 +189,7 @@ if (root) {
       ESPLoader = esp.ESPLoader;
       Transport = esp.Transport;
       ready = true;
-      say('USB 연결 테스트 준비', 'ESP32-S3를 연결하고 BOOT + RESET으로 다운로드 모드에 진입한 뒤 USB 연결 테스트를 누르세요.');
+      say('USB 연결 테스트 준비', 'ESP32-S3를 USB로 연결한 다음 USB 연결 테스트를 누르세요. 다운로드 모드 진입은 자동으로 시도합니다.');
     } catch (err) {
       say('설치 도구 불러오기 실패', describeError(err) + ' 인터넷 연결을 확인한 뒤 페이지를 새로고침해 주세요.', true);
     } finally {
