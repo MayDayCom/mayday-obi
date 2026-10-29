@@ -98,7 +98,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .board-photo-card .board-image{background:#fff}
 .bms-reference{margin:28px 0;padding:25px;border-color:#3a627a}
 .bms-box{background:#0a1e30}
-.bms-footnote{line-height:1.8}
+
 .hardware-purchase{margin:26px 0}
 .warning{line-height:1.9;align-items:flex-start}
 .steps{gap:15px}
@@ -183,9 +183,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .hero{padding-top:54px;padding-bottom:60px}
 .hero-facts{border-top:0;padding-top:0;margin-top:19px;gap:9px}
 .hero-facts span{display:inline-flex;align-items:center;padding:5px 11px;border-radius:30px;background:#16364a;border:1px solid #34566c;color:#c9e3f0;font-size:12px}
-.section-compact{padding-top:36px;padding-bottom:36px}
-.story-compact h2{font-size:clamp(22px,2.5vw,29px);letter-spacing:-.045em;line-height:1.38;margin:8px 0}
-.story-compact p{color:var(--muted);max-width:920px;font-size:13px;line-height:1.85;margin:9px 0 10px;word-break:keep-all}
+
 .text-link{font-size:12px;font-weight:700;color:var(--teal);text-decoration:underline;text-underline-offset:3px}
 .release-layout{display:block;max-width:100%}
 .release-main{padding:22px 26px;border:1px solid #2f5066;border-radius:14px;background:linear-gradient(115deg,#132d41,#0e2135)}
@@ -288,11 +286,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .wiring-image-link{max-width:100%;overflow:hidden}
 }
 
-/* Photograph-backed physical P2/P3 connector guidance */
-.port-location-note{margin:0 0 13px;padding:11px 14px;border-radius:9px;border:1px solid #375e72;background:#132e41;color:#c5d9e5;font-size:12px;line-height:1.8}
-.port-location-note strong{color:#f0f9ff}
-.port-location-note a{display:inline-block;color:#76ecdc;font-weight:700;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:720px){.port-location-note{font-size:11px;padding:10px 12px;line-height:1.7}}
 
 /* Public-facing pin identification on the existing real product rear photo */
 .pin-marked-board .board-image{position:relative;display:block;padding:10px;overflow:hidden;background:#aebcc9}
@@ -308,4 +301,25 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 @media(max-width:720px){
  .pin-marked-board .board-image img,.board-photo-gallery .board-photo-card:not(.pin-marked-board) .board-image img{height:auto;max-height:none}
  .pin-chip{font-size:11px;min-width:40px;height:26px}
+}
+
+
+/* Visitor-focused spacing and anchor navigation */
+#firmware,#hardware,#wiring,#bms-reference,#credits{scroll-margin-top:118px}
+.hero{min-height:0;padding:55px 0 65px;gap:36px}
+.hero h1{margin:18px 0 22px}
+.hero-subtitle{max-width:460px;line-height:1.85}
+.hero-cta{margin-top:24px}
+.hero-visual{min-height:0}
+.hero-actual-photo{max-width:100%}
+.bms-notice{line-height:1.75}
+.credit-links{flex-wrap:wrap}
+@media(max-width:720px){
+ #firmware,#hardware,#wiring,#bms-reference,#credits{scroll-margin-top:126px}
+ .hero{padding:30px 0 35px;gap:19px}
+ .hero h1{margin:13px 0 17px}
+ .hero-subtitle{line-height:1.75}
+ .hero-cta{margin-top:18px}
+ .bms-reference{margin-top:15px}
+ .credits-panel{padding:18px}
 }
