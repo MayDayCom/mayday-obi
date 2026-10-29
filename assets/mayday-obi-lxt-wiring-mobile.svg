@@ -1,28 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="1460" viewBox="0 0 760 1460" role="img" aria-labelledby="title description">
 <title id="title">MAYDAY OBI — 마끼다 LXT 통신 단자 2번 DATA, 6번 ENABLE, 왼쪽 B− 연결도</title>
-<desc id="description">마끼다 LXT 노란색 7접점 통신 커넥터의 왼쪽 1번 접점 바로 왼쪽에 별도 B− 주 음극 단자를 배치했습니다. 2번은 DATA, 6번은 ENABLE. ESP32 GND는 B−에, GPIO5는 DATA에, GPIO6은 ENABLE에 연결하는 기존 메이데이 코드 참고도이며 실제 전기적 호환성 확인이 필요합니다. 보드 후면 하단 4핀 JST는 P3, 오른쪽 8핀 JST는 P2입니다. 3.3V와 DATA 사이 4.7k옴 풀업 저항. B+ 18V 직접 연결 절대 금지.</desc>
+<desc id="description">마끼다 LXT 노란색 7접점 통신 커넥터의 왼쪽 1번 접점 바로 왼쪽에 별도 B− 주 음극 단자를 배치했습니다. 2번은 DATA, 6번은 ENABLE. ESP32의 GND는 B−에, IO5는 DATA에, IO6는 ENABLE에 연결합니다. 기판 표기 GND·3.3V는 P3, IO5·IO6는 P2에서 확인합니다. 3.3V와 DATA 사이 4.7k옴 풀업 저항. B+ 18V 직접 연결 절대 금지.</desc>
 <style>text{font-family:'Noto Sans KR','Malgun Gothic','Nanum Gothic',sans-serif}.b{font-weight:750}</style>
 <rect width="760" height="1460" fill="#081c2b"/>
 <text x="32" y="57" font-size="35" fill="#eaf5ff" class="b">MAYDAY OBI</text>
 <text x="32" y="99" font-size="27" fill="#eaf5ff" class="b">마끼다 LXT 통신 단자 연결</text>
-<text x="32" y="131" font-size="17" fill="#acc3d5" >B−는 마끼다 1번 왼쪽 · ESP32 하단 4P=P3 / 8P=P2</text>
+<text x="32" y="131" font-size="17" fill="#acc3d5" >B−는 마끼다 1번 왼쪽 · ESP32는 기판의 IO 표기 확인</text>
 <rect x="30" y="161" width="700" height="226" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
 <text x="52" y="197" font-size="23" fill="#eaf5ff" class="b">ESP32-S3 · 실제 후면 포트</text>
 <rect x="45" y="220" width="152" height="129" rx="12" fill="#14334b" stroke="#b5cbd4" stroke-width="2"/>
 <text x="121" y="261" font-size="20" fill="#b5cbd4" text-anchor="middle" class="b">GND</text>
-<text x="121" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P3 · 4P 1번</text>
+<text x="121" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P3</text>
 <circle cx="120" cy="350" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
 <rect x="217" y="220" width="152" height="129" rx="12" fill="#14334b" stroke="#ff8a8c" stroke-width="2"/>
 <text x="293" y="261" font-size="20" fill="#ff8a8c" text-anchor="middle" class="b">3.3V</text>
-<text x="293" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P3 · 4P 2번</text>
+<text x="293" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P3</text>
 <circle cx="292" cy="350" r="8" fill="#ff8a8c" stroke="#081c2b" stroke-width="3"/>
 <rect x="389" y="220" width="152" height="129" rx="12" fill="#14334b" stroke="#3ddbe5" stroke-width="2"/>
 <text x="465" y="261" font-size="20" fill="#3ddbe5" text-anchor="middle" class="b">DATA</text>
-<text x="465" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P2 · 8P GPIO5</text>
+<text x="465" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">IO5 · P2</text>
 <circle cx="464" cy="350" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
 <rect x="561" y="220" width="152" height="129" rx="12" fill="#14334b" stroke="#f8c861" stroke-width="2"/>
 <text x="637" y="261" font-size="20" fill="#f8c861" text-anchor="middle" class="b">ENABLE</text>
-<text x="637" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">P2 · 8P GPIO6</text>
+<text x="637" y="289" font-size="14" fill="#acc3d5" text-anchor="middle">IO6 · P2</text>
 <circle cx="636" cy="350" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
 <rect x="30" y="882" width="700" height="421" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
 <!-- Title moved BELOW the connector where no wires cross it. -->
