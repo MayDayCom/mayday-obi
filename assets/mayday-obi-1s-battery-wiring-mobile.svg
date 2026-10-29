@@ -22,16 +22,16 @@
 <text x="52" y="889" font-size="18" fill="#B3CCDB" >같은 BAT+와 BAT−에서 저항선을 분기합니다.</text>
 <g transform="translate(60 910) scale(1.055)">
 <rect x="0" y="0" width="610" height="408" rx="14" fill="#0D2435" stroke="#2C5066" stroke-width="1.5"/>
-<rect x="19" y="44" width="185" height="304" rx="13" fill="#173347" stroke="#3F6577" stroke-width="2"/>
+<rect x="19" y="44" width="185" height="350" rx="13" fill="#173347" stroke="#3F6577" stroke-width="2"/>
 <text x="39" y="77" font-size="21" fill="#EFF8FD" class="b">리튬이온 1셀</text>
 <text x="39" y="103" font-size="17" fill="#66E3CA" class="b">3.7V · 1S</text>
 <rect x="65" y="151" width="76" height="154" rx="16" fill="#14574E" stroke="#80DEB4" stroke-width="3"/>
 <rect x="85" y="140" width="35" height="16" rx="4" fill="#C8DCE3" stroke="#EAF6FF" stroke-width="1"/>
 <text x="103" y="232" font-size="25" fill="#EFF8FD" class="b" text-anchor="middle">1S</text>
 <text x="169" y="145" font-size="26" fill="#FF8A8D" class="b" text-anchor="middle">+</text>
-<text x="169" y="326" font-size="26" fill="#C5CEDA" class="b" text-anchor="middle">−</text>
+<text x="169" y="375" font-size="26" fill="#C5CEDA" class="b" text-anchor="middle">−</text>
 <path d="M204 135 H493" stroke="#FF8A8D" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M204 325 H493" stroke="#C5CEDA" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M204 379 H493" stroke="#C5CEDA" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M317 135 V190" stroke="#FF8A8D" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="303" y="190" width="28" height="61" rx="5" fill="#E8CDA3" stroke="#9C7747" stroke-width="2"/>
 <path d="M308 203 H326 M308 216 H326 M308 229 H326 M308 242 H326" stroke="#986C3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -40,9 +40,9 @@
 <path d="M317 279 V290" stroke="#42DCE8" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="303" y="290" width="28" height="60" rx="5" fill="#E8CDA3" stroke="#9C7747" stroke-width="2"/>
 <path d="M308 302 H326 M308 315 H326 M308 328 H326 M308 341 H326" stroke="#986C3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M317 350 V373 H397 V325" stroke="#C5CEDA" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M317 350 V379" stroke="#C5CEDA" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="317" cy="135" r="7" fill="#FF8A8D" stroke="#081B2B" stroke-width="3"/>
-<circle cx="397" cy="325" r="7" fill="#C5CEDA" stroke="#081B2B" stroke-width="3"/>
+<circle cx="317" cy="379" r="7" fill="#C5CEDA" stroke="#081B2B" stroke-width="3"/>
 <circle cx="317" cy="279" r="7" fill="#42DCE8" stroke="#081B2B" stroke-width="3"/>
 <text x="344" y="221" font-size="17" fill="#FF8A8D" class="b">R1 100kΩ</text>
 <text x="344" y="325" font-size="17" fill="#C5CEDA" class="b">R2 100kΩ</text>
@@ -52,9 +52,9 @@
 <rect x="493" y="241" width="105" height="76" rx="9" fill="#173347" stroke="#42DCE8" stroke-width="1.5"/>
 <text x="504" y="265" font-size="17" fill="#42DCE8" class="b">P2 7번</text>
 <text x="504" y="291" font-size="23" fill="#42DCE8" class="b">IO9</text>
-<rect x="493" y="319" width="105" height="78" rx="9" fill="#173347" stroke="#3F6577" stroke-width="1.5"/>
-<text x="506" y="352" font-size="20" fill="#C5CEDA" class="b">P5 (−)</text>
-<text x="506" y="375" font-size="15" fill="#B3CCDB" >전원 −</text>
+<rect x="493" y="317" width="105" height="87" rx="9" fill="#173347" stroke="#3F6577" stroke-width="1.5"/>
+<text x="506" y="346" font-size="20" fill="#C5CEDA" class="b">P5 (−)</text>
+<text x="506" y="367" font-size="15" fill="#B3CCDB" >전원 −</text>
 </g>
 <text x="57" y="1378" font-size="18" fill="#66E3CA" class="b">4.2V 입력 → IO9 2.1V → 화면에 4.2V</text>
 <rect x="29" y="1461" width="702" height="61" rx="9" fill="#3B2834" stroke="#FF8A8D" stroke-width="1.5"/>
