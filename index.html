@@ -11,7 +11,7 @@
   <meta name="theme-color" content="#f5f3ec">
   <title>MAYDAY OBI | 마끼다 LXT 배터리 진단 프로젝트</title>
   <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=20261029-usb">
+  <link rel="stylesheet" href="styles.css?v=20261029-mobile-test-v1">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
@@ -58,7 +58,42 @@
         </div>
         <details class="install-help"><summary>USB 포트가 보이지 않거나 연결되지 않나요?</summary><p>충전 전용 케이블 대신 데이터 케이블을 사용하고, 다른 프로그램의 시리얼 모니터를 닫아 주세요. 그래도 연결되지 않으면 보드의 BOOT 버튼을 누른 상태에서 RESET을 짧게 누른 뒤 BOOT을 놓고 다시 연결해 보세요. 보드에 따라 버튼 이름과 진입 방법이 다를 수 있습니다.</p></details>
         <noscript><p class="install-note">웹 설치에는 JavaScript가 필요합니다. 브라우저 설정에서 JavaScript를 허용한 뒤 다시 열어 주세요.</p></noscript>
-      </article></div>
+      </article>
+      <section class="mobile-flash-test" id="mobile-firmware" aria-labelledby="mobile-flash-title">
+        <div class="mobile-test-heading">
+          <span class="mobile-test-label">현재 Test 중</span>
+          <h3 id="mobile-flash-title">스마트폰을 이용한 펌웨어 업데이트</h3>
+        </div>
+        <p class="mobile-test-intro">안드로이드 스마트폰과 ESP32-S3를 USB 데이터 케이블로 연결해 시험하는 기능입니다. <strong>먼저 USB 연결을 확인</strong>한 뒤, 연결에 성공한 경우에만 펌웨어를 기록할 수 있습니다.</p>
+        <ol class="mobile-test-steps">
+          <li>안드로이드 <strong>Chrome</strong>으로 이 홈페이지를 엽니다.</li>
+          <li>스마트폰과 보드를 USB 데이터 케이블로 연결하고 마끼다 배터리는 분리합니다.</li>
+          <li>보드의 <strong>BOOT</strong>를 누른 상태에서 <strong>RESET</strong>을 짧게 누르고 BOOT을 놓습니다.</li>
+          <li>아래 <strong>USB 연결 테스트</strong>를 눌러 ESP32-S3가 인식되는지 확인합니다.</li>
+        </ol>
+        <div id="mobile-flash-test" class="mobile-flash-controls">
+          <label class="mobile-port-label" for="mobile-usb-mode">USB 포트 유형</label>
+          <select id="mobile-usb-mode" class="mobile-port-select">
+            <option value="cdc">표준 USB 시리얼 (CDC)</option>
+            <option value="vendor">ESP32-S3 내장 USB (실험)</option>
+          </select>
+          <p class="mobile-test-hint">장치 목록이 비어 있다면 포트 유형을 바꿔 다시 연결해 보세요.</p>
+          <div class="mobile-test-actions">
+            <button type="button" class="btn btn-primary" id="mobile-connect" disabled>USB 연결 테스트</button>
+            <button type="button" class="install-retry" id="mobile-disconnect" disabled>연결 해제</button>
+          </div>
+          <p class="mobile-test-status"><strong id="mobile-status">USB 설치 기능을 확인하고 있습니다.</strong><span id="mobile-detail" role="status" aria-live="polite">USB 지원 여부를 확인하고 있습니다.</span></p>
+          <label class="install-confirm mobile-confirm"><input type="checkbox" id="mobile-confirm" disabled> ESP32-S3 보드가 맞고, USB 기록 시 펌웨어 및 설정이 바뀔 수 있음을 확인했습니다.</label>
+          <div class="mobile-test-actions">
+            <button type="button" class="btn btn-primary" id="mobile-flash" disabled>스마트폰으로 펌웨어 기록</button>
+            <a class="btn btn-secondary" id="mobile-download" download="mayday-obi-firmware.bin">펌웨어 파일 받기 ↓</a>
+          </div>
+          <progress id="mobile-progress" max="100" value="0" hidden></progress>
+          <p id="mobile-progress-label" class="mobile-progress-label" hidden></p>
+          <details class="mobile-test-log"><summary>테스트 기록 보기</summary><pre id="mobile-log" aria-live="off"></pre></details>
+        </div>
+        <p class="mobile-test-disclaimer">테스트 기능입니다. Android Chrome의 WebUSB 권한과 실제 기기 연결 상태에 따라 결과가 달라질 수 있습니다. <strong>PC용 설치 기능은 기존과 동일하게 유지</strong>됩니다.</p>
+      </section></div>
     </div></section>
 
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
@@ -152,5 +187,6 @@
   </main>
   <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY</span></span></div><div><a href="https://github.com/MayDayCom/mayday-obi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
   <script type="module" src="assets/firmware-installer-public-r4.js"></script>
+  <script type="module" src="assets/mobile-usb-flash-test-v1.js"></script>
 </body>
 </html>
