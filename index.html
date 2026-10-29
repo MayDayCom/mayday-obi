@@ -74,10 +74,10 @@
         </div>
         <div class="wiring-visual">
           <a class="wiring-image-link wiring-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer" aria-label="ESP32-S3와 마끼다 LXT 연결도를 크게 보기">
-            <img src="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" width="1400" height="870" loading="lazy" alt="PC용 배선도: 마끼다 배터리 주 음극 B−가 노란 통신 커넥터 1번 접점의 왼쪽에 있으며, 2번 DATA는 GPIO5, 6번 ENABLE은 GPIO6 연결로 표시한 개념도. 3.3V와 DATA 사이에 4.7k옴 저항. 실물 단자 및 회로 검증 필요.">
+            <img src="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" width="1400" height="870" loading="lazy" alt="PC용 배선도: P2 IO5는 통신 2번 DATA, IO6은 6번 ENABLE. P3 GND는 B−, 3.3V는 4.7kΩ 저항을 거쳐 DATA에 연결. 18V B+ 직접 연결 금지.">
           </a>
           <a class="wiring-image-link wiring-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 세로 배선도 크게 보기">
-            <img src="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" width="760" height="1460" loading="lazy" alt="스마트폰용 배선도: 노란 통신 커넥터 1번보다 왼쪽에 B− 주 음극 단자를 배치하고 2번 DATA, 6번 ENABLE의 위치를 구분했습니다. ESP32 GPIO5 DATA, GPIO6 ENABLE, 공통 접지 및 4.7k옴 풀업 배선 참고. 실제 핀 위치와 회로 검증 필수.">
+            <img src="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" width="760" height="1460" loading="lazy" alt="모바일 배선도: 마끼다 통신 1번 왼쪽에 별도 B− 주 음극, 2번 DATA와 6번 ENABLE에 각각 P2 IO5와 IO6 연결. P3 GND 및 3.3V 풀업 배선. 18V B+ 직접 연결 금지.">
           </a>
         </div>
         <figcaption><strong>연결:</strong> P2 IO5 → DATA(2번), IO6 → ENABLE(6번) · P3 GND → B− · 3.3V → 4.7kΩ → DATA.</figcaption>
