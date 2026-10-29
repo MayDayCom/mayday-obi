@@ -68,8 +68,8 @@
         <ol class="mobile-test-steps">
           <li>안드로이드 <strong>Chrome</strong>으로 이 홈페이지를 엽니다.</li>
           <li>스마트폰과 보드를 USB 데이터 케이블로 연결하고 마끼다 배터리는 분리합니다.</li>
-          <li>보드의 <strong>BOOT</strong>를 누른 상태에서 <strong>RESET</strong>을 짧게 누르고 BOOT을 놓습니다.</li>
-          <li>아래 <strong>USB 연결 테스트</strong>를 눌러 ESP32-S3가 인식되는지 확인합니다.</li>
+          <li><strong>USB 연결 테스트</strong>를 눌러 보드가 인식되는지 확인합니다. 다운로드 모드 진입은 자동으로 시도합니다.</li>
+          <li>연결에 실패한 경우에만 화면에 나오는 BOOT·RESET 안내를 따릅니다.</li>
         </ol>
         <div id="mobile-flash-test" class="mobile-flash-controls">
           <label class="mobile-port-label" for="mobile-usb-mode">USB 포트 유형</label>
@@ -187,6 +187,6 @@
   </main>
   <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY</span></span></div><div><a href="https://github.com/MayDayCom/mayday-obi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
   <script type="module" src="assets/firmware-installer-public-r4.js"></script>
-  <script type="module" src="assets/mobile-usb-flash-test-v1.js"></script>
+  <script type="module" src="assets/mobile-usb-flash-test-v1.js?v=20261029-auto-reset"></script>
 </body>
 </html>
