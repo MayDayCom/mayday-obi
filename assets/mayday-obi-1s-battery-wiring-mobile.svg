@@ -19,7 +19,7 @@
 <text x="510.35416666666663" y="524.0800304878048" font-size="17" fill="#ffd48d" class="b" text-anchor="middle">USB-C</text>
 <rect x="27" y="807" width="706" height="352" rx="17" fill="#102b3e" stroke="#355c70" stroke-width="2"/>
 <text x="51" y="849" font-size="25" fill="#eaf6ff" class="b">② 1셀 배터리 연결</text>
-<text x="51" y="879" font-size="16" fill="#b8ccda" >보호회로가 있는 18650 / 21700 또는 LiPo</text>
+<text x="51" y="879" font-size="16" fill="#b8ccda" >보호회로가 있는 18650 · 21700 또는 LiPo</text>
 <rect x="51" y="902" width="272" height="232" rx="15" fill="#153448" stroke="#355c70" stroke-width="2"/>
 <text x="72" y="935" font-size="21" fill="#eaf6ff" class="b">1셀 배터리</text>
 <rect x="74" y="962" width="85" height="144" rx="19" fill="#1c4b49" stroke="#8de1aa" stroke-width="3"/>
@@ -28,7 +28,7 @@
 <text x="115" y="1044" font-size="29" fill="#eaf6ff" class="b" text-anchor="middle">1S</text>
 <text x="179" y="1007" font-size="21" fill="#eaf6ff" class="b">Li-ion</text>
 <text x="179" y="1037" font-size="25" fill="#8de1aa" class="b">3.7V</text>
-<text x="179" y="1068" font-size="15" fill="#b8ccda" >18650 / 21700</text>
+<text x="179" y="1068" font-size="15" fill="#b8ccda" >18650 · 21700</text>
 <circle cx="323" cy="1007" r="8" fill="#ff8585" stroke="#081a2b" stroke-width="3"/>
 <circle cx="323" cy="1092" r="8" fill="#b8c9d6" stroke="#081a2b" stroke-width="3"/>
 <text x="310" y="1000" font-size="21" fill="#ff8585" class="b" text-anchor="end">+</text>
@@ -42,7 +42,7 @@
 <text x="424" y="1013" font-size="23" fill="#ff8585" class="b">BAT +</text>
 <text x="424" y="1099" font-size="23" fill="#b8c9d6" class="b">BAT −</text>
 <rect x="416" y="1121" width="240" height="28" rx="5" fill="#0e2637" stroke="#355c70" stroke-width="1"/>
-<text x="536" y="1141" font-size="14" fill="#b8ccda" text-anchor="middle">실물: − (왼쪽)  + (USB 쪽)</text>
+<text x="536" y="1141" font-size="14" fill="#b8ccda" text-anchor="middle">− 반대쪽   |   + USB-C 쪽</text>
 <rect x="27" y="1180" width="706" height="72" rx="12" fill="#103d3c" stroke="#65e4d6" stroke-width="1.3"/>
 <text x="52" y="1210" font-size="20" fill="#65e4d6" class="b">USB-C 5V → 보드 구동 및 배터리 충전</text>
 <text x="52" y="1236" font-size="18" fill="#eaf6ff" >배터리만 연결 → 전원 버튼으로 구동</text>
