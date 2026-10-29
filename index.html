@@ -85,20 +85,20 @@
       <section class="battery-power-guide" id="battery-power" aria-labelledby="battery-power-title">
         <div class="battery-power-head">
           <div><span class="section-kicker">BATTERY POWER</span><h3 id="battery-power-title">리튬이온 배터리 연결도</h3></div>
-          <a class="battery-open-desktop" href="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-actual-io14-io9" target="_blank" rel="noopener noreferrer">배선도 확대 ↗</a>
-          <a class="battery-open-mobile" href="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-actual-io14-io9" target="_blank" rel="noopener noreferrer">배선도 확대 ↗</a>
+          <a class="battery-open-desktop" href="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-battery-io9-simple-v1" target="_blank" rel="noopener noreferrer">배선도 확대 ↗</a>
+          <a class="battery-open-mobile" href="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-battery-io9-simple-v1" target="_blank" rel="noopener noreferrer">배선도 확대 ↗</a>
         </div>
-        <p class="battery-power-intro"><strong>실제 제작 배선:</strong> 배터리 +/− 전원선은 P5에 각각 연결합니다. 추가 플러스 선은 저항을 거쳐 <strong>P2 IO14(8번)</strong>, 추가 마이너스 선은 저항을 거쳐 <strong>P2 IO9(7번)</strong>에 연결되어 있습니다.</p>
+        <p class="battery-power-intro">배터리 <strong>+ / −는 P5 전원 단자</strong>에 연결합니다. 전압 측정용 두 가닥에는 각각 <strong>100kΩ 저항</strong>을 넣고, <strong>두 저항이 만나는 지점을 P2의 IO9(7번)</strong>에 연결합니다.</p>
         <div class="battery-power-visual">
-          <a class="battery-wiring-desktop" href="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-actual-io14-io9" target="_blank" rel="noopener noreferrer" aria-label="실제 보드 후면 사진을 이용한 P5 1셀 리튬이온 전원 배선도 크게 보기">
-            <img src="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-actual-io14-io9" width="1400" height="865" loading="lazy" alt="실제 제작 결선 기준으로 배터리 +와 −를 P5에 연결하고, 추가 플러스 선은 저항을 거쳐 P2 8번 IO14, 추가 마이너스 선은 저항을 거쳐 P2 7번 IO9에 연결한 배선도. 소스는 IO9만 ADC로 읽으므로 전압 측정 기능 검증 필요.">
+          <a class="battery-wiring-desktop" href="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-battery-io9-simple-v1" target="_blank" rel="noopener noreferrer" aria-label="배터리가 가운데 있고 왼쪽 P5 전원, 오른쪽 IO9 측정 회로를 표시한 배선도 크게 보기">
+            <img src="assets/mayday-obi-1s-battery-wiring.svg?v=20261029-battery-io9-simple-v1" width="1400" height="670" loading="lazy" alt="1셀 리튬이온 배터리 가운데, 왼쪽에 P5 플러스와 마이너스 전원 연결, 오른쪽에 플러스와 마이너스의 100kΩ 저항 2개가 하나로 합쳐져 P2 7번 IO9로 연결된 배선도. IO14 미사용.">
           </a>
-          <a class="battery-wiring-mobile" href="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-actual-io14-io9" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 P5 1셀 리튬이온 배터리 연결도 크게 보기">
-            <img src="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-actual-io14-io9" width="760" height="1590" loading="lazy" alt="실물 기준으로 배터리 플러스 저항선은 P2 IO14, 마이너스 저항선은 P2 IO9에 별도로 연결되고 나머지 두 선은 P5 전원에 연결된 모바일 배선도.">
+          <a class="battery-wiring-mobile" href="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-battery-io9-simple-v1" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 배터리 전원 및 IO9 저항 분압 연결도 크게 보기">
+            <img src="assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-battery-io9-simple-v1" width="760" height="900" loading="lazy" alt="스마트폰용 배선도: 배터리 가운데, 왼쪽 P5 전원 플러스·마이너스, 오른쪽 100kΩ 저항 2개가 한 지점에서 만나 P2 IO9 하나에 연결.">
           </a>
         </div>
-        <p class="battery-power-caption"><strong>실제 결선을 기록한 참고도</strong>입니다. 현재 공개된 main.cpp는 IO9만 ADC로 읽으며 IO14를 이용한 전압 측정 처리는 확인되지 않습니다. 정상적인 전압 표시 여부는 별도 검증이 필요합니다.</p>
-        <details class="battery-power-detail"><summary>전압 표시와 소스 코드 확인</summary><p>첨부된 main.cpp는 <code>PIN_BAT_ADC = 9</code> 및 <code>analogReadMilliVolts(PIN_BAT_ADC)</code>로 IO9만 GND 기준 측정하고 전압을 2배로 계산합니다. IO14는 별도로 초기화하거나 읽지 않습니다. 실제 배선과 펌웨어 계산의 관계는 추가 검증이 필요합니다.</p></details>
+        <p class="battery-power-caption"><strong>IO14는 연결하지 않습니다.</strong> 보호회로가 있는 1셀(1S) 배터리를 사용하고 P5의 실제 +/− 극성을 확인하세요.</p>
+        <details class="battery-power-detail"><summary>전압 측정 원리</summary><p>100kΩ 저항 두 개가 배터리 전압을 절반으로 나눕니다. 배터리가 4.2V일 때 IO9에서는 약 2.1V를 읽고, 제공된 <code>main.cpp</code>는 이 값에 2를 곱해 표시합니다. 마이너스 기준 접지는 P5 −를 통해 연결됩니다.</p></details>
       </section>
       <div class="hardware-purchase"><div><strong>사용한 ESP32-S3 보드</strong><p>구매 전 보드 규격과 커넥터 구성이 사진과 같은지 확인하세요.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">보드 구매처 ↗</a></div>
       <div class="warning"><strong>사용 범위</strong><span>마끼다 LXT 전용입니다. 다른 배터리 플랫폼이나 핀 배열이 다른 보드에는 연결하지 마세요.</span></div>
