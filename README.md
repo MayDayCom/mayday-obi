@@ -4,7 +4,7 @@
 
 **[MAYDAY OBI 홈페이지 바로가기](https://maydaycom.github.io/mayday-obi/)** · [배터리스트 메이데이 YouTube](https://www.youtube.com/@batterist_mayday)
 
-![ESP32-S3에서 실행 중인 MAYDAY OBI v1.0d](assets/mayday-obi-running.jpg)
+![ESP32-S3에서 실행 중인 MAYDAY OBI v1.10c](assets/mayday-obi-running-v1.10c.jpg)
 
 ## 펌웨어 상태
 
