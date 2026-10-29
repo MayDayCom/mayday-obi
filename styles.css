@@ -323,3 +323,35 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
  .bms-reference{margin-top:15px}
  .credits-panel{padding:18px}
 }
+
+
+/* Battery power diagram: P5 1S Li-ion / LiPo */
+.battery-power-guide{margin:26px 0 15px;padding:19px;border:1px solid #376578;border-radius:16px;background:linear-gradient(135deg,#112d3f,#0a1d30)}
+.battery-power-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:9px}
+.battery-power-head h3{font-size:clamp(20px,2.4vw,27px);line-height:1.35;letter-spacing:-.025em;margin:7px 0 0}
+.battery-power-head a{border:1px solid #4b8895;color:#85f0e0;font-weight:800;font-size:12px;border-radius:9px;padding:8px 13px}
+.battery-power-intro{color:#c3d7e5;line-height:1.75;font-size:12px;max-width:930px;margin:0 0 13px;word-break:keep-all}
+.battery-power-intro strong,.battery-power-caption strong{color:#f3fbff}
+.battery-power-visual{width:100%;min-width:0}
+.battery-power-visual>a{display:block;border:1px solid #36576a;border-radius:11px;line-height:0;overflow:hidden;background:#091b2b}
+.battery-power-visual img{width:100%;max-width:100%;height:auto;display:block}
+.battery-wiring-mobile,.battery-open-mobile{display:none!important}
+.battery-wiring-desktop,.battery-open-desktop{display:block}
+.battery-power-caption{font-size:12px;color:#b4c9da;line-height:1.8;margin:11px 0 0}
+.battery-power-detail{margin:12px 0 0;border-top:1px solid #35566a;padding-top:10px;font-size:12px;color:#b3cad7}
+.battery-power-detail summary{cursor:pointer;color:#89ddd1;font-weight:750;line-height:1.5}
+.battery-power-detail p{font-size:12px;line-height:1.7;margin:10px 0 0;word-break:keep-all}
+.inline-jump{color:#69e1d3;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:720px){
+  .battery-power-guide{padding:12px;margin:18px 0 13px;border-radius:13px}
+  .battery-power-head{align-items:center}
+  .battery-power-head h3{font-size:19px}
+  .battery-power-head a{font-size:11px;padding:7px 10px}
+  .battery-wiring-desktop,.battery-open-desktop{display:none!important}
+  .battery-wiring-mobile,.battery-open-mobile{display:block!important}
+  .battery-power-intro{font-size:11px;line-height:1.75;margin-bottom:10px}
+  .battery-power-caption{font-size:11px}
+  .battery-power-detail{font-size:11px}
+  #battery-power{scroll-margin-top:128px}
+}
+@media(min-width:721px){#battery-power{scroll-margin-top:116px}}
