@@ -11,7 +11,7 @@
   <meta name="theme-color" content="#071323">
   <title>MAYDAY OBI | 마끼다 LXT 배터리 진단 프로젝트</title>
   <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=20261029-actual-io14-io9">
+  <link rel="stylesheet" href="styles.css?v=20261029-io-labels-clean">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
@@ -55,29 +55,29 @@
         </figure>
         <figure class="board-photo-card pin-marked-board">
           <div class="board-image pin-photo">
-            <img src="assets/esp32-s3-3.5-back.jpg" width="1536" height="1312" loading="lazy" alt="ESP32-S3 3.5인치 보드의 뒷면. 하단 왼쪽부터 4핀 P3, 가운데 8핀 P2 커넥터가 위치합니다.">
-            <span class="pin-chip pin-chip-p3" aria-label="4핀 P3 포트">P3</span>
-            <span class="pin-chip pin-chip-p2" aria-label="8핀 P2 포트">P2</span>
+            <img src="assets/esp32-s3-3.5-back.jpg" width="1536" height="1312" loading="lazy" alt="ESP32-S3 3.5인치 보드 후면. GND와 3.3V는 P3, IO5와 IO6는 P2에 표시되어 있습니다.">
+            <span class="pin-chip pin-chip-p3" aria-label="GND 및 3.3V P3 포트">P3</span>
+            <span class="pin-chip pin-chip-p2" aria-label="IO5 및 IO6 P2 포트">P2</span>
           </div>
           <figcaption>
             <strong>보드 후면 · 사용 포트</strong>
-            <span><b>P3 (4핀)</b> · GND / 3.3V</span>
-            <span><b>P2 (8핀)</b> · IO5 / IO6</span>
+            <span><b>P3</b> · GND / 3.3V</span>
+            <span><b>P2</b> · IO5 / IO6</span>
           </figcaption>
         </figure>
       </div>
       <figure class="wiring-figure" id="wiring">
         <div class="wiring-figure-head">
           <div><span class="section-kicker">CONNECTION GUIDE</span><h3>마끼다 LXT 배선도</h3></div>
-          <a class="wiring-open-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
-          <a class="wiring-open-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
+          <a class="wiring-open-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
+          <a class="wiring-open-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
         </div>
         <div class="wiring-visual">
-          <a class="wiring-image-link wiring-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer" aria-label="ESP32-S3와 마끼다 LXT 연결도를 크게 보기">
-            <img src="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" width="1400" height="870" loading="lazy" alt="PC용 배선도: P2 IO5는 통신 2번 DATA, IO6은 6번 ENABLE. P3 GND는 B−, 3.3V는 4.7kΩ 저항을 거쳐 DATA에 연결. 18V B+ 직접 연결 금지.">
+          <a class="wiring-image-link wiring-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer" aria-label="ESP32-S3와 마끼다 LXT 연결도를 크게 보기">
+            <img src="assets/mayday-obi-lxt-wiring.svg?v=20261029-io-labels-clean" width="1400" height="870" loading="lazy" alt="PC용 배선도: P2 IO5는 통신 2번 DATA, IO6은 6번 ENABLE. P3 GND는 B−, 3.3V는 4.7kΩ 저항을 거쳐 DATA에 연결. 18V B+ 직접 연결 금지.">
           </a>
-          <a class="wiring-image-link wiring-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 세로 배선도 크게 보기">
-            <img src="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" width="760" height="1460" loading="lazy" alt="모바일 배선도: 마끼다 통신 1번 왼쪽에 별도 B− 주 음극, 2번 DATA와 6번 ENABLE에 각각 P2 IO5와 IO6 연결. P3 GND 및 3.3V 풀업 배선. 18V B+ 직접 연결 금지.">
+          <a class="wiring-image-link wiring-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer" aria-label="스마트폰용 세로 배선도 크게 보기">
+            <img src="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-io-labels-clean" width="760" height="1460" loading="lazy" alt="모바일 배선도: 마끼다 통신 1번 왼쪽에 별도 B− 주 음극, 2번 DATA와 6번 ENABLE에 각각 P2 IO5와 IO6 연결. P3 GND 및 3.3V 풀업 배선. 18V B+ 직접 연결 금지.">
           </a>
         </div>
         <figcaption><strong>연결:</strong> P2 IO5 → DATA(2번), IO6 → ENABLE(6번) · P3 GND → B− · 3.3V → 4.7kΩ → DATA.</figcaption>
