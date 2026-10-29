@@ -13,8 +13,8 @@
 ## 사용 보드와 연결
 
 - ESP32-S3 3.5인치 터치스크린 보드
-- **P2 (8핀):** IO5 → DATA, IO6 → ENABLE
-- **P3 (4핀):** GND → 배터리 B−, 3.3V → 4.7kΩ 저항 → DATA
+- **P2:** IO5 → DATA, IO6 → ENABLE
+- **P3:** GND → 배터리 B−, 3.3V → 4.7kΩ 저항 → DATA
 - **18V B+를 ESP32에 직접 연결하지 마세요.**
 
 [실제 보드 후면 사진](assets/esp32-s3-3.5-back.jpg) · [마끼다 LXT 배선도](https://maydaycom.github.io/mayday-obi/#wiring) · [사용 보드 구매처](https://s.click.aliexpress.com/e/_c4naCAr1)
