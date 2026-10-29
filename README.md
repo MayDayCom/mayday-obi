@@ -17,9 +17,19 @@
 - **P3 (4핀):** GND → 배터리 B−, 3.3V → 4.7kΩ 저항 → DATA
 - **18V B+를 ESP32에 직접 연결하지 마세요.**
 
-[실제 보드 후면 사진](assets/esp32-s3-3.5-back.jpg) · [배선도](https://maydaycom.github.io/mayday-obi/#wiring) · [사용 보드 구매처](https://s.click.aliexpress.com/e/_c4naCAr1)
+[실제 보드 후면 사진](assets/esp32-s3-3.5-back.jpg) · [마끼다 LXT 배선도](https://maydaycom.github.io/mayday-obi/#wiring) · [사용 보드 구매처](https://s.click.aliexpress.com/e/_c4naCAr1)
 
 연결 전에 사용 중인 보드의 핀 방향과 펌웨어 설정을 확인하세요.
+
+## 보드 전원: USB-C 또는 리튬이온 배터리
+
+- **USB-C:** 5V 전원 공급 및 내장 충전회로를 통한 배터리 충전
+- **P5 (JST 1.25mm 2핀):** 보호회로가 있는 1셀(1S) 3.7V 리튬이온/리튬폴리머 배터리
+- **극성:** P5의 USB-C에 가까운 접점이 `+`, 반대쪽은 `−` (실제 보드 마킹 확인)
+- 배터리만 연결했을 때 필요하면 보드의 **Battery switch** 버튼을 누릅니다.
+- 2셀 이상 직렬 연결 또는 마끼다 18V를 P5에 직접 연결하지 마세요.
+
+[실제 후면 사진을 포함한 전원 배선도](https://maydaycom.github.io/mayday-obi/#battery-power)
 
 ## BMS 지원 참고
 
