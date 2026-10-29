@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="MAYDAY OBI — 3.5인치 ESP32-S3로 구현한 마끼다 LXT 배터리 전용 진단 장치. 펌웨어 배포 현황, 실제 구동 사진, 지원 BMS 및 하드웨어 정보.">
+  <meta name="description" content="MAYDAY OBI — 마끼다 LXT 배터리용 ESP32-S3 3.5인치 진단 프로젝트. 펌웨어 배포 상태, 실제 보드 사진, 배선도와 BMS 지원 참고자료.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="MAYDAY OBI | Makita LXT">
   <meta property="og:description" content="ESP32-S3 3.5인치로 직접 만든 마끼다 LXT 배터리 진단 장치">
   <meta property="og:image" content="https://maydaycom.github.io/mayday-obi/assets/mayday-obi-running.jpg">
   <meta name="theme-color" content="#071323">
-  <title>MAYDAY OBI | 마끼다 LXT 배터리 전용 펌웨어 센터</title>
+  <title>MAYDAY OBI | 마끼다 LXT 배터리 진단 프로젝트</title>
   <link rel="icon" type="image/jpeg" href="assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="styles.css?v=20261029-simple-pinphoto">
+  <link rel="stylesheet" href="styles.css?v=20261029-visitor-clean-v1">
 </head>
 <body>
   <div class="background-grid" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container nav-bar">
       <a href="#top" class="wordmark" aria-label="MAYDAY OBI 홈"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="brand-logo" width="48" height="48"><span>MAYDAY<span class="brand-accent"> OBI</span></span></a>
-      <nav aria-label="주요 메뉴" class="nav-links"><a href="#firmware">펌웨어</a><a href="#hardware">제작 보드</a><a href="#wiring">배선도</a><a href="#bms-reference">지원 BMS</a><a href="#credits">원본·라이선스</a></nav>
+      <nav aria-label="주요 메뉴" class="nav-links"><a href="#firmware">펌웨어</a><a href="#hardware">사용 보드</a><a href="#wiring">배선도</a><a href="#bms-reference">BMS 참고</a><a href="#credits">출처</a></nav>
       <a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer" class="nav-youtube"><span class="play-symbol">▶</span> YouTube <span aria-hidden="true">↗</span></a>
     </div>
-    <nav class="mobile-section-nav container" aria-label="모바일 빠른 이동"><a href="#firmware">펌웨어</a><a href="#hardware">제작 보드</a><a href="#bms-reference">지원 BMS</a><a href="#credits">출처</a></nav>
+    <nav class="mobile-section-nav container" aria-label="모바일 빠른 이동"><a href="#firmware">펌웨어</a><a href="#hardware">보드</a><a href="#wiring">배선</a><a href="#bms-reference">BMS</a><a href="#credits">출처</a></nav>
   </header>
 
   <main id="top">
@@ -29,37 +29,29 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="status-dot"></span> MAKITA LXT · ESP32-S3 · 3.5” TOUCH DISPLAY</div>
         <h1 id="hero-title">마끼다 LXT,<br><span class="gradient-text">한눈에 진단.</span></h1>
-        <p class="hero-subtitle"><strong>마끼다 LXT 배터리 전용 진단 장치.</strong> 2.8인치용 펌웨어를 옮기려다 반복되는 재부팅을 겪었고, 결국 ESP32-S3 3.5인치 환경에 맞춰 약 한 달간 직접 구현했습니다.</p>
-        <div class="hero-cta"><a class="btn btn-primary" href="#firmware">펌웨어 배포 현황 <span aria-hidden="true">↓</span></a><a class="btn btn-secondary" href="#story">제작 이야기 <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-facts"><span>Makita LXT 전용</span><span>ESP32-S3 · 3.5인치 터치</span></div>
-      </div>
+        <p class="hero-subtitle">ESP32-S3 3.5인치 터치스크린으로 제작한 <strong>마끼다 LXT 배터리 진단 프로젝트</strong>입니다.</p>
+        <div class="hero-cta"><a class="btn btn-primary" href="#firmware">펌웨어 현황 <span aria-hidden="true">↓</span></a><a class="btn btn-secondary" href="#hardware">보드·연결 보기 <span aria-hidden="true">↗</span></a></div>
+        </div>
       <div class="hero-visual" aria-label="MAYDAY OBI가 실제 실행 중인 3.5인치 ESP32-S3 장치 사진">
-        <figure class="hero-product-photo hero-actual-photo"><div class="real-photo-badge"><span class="status-dot"></span> 실제 구동 사진 · MAYDAY OBI v1.0d</div><img src="assets/mayday-obi-running.jpg" alt="실제 제작한 ESP32-S3 3.5인치 장치에서 MAYDAY OBI v1.0d 프로그램이 실행되고 Wi-Fi 연결 성공이 표시된 화면. 배터리 정보는 아직 읽지 않은 상태." width="1536" height="709" fetchpriority="high" decoding="async"><figcaption>직접 촬영한 실제 작동 화면입니다. 촬영 당시 Wi-Fi 연결 성공 상태이며, 배터리 세부 정보는 아직 조회되지 않은 화면입니다.</figcaption></figure>
-        
+        <figure class="hero-product-photo hero-actual-photo"><div class="real-photo-badge"><span class="status-dot"></span> 실제 구동 화면 · v1.0d</div><img src="assets/mayday-obi-running.jpg" alt="3.5인치 ESP32-S3 장치에서 실행 중인 MAYDAY OBI v1.0d 실제 화면" width="1536" height="709" fetchpriority="high" decoding="async"></figure>
       </div>
     </section>
 
-    <section class="section section-muted section-compact" id="story" aria-labelledby="story-title"><div class="container story-compact">
-      <div class="section-kicker">DEVELOPMENT STORY</div>
-      <h2 id="story-title">포팅 실패에서 시작된 직접 제작</h2>
-      <p>베트남 KST의 2.8인치 펌웨어를 사용하려 했지만 3.5인치 화면과 그래픽 라이브러리 호환 문제로 재부팅이 반복됐습니다. 결국 Claude와 약 한 달간 작업해 ESP32-S3 3.5인치에 맞는 프로그램을 구현했습니다.</p>
-    </div></section>
-
     <section class="section" id="firmware" aria-labelledby="firmware-title"><div class="container">
-      <div class="section-heading"><div class="section-kicker">FIRMWARE</div><h2 id="firmware-title">펌웨어 배포</h2><p>실제 장치는 구동 중이며, 공개용 설치 파일은 준비 중입니다.</p></div>
+      <div class="section-heading"><div class="section-kicker">FIRMWARE</div><h2 id="firmware-title">펌웨어</h2></div>
       <div class="release-layout"><article class="release-main">
-          <div class="release-top"><span class="pill pill-amber"><span class="status-dot amber"></span> 배포 준비 중</span><span class="release-platform">ESP32-S3 · 3.5” · Makita LXT</span></div>
-          <h3>MAYDAY OBI Firmware</h3>
-          <p>USB 웹 설치와 BIN 다운로드는 검증된 정식 버전이 준비되면 제공합니다. 현재 설치 파일은 공개되지 않았습니다.</p>
-        </article></div>
+        <div class="release-top"><span class="pill pill-amber"><span class="status-dot amber"></span> 배포 준비 중</span></div>
+        <h3>MAYDAY OBI</h3>
+        <p>설치 파일과 웹 설치 기능은 아직 공개되지 않았습니다.</p>
+      </article></div>
     </div></section>
 
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
-      <div class="section-heading"><div class="section-kicker">HARDWARE</div><h2 id="hardware-title">제작에 사용한 보드</h2><p>ESP32-S3 기반 3.5인치 터치스크린 보드입니다. <strong>마끼다 LXT 전용</strong>이며, 같은 ESP32-S3라도 화면·터치 칩·핀 배치가 다른 보드는 호환되지 않을 수 있습니다.</p></div>
+      <div class="section-heading"><div class="section-kicker">HARDWARE</div><h2 id="hardware-title">사용 보드와 배선</h2><p>ESP32-S3 · 3.5인치 터치스크린. 아래 실제 후면 사진에서 사용 포트를 확인할 수 있습니다.</p></div>
       <div class="board-photo-gallery">
         <figure class="board-photo-card">
           <div class="board-image"><img src="assets/esp32-s3-3.5-front.jpg" width="360" height="329" loading="lazy" alt="MAYDAY OBI에 사용한 ESP32-S3 3.5인치 터치스크린 보드 전면"></div>
-          <figcaption><strong>전면 · 3.5인치 터치스크린</strong></figcaption>
+          <figcaption><strong>보드 전면</strong><span>3.5인치 터치스크린 · 제조사 기본 화면</span></figcaption>
         </figure>
         <figure class="board-photo-card pin-marked-board">
           <div class="board-image pin-photo">
@@ -68,15 +60,15 @@
             <span class="pin-chip pin-chip-p2" aria-label="8핀 P2 포트">P2</span>
           </div>
           <figcaption>
-            <strong>후면 · 사용 커넥터</strong>
-            <span><b>P3 / 4핀</b> · 1번 GND, 2번 3.3V</span>
-            <span><b>P2 / 8핀</b> · 1번 IO5(DATA), 2번 IO6(ENABLE)</span>
+            <strong>보드 후면 · 사용 포트</strong>
+            <span><b>P3 (4핀)</b> · GND / 3.3V</span>
+            <span><b>P2 (8핀)</b> · IO5 / IO6</span>
           </figcaption>
         </figure>
       </div>
       <figure class="wiring-figure" id="wiring">
         <div class="wiring-figure-head">
-          <div><span class="section-kicker">CONNECTION GUIDE</span><h3>마끼다 LXT 연결 방법</h3></div>
+          <div><span class="section-kicker">CONNECTION GUIDE</span><h3>마끼다 LXT 배선도</h3></div>
           <a class="wiring-open-desktop" href="assets/mayday-obi-lxt-wiring.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
           <a class="wiring-open-mobile" href="assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-terminal-text-order" target="_blank" rel="noopener noreferrer">확대 보기 ↗</a>
         </div>
@@ -90,39 +82,42 @@
         </div>
         <figcaption><strong>연결:</strong> P2 IO5 → DATA(2번), IO6 → ENABLE(6번) · P3 GND → B− · 3.3V → 4.7kΩ → DATA.</figcaption>
       </figure>
-      <div class="hardware-purchase"><div><strong>제작에 사용한 ESP32 보드 구매 링크</strong><p>제작자가 실제 구매한 제품 링크입니다. 판매 옵션과 부품 사양은 구매 전 반드시 확인하세요. 동일 ESP32-S3 칩을 사용해도 보드별 핀맵·디스플레이 칩에 따라 호환되지 않을 수 있습니다.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">AliExpress 구매 링크 ↗</a></div>
-      <div class="warning"><strong>주의</strong><span>마끼다 XGT·CXT 등 다른 플랫폼이나 타사 배터리용 도구가 아닙니다. LXT도 모든 모델에 대한 동작을 보장하지 않습니다. 현재는 호환 보드 모델을 확정하지 않았으므로 다른 ESP32-S3 보드나 KST 2.8인치 보드에 임의로 설치하지 마세요.</span></div>
+      <div class="hardware-purchase"><div><strong>사용한 ESP32-S3 보드</strong><p>구매 전 보드 규격과 커넥터 구성이 사진과 같은지 확인하세요.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">보드 구매처 ↗</a></div>
+      <div class="warning"><strong>사용 범위</strong><span>마끼다 LXT 전용입니다. 다른 배터리 플랫폼이나 핀 배열이 다른 보드에는 연결하지 마세요.</span></div>
       <div class="bms-reference" id="bms-reference">
-        <div class="bms-title"><span class="section-kicker">BMS COMPATIBILITY REFERENCE</span><h3>마끼다 LXT BMS 호환성 참고표</h3><p>원본 OBI의 공개 자료를 참고한 목록입니다. <strong>MAYDAY OBI 3.5인치에서 모든 항목을 직접 검증했다는 뜻은 아닙니다.</strong> 실제 호환성은 BMS 기판과 펌웨어 상태에 따라 달라질 수 있습니다.</p></div>
+        <div class="bms-title"><span class="section-kicker">BMS REFERENCE</span><h3>지원 BMS 참고</h3><p>원본 OBI의 공개 자료 기준입니다. <strong>MAYDAY OBI에서 직접 검증한 지원 목록은 아닙니다.</strong></p></div>
         <div class="bms-columns">
-          <div class="bms-box bms-supported"><h4>원본 OBI: 지원으로 표시된 기판</h4><ul>
+          <div class="bms-box bms-supported"><h4>지원으로 표기된 기판</h4><ul>
             <li><strong>LIPW014 · LIPW015</strong><small>MAK02</small></li>
-            <li><strong>LIPW017</strong><small>STM32L051C8 · 특이사항 있음</small></li>
+            <li><strong>LIPW017</strong><small>STM32L051C8</small></li>
             <li><strong>BL1850B-D · BL1850B · BL1840B</strong><small>RL78 / RAJ240080DFP</small></li>
             <li><strong>BL1815N / BL1820 기판</strong><small>MAK01</small></li>
           </ul></div>
-          <div class="bms-box bms-unsupported"><h4>원본 OBI: 미지원으로 표시된 기판</h4><ul>
+          <div class="bms-box bms-unsupported"><h4>미지원으로 표기된 기판</h4><ul>
             <li><strong>LIP5002 · LIPW001</strong><small>MC908JK3E</small></li>
             <li><strong>LIPW002 · 003 · 005 · 006</strong><small>uPD78F0513</small></li>
             <li><strong>LIPW011 · 012 · 013</strong><small>uPD78F0513</small></li>
             <li><strong>일부 구형 BL1820 기판</strong><small>미표기 PCB · uPD78F0513</small></li>
           </ul></div>
         </div>
-        <p class="bms-notice"><strong>중요:</strong> 배터리 외부의 BL 모델명만으로 지원 여부를 확정할 수 없습니다. 동일 모델에도 다른 BMS 기판이 탑재될 수 있으며, 정보 읽기와 오류 해제는 별도 기능입니다. 원본 문서의 LIPW017에는 충전 후 다시 잠기면 알려진 해결법이 없다는 주의사항도 있습니다. 손상된 셀·퓨즈·배선 문제는 오류 기록을 지우더라도 해결되지 않습니다.</p>
-        <div class="bms-links"><a href="https://github.com/mnh-jansson/open-battery-information/wiki/Makita" target="_blank" rel="noopener noreferrer">BMS 지원 목록 원문 ↗</a><a href="https://ai.kenhsangtao.com/makita/" target="_blank" rel="noopener noreferrer">KST 프로젝트 참고 ↗</a></div>
-        <p class="bms-footnote">출처: Open Battery Information Makita Wiki (2026-07-12 편집 기준). 메이데이 펌웨어의 호환성 검증 결과와는 별개입니다.</p>
+        <p class="bms-notice">같은 배터리 모델에도 다른 BMS 기판이 들어갈 수 있습니다. 오류 해제가 배터리의 안전을 보장하지는 않습니다.</p>
+        <div class="bms-links"><a href="https://github.com/mnh-jansson/open-battery-information/wiki/Makita" target="_blank" rel="noopener noreferrer">원본 OBI BMS 지원표 ↗</a></div>
       </div>
     </div></section>
 
     <section class="section section-muted" id="credits" aria-labelledby="credits-title"><div class="container">
-      <div class="section-heading"><div class="section-kicker">CREDITS &amp; LICENSE</div><h2 id="credits-title">원본 프로젝트 및 라이선스</h2></div>
-      <div class="credits-panel"><div class="credit-heading"><span class="credit-badge">ORIGINAL PROJECT</span><strong>Open Battery Information (OBI)</strong></div>
-      <p>MAYDAY OBI는 <strong>Martin Jansson</strong>의 <strong>Open Battery Information</strong>을 바탕으로 제작한 3.5인치 ESP32-S3용 프로젝트입니다. 원저작자의 공개 기여에 감사드립니다.</p>
-      <div class="credit-links"><a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener noreferrer">Martin Jansson 원본 GitHub ↗</a><a href="https://github.com/mnh-jansson/open-battery-information/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">원본 MIT 라이선스 확인 ↗</a></div>
-      <p class="credit-detail"><strong>원본:</strong> MIT License · Copyright (c) 2024 Martin Jansson. 원본 코드 배포 시 저작권·허가 고지를 유지해야 합니다. MAYDAY OBI 자체 펌웨어의 배포 라이선스는 별도 결정 전입니다.</p>
-      <p class="credit-detail">독립적인 개인 제작 프로젝트이며, 원저작자 및 Makita의 공식 승인·후원을 의미하지 않습니다. 배터리 보호회로 오류 해제는 셀 안전이나 정상 수리를 보증하지 않습니다.</p></div>
+      <div class="section-heading"><div class="section-kicker">CREDITS</div><h2 id="credits-title">자료 출처</h2></div>
+      <div class="credits-panel">
+        <p>MAYDAY OBI는 <strong>Martin Jansson</strong>의 <strong>Open Battery Information (OBI)</strong>을 바탕으로 제작한 비공식 프로젝트입니다.</p>
+        <div class="credit-links">
+          <a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener noreferrer">원본 OBI GitHub ↗</a>
+          <a href="https://github.com/mnh-jansson/open-battery-information/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">원본 MIT 라이선스 ↗</a>
+          <a href="https://ai.kenhsangtao.com/makita/" target="_blank" rel="noopener noreferrer">KST 참고 프로젝트 ↗</a>
+        </div>
+        <p class="credit-detail">원본 OBI: MIT License · Copyright (c) 2024 Martin Jansson. Makita의 공식 제품이나 후원 프로젝트가 아닙니다.</p>
+      </div>
     </div></section>
   </main>
-  <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY · Makita LXT OBI</span></span></div><div><a href="https://github.com/MayDayCom" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
+  <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY</span></span></div><div><a href="https://github.com/MayDayCom/mayday-obi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
 </body>
 </html>
