@@ -28,7 +28,7 @@
 <text x="808" y="406" font-size="29" fill="#eaf6ff" class="b" text-anchor="middle">1S</text>
 <text x="872" y="369" font-size="21" fill="#eaf6ff" class="b">Li-ion</text>
 <text x="872" y="399" font-size="25" fill="#8de1aa" class="b">3.7V</text>
-<text x="872" y="430" font-size="15" fill="#b8ccda" >18650 / 21700</text>
+<text x="872" y="430" font-size="15" fill="#b8ccda" >18650 · 21700</text>
 <circle cx="983" cy="369" r="8" fill="#ff8585" stroke="#081a2b" stroke-width="3"/>
 <circle cx="983" cy="454" r="8" fill="#b8c9d6" stroke="#081a2b" stroke-width="3"/>
 <text x="970" y="362" font-size="21" fill="#ff8585" class="b" text-anchor="end">+</text>
@@ -42,7 +42,7 @@
 <text x="1130" y="375" font-size="23" fill="#ff8585" class="b">BAT +</text>
 <text x="1130" y="461" font-size="23" fill="#b8c9d6" class="b">BAT −</text>
 <rect x="1122" y="483" width="207" height="28" rx="5" fill="#0e2637" stroke="#355c70" stroke-width="1"/>
-<text x="1225.5" y="503" font-size="14" fill="#b8ccda" text-anchor="middle">실물: − (왼쪽)  + (USB 쪽)</text>
+<text x="1225.5" y="503" font-size="14" fill="#b8ccda" text-anchor="middle">− 반대쪽   |   + USB-C 쪽</text>
 <rect x="743" y="548" width="579" height="51" rx="10" fill="#103d3c" stroke="#65e4d6" stroke-width="1.5"/>
 <text x="763" y="581" font-size="19" fill="#65e4d6" class="b">USB-C 5V 연결 → 구동 + 1셀 배터리 충전</text>
 <rect x="743" y="610" width="579" height="52" rx="10" fill="#113449" stroke="#355c70" stroke-width="1.5"/>
