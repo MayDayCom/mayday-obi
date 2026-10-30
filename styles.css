@@ -28,37 +28,3 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.5;cur
 .install-help{margin-top:24px;border-top:1px solid var(--line);padding-top:15px;font-size:12px;color:var(--muted)}
 .install-help summary{cursor:pointer;color:var(--teal)}.release-main .install-help p{font-size:12px;line-height:1.9;margin-top:12px}
 esp-web-install-button{--esp-tools-button-color:var(--teal);--esp-tools-button-text-color:var(--paper);--esp-tools-button-border-radius:3px}
-
-
-/* Android USB firmware experiment — subordinate to the PC installer */
-.release-layout{min-width:0}
-.mobile-flash-test{margin-top:34px;padding:26px 25px 23px;background:#f0f1ea;border:1px solid #d3d8cd;border-radius:5px;max-width:790px}
-.mobile-test-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.mobile-test-label{font-size:11px;font-weight:700;color:#886a35;letter-spacing:.02em;white-space:nowrap}
-.mobile-flash-test h3{font-size:19px;line-height:1.5;margin:0;letter-spacing:-.03em}
-.mobile-test-intro,.mobile-test-disclaimer{font-size:13px;line-height:1.85;color:var(--muted);margin:0 0 16px}
-.mobile-test-intro strong,.mobile-test-disclaimer strong{color:var(--text);font-weight:600}
-.mobile-test-steps{font-size:12px;line-height:1.9;padding-left:21px;margin:17px 0 24px}
-.mobile-test-steps li{padding:2px 0}
-.mobile-port-label{display:block;margin-bottom:7px;font-size:12px;color:var(--text);font-weight:600}
-.mobile-port-select{width:min(100%,390px);font:inherit;font-size:13px;border:1px solid #bdc5b9;background:#fffefa;color:var(--text);padding:10px 11px;border-radius:3px}
-.mobile-test-hint{color:var(--muted);font-size:11px;margin:6px 0 16px;line-height:1.8}
-.mobile-test-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:13px 0}
-.mobile-test-status{border-left:3px solid var(--teal);background:#fffefa;padding:12px 15px;margin:15px 0;display:flex;flex-direction:column;gap:5px;font-size:12px;line-height:1.7}
-.mobile-test-status strong{font-size:13px;color:var(--teal)}
-.mobile-test-status strong.error{color:#a44837}
-.mobile-test-status span{color:var(--muted)}
-.mobile-confirm{margin:18px 0}
-.mobile-flash-test progress{display:block;width:100%;height:13px;accent-color:var(--teal);margin:20px 0 4px}
-.mobile-progress-label{font-size:12px;color:var(--teal);margin:4px 0 15px}
-.mobile-test-log{font-size:12px;border-top:1px solid var(--line);padding-top:13px;margin-top:24px;color:var(--muted)}
-.mobile-test-log summary{cursor:pointer;color:var(--teal);font-weight:600}
-.mobile-test-log pre{font:11px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow:auto;background:#e7e9e2;padding:14px;border-radius:3px}
-.mobile-test-disclaimer{border-top:1px solid #d6d9d1;padding-top:15px;margin:20px 0 0;font-size:12px}
-@media(max-width:720px){
-  .mobile-flash-test{margin-top:27px;padding:21px 16px 18px}
-  .mobile-flash-test h3{font-size:18px}
-  .mobile-test-heading{gap:5px 10px}
-  .mobile-test-actions{gap:10px}
-  .mobile-flash-test button.btn,.mobile-flash-test a.btn{font-size:12px;padding:10px 11px}
-}
