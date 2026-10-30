@@ -1,5 +1,6 @@
 // Presentation adapter for ESP Web Tools 10.4.0.
 // Only styles and static labels change; original controls and event handlers remain.
+const englishPage = document.documentElement.lang === 'en';
 const theme = `
 :host {
  --roboto-font: "Noto Sans KR", system-ui, sans-serif;
@@ -37,7 +38,7 @@ const theme = `
 ew-dialog {width: min(480px, calc(100vw - 32px)); max-width: calc(100vw - 32px);}
 :host([state="LOGS"]) ew-dialog {width: min(960px, calc(100vw - 32px));}
 ew-dialog > div[slot="headline"] {font-family:var(--roboto-font);letter-spacing:-.04em;line-height:1.4;padding-top:7px;display:block!important;}
-ew-dialog > div[slot="headline"]::before {content:"MAYDAY · USB 펌웨어 설치";display:block;font-size:10px;font-weight:700;letter-spacing:.13em;color:#325e49;margin-bottom:12px;}
+ew-dialog > div[slot="headline"]::before {content:"${englishPage ? 'MAYDAY · USB FIRMWARE INSTALLER' : 'MAYDAY · USB 펌웨어 설치'}";display:block;font-size:10px;font-weight:700;letter-spacing:.13em;color:#325e49;margin-bottom:12px;}
 ew-icon-button[slot="headline"] {top:17px;right:9px;}
 .mayday-diagnostics {display:none!important;}
 ew-dialog ew-list {margin:6px 0 0;padding:0;display:grid;gap:12px;}
@@ -47,7 +48,7 @@ ew-list-item[type="button"]:first-child svg {color:#fffefa;}
 ew-list-item svg {width:25px;height:25px;color:#325e49;}
 ew-list-item div[slot="headline"] {padding:0!important;letter-spacing:normal;}
 div[slot="supporting-text"] {line-height:1.7;white-space:normal;}
-:host([state="DASHBOARD"]) div[slot="content"]::after {content:"설치가 끝날 때까지 USB 케이블을 연결해 두세요.";display:block;color:#777d74;font-size:11px;line-height:1.8;border-top:1px solid #e2e4da;padding-top:17px;margin-top:22px;}
+:host([state="DASHBOARD"]) div[slot="content"]::after {content:"${englishPage ? 'Keep the USB cable connected until installation is complete.' : '설치가 끝날 때까지 USB 케이블을 연결해 두세요.'}";;display:block;color:#777d74;font-size:11px;line-height:1.8;border-top:1px solid #e2e4da;padding-top:17px;margin-top:22px;}
 div[slot="actions"] {gap:10px;padding-top:10px;}
 ew-text-button {--md-text-button-container-shape:8px;--md-text-button-label-text-color:#325e49;}
 ew-text-button:last-child {background:#e3ecdf;border-radius:8px;}
@@ -125,6 +126,7 @@ const labels = new Map([
 ]);
 // Translate UI text only; retain device logs, commands, percentages and diagnostics.
 function translateTree(root) {
+ if (englishPage) return; // ESP Web Tools already renders English; preserve its original copy.
  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
  let node;
  while ((node = walker.nextNode())) {
@@ -186,9 +188,9 @@ function decorate(dialog) {
        item.setAttribute('aria-hidden', 'true');
        continue;
      }
-     const description = title === '펌웨어 설치' || title === '펌웨어 업데이트'
-       ? 'MAYDAY OBI를 보드에 설치합니다'
-       : title === '연결 로그 확인' ? '연결 상태와 동작 기록을 확인합니다' : null;
+     const description = title === '펌웨어 설치' || title === '펌웨어 업데이트' || title === 'Install MAYDAY OBI' || title === 'Update MAYDAY OBI'
+       ? (englishPage ? 'Install MAYDAY OBI on your board' : 'MAYDAY OBI를 보드에 설치합니다')
+       : title === '연결 로그 확인' || title === 'Logs & Console' ? (englishPage ? 'View connection details' : '연결 상태와 동작 기록을 확인합니다') : null;
      if (description && !item.querySelector('[slot="supporting-text"]')) {
        const supporting = document.createElement('div');
        supporting.slot = 'supporting-text';
@@ -197,7 +199,8 @@ function decorate(dialog) {
      }
    }
    for (const button of root.querySelectorAll('ew-icon-button[slot="headline"]')) {
-     if (button.getAttribute('aria-label') !== '닫기') button.setAttribute('aria-label','닫기');
+     const closeLabel = englishPage ? 'Close' : '닫기';
+     if (button.getAttribute('aria-label') !== closeLabel) button.setAttribute('aria-label',closeLabel);
    }
  }
  const observer = new MutationObserver(refresh);
