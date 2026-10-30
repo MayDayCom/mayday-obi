@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="alternate" hreflang="ko" href="https://maydaycom.github.io/mayday-obi/">
+  <link rel="alternate" hreflang="en" href="https://maydaycom.github.io/mayday-obi/en/">
+  <meta name="description" content="MAYDAY OBI is an ESP32-S3 battery diagnostic project for Makita LXT packs, with USB firmware installation, board photos, wiring diagrams, and BMS references.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MAYDAY OBI | Makita LXT">
+  <meta property="og:description" content="A Makita LXT battery diagnostic tool built with an ESP32-S3 3.5-inch touchscreen.">
+  <meta property="og:image" content="https://maydaycom.github.io/mayday-obi/assets/mayday-obi-running-v1.10c.jpg">
+  <meta name="theme-color" content="#f5f3ec">
+  <title>MAYDAY OBI | Makita LXT Battery Diagnostics</title>
+  <link rel="icon" type="image/jpeg" href="../assets/batterist-mayday-logo.jpg">
+  <link rel="stylesheet" href="../styles.css?v=20261030-bilingual">
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#top" class="wordmark" aria-label="MAYDAY OBI home"><img src="../assets/batterist-mayday-logo.jpg" alt="Batterist Mayday original logo" class="brand-logo" width="48" height="48"><span>MAYDAY<span class="brand-accent"> OBI</span></span></a>
+      <nav aria-label="Main navigation" class="nav-links"><a href="#firmware">Firmware</a><a href="#hardware">Hardware</a><a href="#wiring">Wiring</a><a href="#bms-reference">BMS reference</a><a href="#credits">Credits</a></nav>
+      <a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer" class="nav-youtube"><span class="play-symbol">▶</span> YouTube <span aria-hidden="true">↗</span></a><a class="nav-language" href="../index.html" lang="ko" hreflang="ko" aria-label="View the Korean page">한국어</a>
+    </div>
+    <nav class="mobile-section-nav container" aria-label="Quick navigation"><a href="#firmware">Firmware</a><a href="#hardware">Board</a><a href="#wiring">Wiring</a><a href="#bms-reference">BMS</a><a href="#credits">Credits</a></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> Batterist Mayday · MAYDAY OBI</div>
+        <h1 id="hero-title">Makita LXT<br><span class="gradient-text">Battery diagnostics</span></h1>
+        <p class="hero-subtitle"><strong>MAYDAY OBI</strong> is an ESP32-S3 battery diagnostic tool for Makita LXT packs. Check battery information on a 3.5-inch touchscreen.</p>
+        <div class="hero-cta"><a class="btn btn-primary" href="#firmware">Firmware status <span aria-hidden="true">↓</span></a><a class="btn btn-secondary" href="#hardware">Board &amp; wiring <span aria-hidden="true">↗</span></a></div>
+        </div>
+      <div class="hero-visual" aria-label="MAYDAY OBI running on a 3.5-inch ESP32-S3 device">
+        <figure class="hero-product-photo hero-actual-photo"><div class="real-photo-badge"><span class="status-dot"></span> Running on device · v1.10c</div><img src="../assets/mayday-obi-running-v1.10c.jpg" alt="MAYDAY OBI v1.10c running on a 3.5-inch ESP32-S3 touchscreen" width="1536" height="1024" fetchpriority="high" decoding="async"></figure>
+      </div>
+    </section>
+
+    <section class="section" id="firmware" aria-labelledby="firmware-title"><div class="container">
+      <div class="section-heading"><h2 id="firmware-title">Install over USB</h2><p>Connect the board to your computer<br>and install directly from this page.</p></div>
+      <div class="release-layout"><article class="release-main">
+        <div class="release-top"><span class="pill pill-amber" id="firmware-status">Preparing web installer</span></div>
+        <h3>MAYDAY OBI · ESP32-S3</h3>
+        <p id="firmware-message" role="status" aria-live="polite">Checking for available firmware.</p>
+        <ol class="install-steps"><li>Open this page in Chrome or Edge on a computer.</li><li>Connect the board with a USB data cable.</li><li>Click Install and select the board's USB port.</li><li>Keep the cable connected until installation is complete.</li></ol>
+        <p class="install-note">For the <a class="inline-jump" href="#hardware">3.5-inch board shown below</a>. Disconnect the Makita battery before installation. Depending on the install option, existing settings may be erased.</p>
+        <label class="install-confirm"><input type="checkbox" id="firmware-confirm"> I have the supported board, disconnected the battery, and understand that saved settings may be erased.</label>
+        <div class="install-actions">
+          <button class="btn btn-primary" id="firmware-pending" type="button" disabled>Install firmware over USB</button>
+          <esp-web-install-button id="usb-installer" hidden>
+            <button slot="activate" class="btn btn-primary" id="firmware-install" type="button" disabled>Install firmware over USB</button>
+            <span slot="unsupported">Open this page in Chrome or Edge on a computer.</span>
+            <span slot="not-allowed">Open this page over HTTPS.</span>
+          </esp-web-install-button>
+          <a class="btn btn-secondary" id="firmware-download" hidden download="mayday-obi-firmware.bin">Download firmware ↓</a>
+          <button class="install-retry" id="firmware-retry" type="button" hidden>Check again</button>
+        </div>
+        <details class="install-help"><summary>USB port not listed or connection failed?</summary><p>Use a data cable, not a charge-only cable, and close other serial monitor programs. If the board still does not appear, hold BOOT, briefly press RESET, release BOOT, then reconnect. Button names and steps can vary by board.</p></details>
+        <noscript><p class="install-note">JavaScript is required for web installation. Enable JavaScript in your browser and reload this page.</p></noscript>
+      </article>
+</div>
+    </div></section>
+
+    <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
+      <div class="section-heading"><h2 id="hardware-title">Board &amp; wiring</h2><p>ESP32-S3 with a 3.5-inch touchscreen. See the board photos, <a class="inline-jump" href="#wiring">Makita communication wiring</a>, and <a class="inline-jump" href="#battery-power">battery power wiring</a>.</p></div>
+      <div class="board-photo-gallery">
+        <figure class="board-photo-card">
+          <div class="board-image"><img src="../assets/esp32-s3-3.5-front.jpg" width="360" height="329" loading="lazy" alt="Front of the ESP32-S3 3.5-inch touchscreen board used for MAYDAY OBI"></div>
+          <figcaption><strong>Board front</strong><span>3.5-inch touchscreen · manufacturer's default screen</span></figcaption>
+        </figure>
+        <figure class="board-photo-card pin-marked-board">
+          <div class="board-image pin-photo">
+            <img src="../assets/esp32-s3-3.5-back.jpg" width="1536" height="1312" loading="lazy" alt="Back of the ESP32-S3 3.5-inch board. GND and 3.3V are marked at P3; IO5 and IO6 at P2.">
+            <span class="pin-chip pin-chip-p3" aria-label="P3 port for GND and 3.3V">P3</span>
+            <span class="pin-chip pin-chip-p2" aria-label="P2 port for IO5 and IO6">P2</span>
+          </div>
+          <figcaption>
+            <strong>Board back · ports used</strong>
+            <span><b>P3</b> · GND / 3.3V</span>
+            <span><b>P2</b> · IO5 / IO6</span>
+          </figcaption>
+        </figure>
+      </div>
+      <figure class="wiring-figure" id="wiring">
+        <div class="wiring-figure-head">
+          <div><h3>Makita LXT wiring</h3></div>
+          <a class="wiring-open-desktop" href="../assets/mayday-obi-lxt-wiring.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer">View diagram ↗</a>
+          <a class="wiring-open-mobile" href="../assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer">View diagram ↗</a>
+        </div>
+        <div class="wiring-visual">
+          <a class="wiring-image-link wiring-desktop" href="../assets/mayday-obi-lxt-wiring.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer" aria-label="Open the ESP32-S3 to Makita LXT wiring diagram">
+            <img src="../assets/mayday-obi-lxt-wiring.svg?v=20261029-io-labels-clean" width="1400" height="870" loading="lazy" alt="P2 IO5 to DATA (pin 2), IO6 to ENABLE (pin 6); P3 GND to B−; 3.3V through a 4.7 kΩ resistor to DATA. Never connect 18V B+ directly.">
+          </a>
+          <a class="wiring-image-link wiring-mobile" href="../assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-io-labels-clean" target="_blank" rel="noopener noreferrer" aria-label="Open the vertical wiring diagram for phones">
+            <img src="../assets/mayday-obi-lxt-wiring-mobile.svg?v=20261029-io-labels-clean" width="760" height="1460" loading="lazy" alt="Mobile wiring diagram: separate main B− at pin 1; P2 IO5 to DATA (pin 2), IO6 to ENABLE (pin 6); P3 GND and a 3.3V pull-up. Never connect 18V B+ directly.">
+          </a>
+        </div>
+        <figcaption><strong>Connections:</strong> P2 IO5 → DATA (pin 2), IO6 → ENABLE (pin 6) · P3 GND → B− · 3.3V → 4.7 kΩ → DATA.</figcaption>
+      </figure>
+      <section class="battery-power-guide" id="battery-power" aria-labelledby="battery-power-title">
+        <div class="battery-power-head">
+          <div><h3 id="battery-power-title">Lithium-ion battery wiring</h3></div>
+          <a class="battery-open-desktop" href="../assets/mayday-obi-1s-battery-wiring.svg?v=20261029-public-cleanup" target="_blank" rel="noopener noreferrer">View diagram ↗</a>
+          <a class="battery-open-mobile" href="../assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-public-cleanup" target="_blank" rel="noopener noreferrer">View diagram ↗</a>
+        </div>
+        <p class="battery-power-intro">Connect battery <strong>+ / − to the P5 power terminals</strong>. Add a <strong>100 kΩ resistor</strong> to each voltage-sense wire, then connect the <strong>joined point to IO9 marked on the board</strong>.</p>
+        <div class="battery-power-visual">
+          <a class="battery-wiring-desktop" href="../assets/mayday-obi-1s-battery-wiring.svg?v=20261029-public-cleanup" target="_blank" rel="noopener noreferrer" aria-label="Open diagram showing the battery, P5 power, and IO9 voltage-sense circuit">
+            <img src="../assets/mayday-obi-1s-battery-wiring.svg?v=20261029-public-cleanup" width="1400" height="670" loading="lazy" alt="1-cell lithium-ion battery, P5 positive and negative power connections, and two 100 kΩ voltage-sense resistors joined at IO9.">
+          </a>
+          <a class="battery-wiring-mobile" href="../assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-public-cleanup" target="_blank" rel="noopener noreferrer" aria-label="Open the mobile battery and IO9 resistor-divider diagram">
+            <img src="../assets/mayday-obi-1s-battery-wiring-mobile.svg?v=20261029-public-cleanup" width="760" height="900" loading="lazy" alt="Mobile diagram: battery, P5 positive and negative power, and two 100 kΩ resistors joined at a single IO9 connection.">
+          </a>
+        </div>
+        <p class="battery-power-caption">Use a protected 1-cell (1S) battery and check the actual polarity marked at P5.</p>
+      </section>
+      <div class="hardware-purchase"><div><strong>ESP32-S3 board used</strong><p>Before buying, check that the board dimensions and connectors match the photos.</p></div><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4naCAr1" target="_blank" rel="noopener noreferrer sponsored">Board source ↗</a></div>
+      <div class="warning"><strong>For Makita LXT only</strong><span>Do not connect other battery platforms or boards with a different pinout.</span></div>
+      <div class="bms-reference" id="bms-reference">
+        <div class="bms-title"><h3>BMS reference</h3><p>Based on public information from the original OBI project. <strong>These boards have not been verified with MAYDAY OBI.</strong></p></div>
+        <div class="bms-columns">
+          <div class="bms-box bms-supported"><h4>Listed as supported</h4><ul>
+            <li><strong>LIPW014 · LIPW015</strong><small>MAK02</small></li>
+            <li><strong>LIPW017</strong><small>STM32L051C8</small></li>
+            <li><strong>BL1850B-D · BL1850B · BL1840B</strong><small>RL78 / RAJ240080DFP</small></li>
+            <li><strong>BL1815N / BL1820 boards</strong><small>MAK01</small></li>
+          </ul></div>
+          <div class="bms-box bms-unsupported"><h4>Listed as unsupported</h4><ul>
+            <li><strong>LIP5002 · LIPW001</strong><small>MC908JK3E</small></li>
+            <li><strong>LIPW002 · 003 · 005 · 006</strong><small>uPD78F0513</small></li>
+            <li><strong>LIPW011 · 012 · 013</strong><small>uPD78F0513</small></li>
+            <li><strong>Some older BL1820 boards</strong><small>Unmarked PCB · uPD78F0513</small></li>
+          </ul></div>
+        </div>
+        <p class="bms-notice">The same battery model may use different BMS boards. Clearing an error does not guarantee battery safety.</p>
+        <div class="bms-links"><a href="https://github.com/mnh-jansson/open-battery-information/wiki/Makita" target="_blank" rel="noopener noreferrer">Original OBI BMS list ↗</a></div>
+      </div>
+    </div></section>
+
+    <section class="section section-muted" id="credits" aria-labelledby="credits-title"><div class="container">
+      <div class="section-heading"><h2 id="credits-title">Credits</h2></div>
+      <div class="credits-panel">
+        <p>MAYDAY OBI is an unofficial project based on <strong>Open Battery Information (OBI)</strong> by <strong>Martin Jansson</strong>.</p>
+        <div class="credit-links">
+          <a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener noreferrer">Original OBI on GitHub ↗</a>
+          <a href="https://github.com/mnh-jansson/open-battery-information/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">Original MIT license ↗</a>
+          <a href="https://ai.kenhsangtao.com/makita/" target="_blank" rel="noopener noreferrer">KST reference project ↗</a>
+        </div>
+        <p class="credit-detail">Original OBI: MIT License · Copyright (c) 2024 Martin Jansson. MAYDAY OBI is not affiliated with or endorsed by Makita.</p>
+      </div>
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="../assets/batterist-mayday-logo.jpg" alt="Batterist Mayday original logo" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY</span></span></div><div><a href="https://github.com/MayDayCom/mayday-obi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
+  <script type="module" src="../assets/firmware-installer-public-r4.js"></script>
+</body>
+</html>
