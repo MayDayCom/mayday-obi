@@ -161,11 +161,15 @@ export async function installVersionDialogIntegration(manifestURL) {
       typeof Dialog.prototype._closeDialog !== 'function') {
     throw new Error('Unsupported installer dialog');
   }
-  if (Dialog.prototype._maydayVersionIntegration) return;
+  if (Dialog.prototype._maydayVersionIntegration) {
+    Dialog.prototype._maydayManifestURLs.add(manifestURL.href);
+    return;
+  }
+  Dialog.prototype._maydayManifestURLs = new Set([manifestURL.href]);
   const initialize = Dialog.prototype._initialize;
   Dialog.prototype._maydayVersionIntegration = true;
   Dialog.prototype._initialize = async function(justInstalled = false) {
-    if (new URL(this.manifestPath, location.href).href !== manifestURL.href) {
+    if (!Dialog.prototype._maydayManifestURLs.has(new URL(this.manifestPath, location.href).href)) {
       return initialize.call(this, justInstalled);
     }
     if (justInstalled) {

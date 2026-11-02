@@ -43,7 +43,7 @@
       <div class="section-heading"><h2 id="firmware-title">Install over USB</h2><p>Connect the board to your computer<br>and install directly from this page.</p></div>
       <div class="release-layout"><article class="release-main">
         <div class="release-top"><span class="pill pill-amber" id="firmware-status">Preparing web installer</span></div>
-        <h3>MAYDAY OBI · ESP32-S3 <span class="release-version">v1.10c</span></h3>
+        <h3>MAYDAY OBI · ESP32-S3 <span class="release-version">Checking</span></h3>
         <p id="firmware-message" role="status" aria-live="polite">Checking for available firmware.</p>
         <ol class="install-steps"><li>Open this page in Chrome or Edge on a computer.</li><li>Connect the board with a USB data cable.</li><li>Click Install, select the board's USB port, and review the versions in the dialog.</li><li>Keep the cable connected until installation is complete.</li></ol>
         <p class="install-note">For the <a class="inline-jump" href="#hardware">3.5-inch board shown below</a>. Disconnect the Makita battery before installation. Depending on the install option, existing settings may be erased.</p>
@@ -55,9 +55,11 @@
             <span slot="unsupported">Open this page in Chrome or Edge on a computer.</span>
             <span slot="not-allowed">Open this page over HTTPS.</span>
           </esp-web-install-button>
-          <a class="btn btn-secondary" id="firmware-download" hidden download="mayday-obi-firmware.bin">Download firmware ↓</a>
+          <a class="btn btn-secondary" id="firmware-app-download" hidden download="firmware.bin">Download update ↓</a>
+          <a class="btn btn-secondary" id="firmware-download" hidden download="firmware.factory.bin">Download factory / recovery ↓</a>
           <button class="install-retry" id="firmware-retry" type="button" hidden>Check again</button>
         </div>
+        <p class="install-note" id="firmware-file-note" role="status" aria-live="polite"></p>
         <details class="install-help"><summary>USB port not listed or connection failed?</summary><p>Use a data cable, not a charge-only cable, and close other serial monitor programs. If the board still does not appear, hold BOOT, briefly press RESET, release BOOT, then reconnect. Button names and steps can vary by board.</p></details>
         <noscript><p class="install-note">JavaScript is required for web installation. Enable JavaScript in your browser and reload this page.</p></noscript>
       </article>
@@ -154,6 +156,6 @@
     </div></section>
   </main>
   <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="../assets/batterist-mayday-logo.jpg" alt="Batterist Mayday original logo" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY</span></span></div><div><a href="https://github.com/MayDayCom/mayday-obi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
-  <script type="module" src="../assets/firmware-installer-public-r4.js?v=20261102-dialog-autoclose"></script>
+  <script type="module" src="../assets/firmware-installer-public-r4.js?v=20261102-auto-release"></script>
 </body>
 </html>
