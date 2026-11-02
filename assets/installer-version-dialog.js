@@ -1,3 +1,4 @@
+import { stageUsbFirmware, decideUsbFirmware } from './usb-ota-client.js?v=20261102-staged';
 const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
 
@@ -21,7 +22,7 @@ async function queryVersion(port) {
   let reader, writer, timer;
   try {
     writer = port.writable.getWriter();
-    await writer.write(new TextEncoder().encode('MAYDAY_VERSION?\n'));
+    await writer.write(new TextEncoder().encode('MAYDAY_INFO?\nMAYDAY_VERSION?\n'));
     writer.releaseLock();
     writer = null;
     reader = port.readable.getReader();
@@ -35,6 +36,17 @@ async function queryVersion(port) {
       const lines = buffered.split(/\r?\n/);
       buffered = lines.pop() || '';
       for (const line of lines) {
+        if (line.startsWith('MAYDAY_INFO|')) {
+          const info = Object.fromEntries(line.split('|').slice(1).map(part => {
+            const index = part.indexOf('=');
+            return [part.slice(0, index), part.slice(index + 1)];
+          }));
+          if (info.APP && info.FW) return {
+            app: info.APP, build: info.FW,
+            usbOta: info.USB_OTA === '1' && !!info.RUN && !!info.TARGET && info.RUN !== info.TARGET && Number(info.SIZE) > 0,
+            running: info.RUN, target: info.TARGET, size: Number(info.SIZE)
+          };
+        }
         const match = line.match(/^MAYDAY_VERSION\|APP=([^|]+)\|FW=(.+)$/);
         if (match) return {app: match[1].trim(), build: match[2].trim()};
       }
@@ -50,6 +62,86 @@ async function queryVersion(port) {
     await port.close();
     await port.open({baudRate: 115200, bufferSize: 8192});
   }
+}
+
+
+function attachUsbUpdate(dialog, card, nativeAction, note, release, device, needsDecision) {
+  nativeAction.style.setProperty('display', 'none', 'important');
+  const detail = document.createElement('p');
+  detail.style.cssText = 'margin:10px 0;color:#626860';
+  detail.textContent = t(
+    '현재 ' + device.running + ' 파티션을 유지하고 ' + device.target + ' 파티션에 저장합니다. 저장 후 재부팅 시점을 선택할 수 있습니다.',
+    'Keep ' + device.running + ' running and save to ' + device.target + '. Choose when to restart after saving.');
+  card.append(detail);
+  const progress = document.createElement('progress');
+  progress.max = 100; progress.value = 0; progress.hidden = true;
+  progress.style.cssText = 'width:100%;margin-top:12px;accent-color:#325e49';
+  card.append(progress);
+  const actions = document.createElement('div');
+  actions.style.cssText = 'display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:16px';
+  card.append(actions);
+  function button(label, handler, primary = false) {
+    const node = document.createElement('button');
+    node.type = 'button'; node.textContent = label;
+    node.style.cssText = 'border:0;border-radius:8px;padding:10px 15px;font:600 14px system-ui;cursor:pointer;background:' +
+      (primary ? '#325e49;color:#fffefa' : '#e3ecdf;color:#325e49');
+    node.addEventListener('click', handler);
+    actions.append(node);
+    return node;
+  }
+  const beforeUnload = event => {
+    if (!dialog._maydayUsbBusy) return;
+    event.preventDefault(); event.returnValue = '';
+  };
+  window.addEventListener('beforeunload', beforeUnload);
+  dialog.addEventListener('closed', () => window.removeEventListener('beforeunload', beforeUnload), {once: true});
+  dialog.shadowRoot.addEventListener('click', event => {
+    if (dialog._maydayUsbBusy && event.composedPath().some(node => node.localName === 'ew-icon-button')) {
+      event.preventDefault(); event.stopImmediatePropagation();
+    }
+  }, {capture: true});
+  async function decide(reboot) {
+    dialog._maydayUsbBusy = true;
+    for (const node of actions.children) node.disabled = true;
+    try {
+      await decideUsbFirmware(dialog.port, reboot);
+      note.textContent = reboot
+        ? t('새 버전으로 재부팅합니다. 이전 버전은 기기의 복구 기능에서 선택할 수 있습니다.', 'Restarting into the new version. The previous version remains available in the device’s restore function.')
+        : t('현재 버전을 유지합니다. 저장한 펌웨어는 나중에 기기에서 적용할 수 있습니다.', 'Keeping the current version. Apply the saved firmware later from the device.');
+      actions.replaceChildren();
+      finishInstallDialog(dialog);
+    } catch (error) {
+      note.textContent = t('기기의 재부팅 여부와 화면을 확인해 주세요. 선택 결과를 확인하지 못했습니다.', 'Check the device screen and restart status. The selection could not be confirmed.');
+      for (const node of actions.children) node.disabled = false;
+    } finally { dialog._maydayUsbBusy = false; }
+  }
+  button(t('취소', 'Cancel'), () => dialog._closeDialog());
+  const start = button(needsDecision ? t('그래도 업데이트 저장', 'Save update anyway') : t('업데이트 저장', 'Save update'), async () => {
+    dialog._maydayUsbBusy = true;
+    for (const node of actions.children) node.disabled = true;
+    progress.hidden = false;
+    note.textContent = t('반대편 파티션에 저장 중입니다. USB 연결을 유지해 주세요.', 'Saving to the inactive partition. Keep USB connected.');
+    try {
+      await stageUsbFirmware(dialog.port, release, device, percent => {
+        progress.value = percent;
+        note.textContent = percent === 100
+          ? t('기록을 마쳤습니다. 파일을 검증하고 있습니다.', 'Writing finished. Verifying the image.')
+          : t('반대편 파티션에 저장 중 · ' + percent + '%', 'Saving to inactive partition · ' + percent + '%');
+      });
+      progress.value = 100;
+      note.textContent = t('저장 완료. 현재 버전은 유지되고 있습니다. 지금 새 버전으로 재부팅할까요?', 'Saved. The current version is still running. Restart into the new version now?');
+      actions.replaceChildren();
+      button(t('나중에', 'Later'), () => decide(false));
+      button(t('지금 재부팅', 'Restart now'), () => decide(true), true);
+    } catch (error) {
+      progress.hidden = true;
+      note.textContent = error.message === 'BOOT_ALREADY_PENDING'
+        ? t('이미 적용 대기 중인 펌웨어가 있습니다. 기기 화면에서 먼저 확인해 주세요.', 'A firmware change is already pending. Check the device screen first.')
+        : t('업데이트 저장을 완료하지 못했습니다. USB 연결을 확인하고 20초 후 다시 연결해 주세요.', 'The update could not be saved. Check USB and reconnect after 20 seconds.');
+      actions.replaceChildren();
+      button(t('닫기', 'Close'), () => dialog._closeDialog());
+    } finally { dialog._maydayUsbBusy = false; }
+  }, true);
 }
 
 function observeVersionPanel(dialog) {
@@ -94,7 +186,21 @@ function observeVersionPanel(dialog) {
             ? t('버전 순서를 확인할 수 없습니다. 그래도 설치하시겠습니까?', 'The version order is unknown. Install anyway?')
             : t('새 버전을 설치할 수 있습니다.', 'A newer version is available.');
     card.append(note);
-    if (needsDecision) {
+    const release = dialog._maydayUsbRelease;
+    if (device?.usbOta && release?.appBytes) {
+      attachUsbUpdate(dialog, card, action, note, release, device, needsDecision);
+      content.prepend(card);
+      return;
+    }
+    const recoveryNote = document.createElement('p');
+    recoveryNote.style.cssText = 'margin:10px 0;color:#626860';
+    recoveryNote.textContent = device?.usbOta
+      ? t('현재 배포본에는 일반 업데이트 파일이 없습니다. 아래 복구 설치는 기존 파티션 구성을 덮어쓸 수 있습니다.', 'This release has no app update image. Recovery installation below can overwrite the existing partition setup.')
+      : device
+        ? t('이 기기의 현재 펌웨어는 USB 반대편 파티션 업데이트를 지원하지 않습니다. 기기의 Wi-Fi 업데이트 기능을 사용하거나 최초 설치·복구를 선택해 주세요.', 'This firmware does not support USB updates to the inactive partition. Use the device’s Wi-Fi updater or explicitly choose factory/recovery installation.')
+        : t('기기 정보를 확인하지 못했습니다. 최초 설치·복구는 기존 설정과 파티션 내용을 덮어쓸 수 있습니다.', 'Device information is unavailable. Factory/recovery installation can overwrite saved settings and partition contents.');
+    card.append(recoveryNote);
+    {
       // Keep the library's action/erase/flash handlers intact. Explicit approval
       // invokes that same action on the same connected port.
       action.style.setProperty('display', 'none', 'important');
@@ -103,7 +209,7 @@ function observeVersionPanel(dialog) {
       const cancel = document.createElement('button'), proceed = document.createElement('button');
       cancel.type = proceed.type = 'button';
       cancel.textContent = t('취소', 'Cancel');
-      proceed.textContent = t('그래도 설치', 'Install anyway');
+      proceed.textContent = t('최초 설치·복구로 계속', 'Continue with factory / recovery');
       for (const button of [cancel, proceed]) {
         button.style.cssText = 'border:0;border-radius:8px;padding:10px 15px;font:600 14px system-ui;cursor:pointer;background:#e3ecdf;color:#325e49';
       }
@@ -153,7 +259,7 @@ function finishInstallDialog(dialog) {
   timer = setTimeout(close, 1600);
 }
 
-export async function installVersionDialogIntegration(manifestURL) {
+export async function installVersionDialogIntegration(manifestURL, release = null) {
   // Pinned ESP Web Tools 10.4.0 dialog entry, also used by its connect module.
   await import('https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-dialog-im156JnI.js?module');
   const Dialog = customElements.get('ewt-install-dialog');
@@ -163,15 +269,18 @@ export async function installVersionDialogIntegration(manifestURL) {
   }
   if (Dialog.prototype._maydayVersionIntegration) {
     Dialog.prototype._maydayManifestURLs.add(manifestURL.href);
+    Dialog.prototype._maydayUsbReleases.set(manifestURL.href, release);
     return;
   }
   Dialog.prototype._maydayManifestURLs = new Set([manifestURL.href]);
+  Dialog.prototype._maydayUsbReleases = new Map([[manifestURL.href, release]]);
   const initialize = Dialog.prototype._initialize;
   Dialog.prototype._maydayVersionIntegration = true;
   Dialog.prototype._initialize = async function(justInstalled = false) {
     if (!Dialog.prototype._maydayManifestURLs.has(new URL(this.manifestPath, location.href).href)) {
       return initialize.call(this, justInstalled);
     }
+    this._maydayUsbRelease = Dialog.prototype._maydayUsbReleases.get(this.manifestPath);
     if (justInstalled) {
       this._maydayVersionReport = null;
       await initialize.call(this, justInstalled);

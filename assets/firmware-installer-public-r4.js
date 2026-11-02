@@ -1,5 +1,5 @@
 import './installer-theme-public-r4.js';
-import { installVersionDialogIntegration } from './installer-version-dialog.js?v=20261102-auto-release';
+import { installVersionDialogIntegration } from './installer-version-dialog.js?v=20261102-staged-usb';
 import { readFirmwareRelease } from './firmware-release.js?v=20261102-auto-release';
 const status = document.querySelector('#firmware-status');
 const message = document.querySelector('#firmware-message');
@@ -70,8 +70,8 @@ async function checkRelease() {
       appDownload.href = objectURL(release.appBytes, 'application/octet-stream');
       appDownload.hidden = false;
       fileNote.textContent = t(
-        '업데이트 파일은 기기의 펌웨어 업데이트 기능에서 사용합니다. USB 설치에는 최초 설치·복구 파일이 사용됩니다.',
-        'Use the update file in the device’s firmware updater. USB installation uses the factory/recovery image.');
+        '업데이트 파일은 기기의 펌웨어 업데이트 기능에서 사용합니다. USB 업데이트 지원 기기는 일반 파일을 반대편 파티션에 저장합니다. 최초 설치·복구에는 통합 파일을 사용합니다.',
+        'Use the update file in the device’s firmware updater. Supported devices save the app image to the inactive partition over USB. Factory/recovery installation uses the combined image.');
     } else {
       fileNote.textContent = t(
         '현재 배포본은 최초 설치·복구 파일만 제공됩니다.',
@@ -92,7 +92,7 @@ async function checkRelease() {
     await Promise.race([
       (async () => {
         await import('https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-button.js?module');
-        await installVersionDialogIntegration(manifestURL);
+        await installVersionDialogIntegration(manifestURL, release);
       })(),
       new Promise((_, reject) => controller.signal.addEventListener('abort', () => reject(new Error('library')), {once: true}))
     ]);
