@@ -1,4 +1,4 @@
-import { stageUsbFirmware, decideUsbFirmware } from './usb-ota-client.js?v=20261102-staged';
+import { stageUsbFirmware, decideUsbFirmware } from './usb-ota-client.js?v=20261102-rx-safe';
 const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
 
@@ -44,7 +44,7 @@ async function queryVersion(port) {
           if (info.APP && info.FW) return {
             app: info.APP, build: info.FW,
             usbOta: info.USB_OTA === '1' && !!info.RUN && !!info.TARGET && info.RUN !== info.TARGET && Number(info.SIZE) > 0,
-            running: info.RUN, target: info.TARGET, size: Number(info.SIZE)
+            running: info.RUN, target: info.TARGET, size: Number(info.SIZE), devicePrompt: info.DEVICE_PROMPT === '1', chunkSize: info.CHUNK ? Number(info.CHUNK) : 128
           };
         }
         const match = line.match(/^MAYDAY_VERSION\|APP=([^|]+)\|FW=(.+)$/);
@@ -75,7 +75,7 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
   card.append(detail);
   const progress = document.createElement('progress');
   progress.max = 100; progress.value = 0; progress.hidden = true;
-  progress.style.cssText = 'width:100%;margin-top:12px;accent-color:#325e49';
+  progress.style.cssText = 'width:100%;height:14px;margin-top:12px;accent-color:#325e49';
   card.append(progress);
   const actions = document.createElement('div');
   actions.style.cssText = 'display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:16px';
@@ -100,9 +100,19 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
       event.preventDefault(); event.stopImmediatePropagation();
     }
   }, {capture: true});
+  function setBusy(busy) {
+    dialog._maydayUsbBusy = busy;
+    for (const node of actions.children) {
+      node.disabled = busy;
+      node.style.opacity = busy ? '0.45' : '1';
+      node.style.cursor = busy ? 'wait' : 'pointer';
+      node.style.pointerEvents = busy ? 'none' : 'auto';
+      node.setAttribute('aria-disabled', busy ? 'true' : 'false');
+    }
+  }
   async function decide(reboot) {
-    dialog._maydayUsbBusy = true;
-    for (const node of actions.children) node.disabled = true;
+    if (dialog._maydayUsbBusy) return;
+    setBusy(true);
     try {
       await decideUsbFirmware(dialog.port, reboot);
       note.textContent = reboot
@@ -112,35 +122,58 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
       finishInstallDialog(dialog);
     } catch (error) {
       note.textContent = t('기기의 재부팅 여부와 화면을 확인해 주세요. 선택 결과를 확인하지 못했습니다.', 'Check the device screen and restart status. The selection could not be confirmed.');
-      for (const node of actions.children) node.disabled = false;
-    } finally { dialog._maydayUsbBusy = false; }
+      setBusy(false);
+    } finally { setBusy(false); }
   }
   button(t('취소', 'Cancel'), () => dialog._closeDialog());
   const start = button(needsDecision ? t('그래도 업데이트 저장', 'Save update anyway') : t('업데이트 저장', 'Save update'), async () => {
-    dialog._maydayUsbBusy = true;
-    for (const node of actions.children) node.disabled = true;
+    if (dialog._maydayUsbBusy) return;
+    setBusy(true);
+    start.textContent = t('저장 준비 중…', 'Preparing…');
     progress.hidden = false;
-    note.textContent = t('반대편 파티션에 저장 중입니다. USB 연결을 유지해 주세요.', 'Saving to the inactive partition. Keep USB connected.');
+    progress.removeAttribute('value');
+    note.textContent = t('저장을 준비하고 있습니다. USB 연결을 유지해 주세요.', 'Preparing the update. Keep USB connected.');
     try {
-      await stageUsbFirmware(dialog.port, release, device, percent => {
-        progress.value = percent;
-        note.textContent = percent === 100
-          ? t('기록을 마쳤습니다. 파일을 검증하고 있습니다.', 'Writing finished. Verifying the image.')
-          : t('반대편 파티션에 저장 중 · ' + percent + '%', 'Saving to inactive partition · ' + percent + '%');
+      const saved = await stageUsbFirmware(dialog.port, release, device, (percent, state = {}) => {
+        if (state.phase === 'writing') {
+          progress.value = percent;
+          start.textContent = t('저장 중 ' + percent + '%', 'Saving ' + percent + '%');
+          note.textContent = t('반대편 파티션에 저장 중', 'Saving to inactive partition') +
+            ' · ' + (state.sent / 1024).toFixed(1) + ' / ' + (state.total / 1024).toFixed(1) + ' KB';
+        } else {
+          progress.removeAttribute('value');
+          const verifying = state.phase === 'verifying';
+          start.textContent = verifying ? t('검증 중…', 'Verifying…') : t('저장 준비 중…', 'Preparing…');
+          note.textContent = verifying
+            ? t('전송을 마쳤습니다. 기기에서 파일을 검증하고 있습니다.', 'Transfer finished. The device is verifying the image.')
+            : t('파일과 저장 공간을 준비하고 있습니다. USB 연결을 유지해 주세요.', 'Preparing the image and storage. Keep USB connected.');
+        }
       });
       progress.value = 100;
       note.textContent = t('저장 완료. 현재 버전은 유지되고 있습니다. 지금 새 버전으로 재부팅할까요?', 'Saved. The current version is still running. Restart into the new version now?');
       actions.replaceChildren();
-      button(t('나중에', 'Later'), () => decide(false));
-      button(t('지금 재부팅', 'Restart now'), () => decide(true), true);
+      if (device.devicePrompt || saved?.devicePrompt) {
+        note.textContent = t('저장 완료. 기기 화면에서 지금 재부팅 또는 나중에를 선택해 주세요.', 'Saved. Choose Restart now or Later on the device screen.');
+        finishInstallDialog(dialog);
+      } else {
+        button(t('나중에', 'Later'), () => decide(false));
+        button(t('지금 재부팅', 'Restart now'), () => decide(true), true);
+      }
     } catch (error) {
       progress.hidden = true;
-      note.textContent = error.message === 'BOOT_ALREADY_PENDING'
-        ? t('이미 적용 대기 중인 펌웨어가 있습니다. 기기 화면에서 먼저 확인해 주세요.', 'A firmware change is already pending. Check the device screen first.')
-        : t('업데이트 저장을 완료하지 못했습니다. USB 연결을 확인하고 20초 후 다시 연결해 주세요.', 'The update could not be saved. Check USB and reconnect after 20 seconds.');
+      console.warn('MAYDAY USB update did not complete:', error);
+      const failure = {
+        BOOT_ALREADY_PENDING: t('이미 적용 대기 중인 펌웨어가 있습니다. 기기 화면에서 먼저 확인해 주세요.', 'A firmware change is already pending. Check the device screen first.'),
+        BUSY: t('다른 업데이트가 진행 중입니다. 완료 후 다시 시도해 주세요.', 'Another update is in progress. Wait for it to finish.'),
+        USB_TIMEOUT: t('기기의 전송 응답이 없어 중단했습니다. 기기 화면을 확인하고 20초 후 다시 연결해 주세요.', 'The device stopped acknowledging the transfer. Check the device screen and reconnect after 20 seconds.'),
+        HASH_MISMATCH: t('전송된 파일의 검증에 실패했습니다. 새 펌웨어를 적용하지 않았습니다.', 'Transferred file verification failed. The new firmware was not applied.'),
+        IMAGE_INVALID: t('기기에서 펌웨어 파일을 검증하지 못했습니다. 올바른 일반 BIN 파일을 확인해 주세요.', 'The device could not validate the image. Check the app-only BIN file.'),
+        METADATA_MISMATCH: t('기기와 펌웨어 파일 정보가 맞지 않습니다. 배포 파일을 다시 확인해 주세요.', 'The firmware metadata does not match the device. Check the release files.')
+      };
+      note.textContent = failure[error.message] || t('업데이트 저장을 확인하지 못했습니다. 기기 화면과 USB 연결을 확인하고 20초 후 다시 연결해 주세요.', 'Could not confirm the saved update. Check the device and USB, then reconnect after 20 seconds.');
       actions.replaceChildren();
       button(t('닫기', 'Close'), () => dialog._closeDialog());
-    } finally { dialog._maydayUsbBusy = false; }
+    } finally { setBusy(false); }
   }, true);
 }
 
@@ -184,7 +217,7 @@ function observeVersionPanel(dialog) {
           ? t('기기 버전이 더 높습니다. 이전 버전으로 설치하시겠습니까?', 'The device version is newer. Install the older website version?')
           : order === null
             ? t('버전 순서를 확인할 수 없습니다. 그래도 설치하시겠습니까?', 'The version order is unknown. Install anyway?')
-            : t('새 버전을 설치할 수 있습니다.', 'A newer version is available.');
+            : t('새 버전이 있습니다.', 'A newer version is available.');
     card.append(note);
     const release = dialog._maydayUsbRelease;
     if (device?.usbOta && release?.appBytes) {
@@ -192,20 +225,32 @@ function observeVersionPanel(dialog) {
       content.prepend(card);
       return;
     }
+
+    if (device) {
+      // A readable version alone does not authorize a factory overwrite.
+      action.style.setProperty('display', 'none', 'important');
+      note.textContent = release?.appBytes
+        ? t('연결된 기기의 USB 업데이트 기능을 확인하지 못했습니다. 기기에 배포용 펌웨어가 설치되어 있는지 확인해 주세요.', 'USB update support could not be confirmed. Check that the device has the distributed firmware installed.')
+        : t('일반 업데이트 파일이 아직 등록되지 않았습니다. 파일 등록 후 다시 확인해 주세요.', 'The app update file is not available yet. Check again after it is published.');
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.textContent = t('닫기', 'Close');
+      close.style.cssText = 'display:block;margin:16px 0 0 auto;border:0;border-radius:8px;padding:10px 15px;font:600 14px system-ui;background:#e3ecdf;color:#325e49;cursor:pointer';
+      close.addEventListener('click', () => dialog._closeDialog());
+      card.append(close);
+      content.prepend(card);
+      return;
+    }
     const recoveryNote = document.createElement('p');
     recoveryNote.style.cssText = 'margin:10px 0;color:#626860';
-    recoveryNote.textContent = device?.usbOta
-      ? t('현재 배포본에는 일반 업데이트 파일이 없습니다. 아래 복구 설치는 기존 파티션 구성을 덮어쓸 수 있습니다.', 'This release has no app update image. Recovery installation below can overwrite the existing partition setup.')
-      : device
-        ? t('이 기기의 현재 펌웨어는 USB 반대편 파티션 업데이트를 지원하지 않습니다. 기기의 Wi-Fi 업데이트 기능을 사용하거나 최초 설치·복구를 선택해 주세요.', 'This firmware does not support USB updates to the inactive partition. Use the device’s Wi-Fi updater or explicitly choose factory/recovery installation.')
-        : t('기기 정보를 확인하지 못했습니다. 최초 설치·복구는 기존 설정과 파티션 내용을 덮어쓸 수 있습니다.', 'Device information is unavailable. Factory/recovery installation can overwrite saved settings and partition contents.');
+    recoveryNote.textContent = t('기기 정보를 확인하지 못했습니다. 처음 설치하거나 복구할 때만 아래 통합 설치를 선택해 주세요.', 'Device information is unavailable. Choose the combined image below only for first installation or recovery.');
     card.append(recoveryNote);
     {
       // Keep the library's action/erase/flash handlers intact. Explicit approval
       // invokes that same action on the same connected port.
       action.style.setProperty('display', 'none', 'important');
       const actions = document.createElement('div');
-      actions.style.cssText = 'display:flex;justify-content:flex-end;gap:10px;margin-top:16px';
+      actions.style.cssText = 'display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:16px';
       const cancel = document.createElement('button'), proceed = document.createElement('button');
       cancel.type = proceed.type = 'button';
       cancel.textContent = t('취소', 'Cancel');

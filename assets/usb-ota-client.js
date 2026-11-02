@@ -55,17 +55,25 @@ export async function stageUsbFirmware(port, release, device, progress = () => {
     throw new Error('USB_UPDATE_UNSUPPORTED');
   }
   const bytes = release.appBytes;
+  progress(null, {phase: 'hashing', sent: 0, total: bytes.length});
   const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', bytes));
   const sha256 = [...hash].map(value => value.toString(16).padStart(2, '0')).join('');
   const session = new SerialUpdateSession(port);
   let boundary = true;
+  let stagedComplete = false;
+  let wantsDevicePrompt = !!device.devicePrompt;
   try {
+    progress(null, {phase: 'preparing', sent: 0, total: bytes.length});
     await session.write('MAYDAY_OTA_BEGIN|SIZE=' + bytes.length + '|SHA256=' + sha256 +
       '|APP=' + release.version + '|FW=' + release.build);
     const ready = fields(await session.response(line => line.startsWith('MAYDAY_OTA|READY|'), 30000));
     if (ready.TARGET !== device.target || Number(ready.SIZE) !== bytes.length) throw new Error('USB_TARGET_CHANGED');
+    const advertisedChunk = Number(ready.CHUNK || device.chunkSize || 128);
+    if (!Number.isInteger(advertisedChunk) || advertisedChunk < 1 || advertisedChunk > 4096) throw new Error('USB_CHUNK_INVALID');
+    const chunkSize = Math.min(advertisedChunk, 1024);
+    wantsDevicePrompt = wantsDevicePrompt || ready.DEVICE_PROMPT === '1';
     for (let offset = 0; offset < bytes.length;) {
-      const chunk = bytes.subarray(offset, Math.min(offset + 4096, bytes.length));
+      const chunk = bytes.subarray(offset, Math.min(offset + chunkSize, bytes.length));
       boundary = false;
       await session.write('MAYDAY_OTA_DATA|OFFSET=' + offset + '|SIZE=' + chunk.length);
       await session.write(chunk);
@@ -73,21 +81,23 @@ export async function stageUsbFirmware(port, release, device, progress = () => {
       offset += chunk.length;
       if (Number(ack.slice('MAYDAY_OTA|ACK='.length)) !== offset) throw new Error('USB_ACK_MISMATCH');
       boundary = true;
-      progress(Math.floor(offset * 100 / bytes.length));
+      progress(Math.round(offset * 1000 / bytes.length) / 10, {phase: 'writing', sent: offset, total: bytes.length});
     }
+    progress(null, {phase: 'verifying', sent: bytes.length, total: bytes.length});
     await session.write('MAYDAY_OTA_END');
     const staged = fields(await session.response(line => line.startsWith('MAYDAY_OTA|STAGED|'), 30000));
     if (staged.TARGET !== device.target || staged.APP !== release.version || staged.FW !== release.build) {
       throw new Error('USB_STAGED_MISMATCH');
     }
-    return staged;
+    stagedComplete = true;
+    return {...staged, devicePrompt: wantsDevicePrompt};
   } catch (error) {
     if (boundary) {
       try { await session.write('MAYDAY_OTA_ABORT'); } catch {}
     }
     throw error;
   } finally {
-    await session.release();
+    await session.release(!(stagedComplete && wantsDevicePrompt));
   }
 }
 export async function decideUsbFirmware(port, reboot) {
