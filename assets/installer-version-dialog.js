@@ -1,4 +1,4 @@
-import { stageUsbFirmware, decideUsbFirmware } from './usb-ota-client.js?v=20261102-rx-safe';
+import { stageUsbFirmware } from './usb-ota-client.js?v=20261102-auto-boot';
 const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
 
@@ -70,8 +70,8 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
   const detail = document.createElement('p');
   detail.style.cssText = 'margin:10px 0;color:#626860';
   detail.textContent = t(
-    '현재 ' + device.running + ' 파티션을 유지하고 ' + device.target + ' 파티션에 저장합니다. 저장 후 재부팅 시점을 선택할 수 있습니다.',
-    'Keep ' + device.running + ' running and save to ' + device.target + '. Choose when to restart after saving.');
+    '현재 ' + device.running + ' 파티션을 유지하고 ' + device.target + ' 파티션에 저장합니다. 검증이 완료되면 새 버전으로 자동 재부팅합니다.',
+    'Keep ' + device.running + ' running and save to ' + device.target + '. After verification, the device restarts into the new version automatically.');
   card.append(detail);
   const progress = document.createElement('progress');
   progress.max = 100; progress.value = 0; progress.hidden = true;
@@ -110,21 +110,6 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
       node.setAttribute('aria-disabled', busy ? 'true' : 'false');
     }
   }
-  async function decide(reboot) {
-    if (dialog._maydayUsbBusy) return;
-    setBusy(true);
-    try {
-      await decideUsbFirmware(dialog.port, reboot);
-      note.textContent = reboot
-        ? t('새 버전으로 재부팅합니다. 이전 버전은 기기의 복구 기능에서 선택할 수 있습니다.', 'Restarting into the new version. The previous version remains available in the device’s restore function.')
-        : t('현재 버전을 유지합니다. 저장한 펌웨어는 나중에 기기에서 적용할 수 있습니다.', 'Keeping the current version. Apply the saved firmware later from the device.');
-      actions.replaceChildren();
-      finishInstallDialog(dialog);
-    } catch (error) {
-      note.textContent = t('기기의 재부팅 여부와 화면을 확인해 주세요. 선택 결과를 확인하지 못했습니다.', 'Check the device screen and restart status. The selection could not be confirmed.');
-      setBusy(false);
-    } finally { setBusy(false); }
-  }
   button(t('취소', 'Cancel'), () => dialog._closeDialog());
   const start = button(needsDecision ? t('그래도 업데이트 저장', 'Save update anyway') : t('업데이트 저장', 'Save update'), async () => {
     if (dialog._maydayUsbBusy) return;
@@ -148,17 +133,12 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
             ? t('전송을 마쳤습니다. 기기에서 파일을 검증하고 있습니다.', 'Transfer finished. The device is verifying the image.')
             : t('파일과 저장 공간을 준비하고 있습니다. USB 연결을 유지해 주세요.', 'Preparing the image and storage. Keep USB connected.');
         }
-      });
+      }, {autoRestart: true});
+      if (!saved.rebooting) throw new Error('USB_REBOOT_NOT_CONFIRMED');
       progress.value = 100;
-      note.textContent = t('저장 완료. 현재 버전은 유지되고 있습니다. 지금 새 버전으로 재부팅할까요?', 'Saved. The current version is still running. Restart into the new version now?');
+      note.textContent = t('업데이트가 완료되었습니다. 기기가 자동으로 재부팅됩니다.', 'Update complete. The device is restarting automatically.');
       actions.replaceChildren();
-      if (device.devicePrompt || saved?.devicePrompt) {
-        note.textContent = t('저장 완료. 기기 화면에서 지금 재부팅 또는 나중에를 선택해 주세요.', 'Saved. Choose Restart now or Later on the device screen.');
-        finishInstallDialog(dialog);
-      } else {
-        button(t('나중에', 'Later'), () => decide(false));
-        button(t('지금 재부팅', 'Restart now'), () => decide(true), true);
-      }
+      finishInstallDialog(dialog);
     } catch (error) {
       progress.hidden = true;
       console.warn('MAYDAY USB update did not complete:', error);

@@ -49,7 +49,7 @@ const fields = line => Object.fromEntries(line.split('|').slice(2).map(part => {
   return [part.slice(0, at), part.slice(at + 1)];
 }));
 
-export async function stageUsbFirmware(port, release, device, progress = () => {}) {
+export async function stageUsbFirmware(port, release, device, progress = () => {}, options = {}) {
   if (!device.usbOta || !device.target || device.running === device.target ||
       !release.appBytes || release.appBytes.length > device.size || !release.build) {
     throw new Error('USB_UPDATE_UNSUPPORTED');
@@ -62,6 +62,7 @@ export async function stageUsbFirmware(port, release, device, progress = () => {
   let boundary = true;
   let stagedComplete = false;
   let wantsDevicePrompt = !!device.devicePrompt;
+  let rebooting = false;
   try {
     progress(null, {phase: 'preparing', sent: 0, total: bytes.length});
     await session.write('MAYDAY_OTA_BEGIN|SIZE=' + bytes.length + '|SHA256=' + sha256 +
@@ -84,20 +85,26 @@ export async function stageUsbFirmware(port, release, device, progress = () => {
       progress(Math.round(offset * 1000 / bytes.length) / 10, {phase: 'writing', sent: offset, total: bytes.length});
     }
     progress(null, {phase: 'verifying', sent: bytes.length, total: bytes.length});
-    await session.write('MAYDAY_OTA_END');
+    const deviceAutoBoot = options.autoRestart && ready.AUTO_BOOT === '1';
+    await session.write(deviceAutoBoot ? 'MAYDAY_OTA_END_AUTO' : 'MAYDAY_OTA_END');
     const staged = fields(await session.response(line => line.startsWith('MAYDAY_OTA|STAGED|'), 30000));
     if (staged.TARGET !== device.target || staged.APP !== release.version || staged.FW !== release.build) {
       throw new Error('USB_STAGED_MISMATCH');
     }
     stagedComplete = true;
-    return {...staged, devicePrompt: wantsDevicePrompt};
+    if (options.autoRestart) {
+      if (!deviceAutoBoot) await session.write('MAYDAY_OTA_BOOT');
+      await session.response(line => line === 'MAYDAY_OTA|REBOOTING');
+      rebooting = true;
+    }
+    return {...staged, devicePrompt: wantsDevicePrompt, rebooting};
   } catch (error) {
     if (boundary) {
       try { await session.write('MAYDAY_OTA_ABORT'); } catch {}
     }
     throw error;
   } finally {
-    await session.release(!(stagedComplete && wantsDevicePrompt));
+    await session.release(!(stagedComplete && (wantsDevicePrompt || options.autoRestart)));
   }
 }
 export async function decideUsbFirmware(port, reboot) {
