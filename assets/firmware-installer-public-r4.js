@@ -222,6 +222,8 @@ async function checkRelease() {
     download.href = binaryURL.href;
     download.hidden = false;
     if (!window.isSecureContext || !('serial' in navigator)) {
+      checkDeviceButton.disabled = true;
+      sayDevice(t('기기 버전 확인은 PC Chrome 또는 Edge에서 사용할 수 있습니다.', 'Device version check requires desktop Chrome or Edge.'));
       say(t('PC 브라우저에서 설치', 'Use a desktop browser'), t('USB 설치는 PC의 Chrome 또는 Edge에서 이 페이지를 열어 진행해 주세요. 펌웨어 파일은 아래에서 받을 수 있습니다.', 'For USB installation, open this page in Chrome or Edge on a computer. You can download the firmware below.'));
       return;
     }
@@ -235,9 +237,6 @@ async function checkRelease() {
     ready = true;
     checkDeviceButton.disabled = !('serial' in navigator);
     updateInstallAvailability();
-    if (!('serial' in navigator)) {
-      sayDevice(t('기기 버전 확인은 PC Chrome 또는 Edge에서 사용할 수 있습니다.', 'Device version check requires desktop Chrome 또는 Edge.'));
-    }
     installer.hidden = false;
     placeholder.hidden = true;
     say(t('USB 설치 가능', 'Ready to install'), t('보드를 연결하고 아래 확인 항목을 체크한 뒤 설치 버튼을 눌러 주세요.', 'Connect the board, confirm the safety checklist, then select Install.'));
