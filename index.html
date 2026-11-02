@@ -45,7 +45,7 @@
         <div class="release-top"><span class="pill pill-amber" id="firmware-status">웹 설치 준비</span></div>
         <h3>MAYDAY OBI · ESP32-S3 <span class="release-version">v1.10c</span></h3>
         <p id="firmware-message" role="status" aria-live="polite">설치 가능한 펌웨어를 확인하고 있습니다.</p>
-        <ol class="install-steps"><li>PC의 Chrome 또는 Edge에서 이 페이지를 엽니다.</li><li>데이터 전송이 가능한 USB 케이블로 보드를 연결합니다.</li><li>설치 버튼을 누르고 보드의 USB 포트를 선택합니다.</li><li>설치 완료 안내가 나올 때까지 케이블을 연결해 둡니다.</li></ol>
+        <ol class="install-steps"><li>PC의 Chrome 또는 Edge에서 이 페이지를 엽니다.</li><li>데이터 전송이 가능한 USB 케이블로 보드를 연결합니다.</li><li>설치 버튼을 누르고 USB 포트를 선택한 뒤, 팝업에서 버전을 확인합니다.</li><li>설치 완료 안내가 나올 때까지 케이블을 연결해 둡니다.</li></ol>
         <p class="install-note">이 홈페이지에 안내된 <a class="inline-jump" href="#hardware">3.5인치 보드</a>용입니다. 설치 중에는 마끼다 배터리 연결을 분리해 주세요. 설치 방식과 지우기 선택에 따라 기존 설정이 초기화될 수 있습니다.</p>
         <label class="install-confirm"><input type="checkbox" id="firmware-confirm"> 사용 보드가 맞고, 배터리 연결을 분리했으며 설정 초기화 가능성을 확인했습니다.</label>
         <div class="install-actions">
@@ -56,12 +56,8 @@
             <span slot="not-allowed">HTTPS 주소에서 열어 주세요.</span>
           </esp-web-install-button>
           <a class="btn btn-secondary" id="firmware-download" hidden download="mayday-obi-firmware.bin">펌웨어 파일 받기 ↓</a>
-          <button class="btn btn-secondary" id="firmware-check-device" type="button" disabled>기기 버전 확인</button>
-          <button class="btn btn-primary" id="firmware-update-anyway" type="button" hidden>그래도 업데이트</button>
-          <button class="btn btn-secondary" id="firmware-cancel-update" type="button" hidden>취소</button>
           <button class="install-retry" id="firmware-retry" type="button" hidden>다시 확인</button>
         </div>
-        <p class="install-note" id="firmware-device-version" role="status" aria-live="polite">USB 연결 후 기기 버전 확인을 눌러 펌웨어를 확인할 수 있습니다.</p>
         <details class="install-help"><summary>USB 포트가 보이지 않거나 연결되지 않나요?</summary><p>충전 전용 케이블 대신 데이터 케이블을 사용하고, 다른 프로그램의 시리얼 모니터를 닫아 주세요. 그래도 연결되지 않으면 보드의 BOOT 버튼을 누른 상태에서 RESET을 짧게 누른 뒤 BOOT을 놓고 다시 연결해 보세요. 보드에 따라 버튼 이름과 진입 방법이 다를 수 있습니다.</p></details>
         <noscript><p class="install-note">웹 설치에는 JavaScript가 필요합니다. 브라우저 설정에서 JavaScript를 허용한 뒤 다시 열어 주세요.</p></noscript>
       </article>
@@ -158,6 +154,6 @@
     </div></section>
   </main>
   <footer class="site-footer"><div class="container footer-line"><div class="footer-brand"><img src="assets/batterist-mayday-logo.jpg" alt="배터리스트 메이데이 원본 로고" class="footer-brand-logo" width="46" height="46" loading="lazy"><span class="footer-brand-text"><strong>MAYDAY OBI</strong><span>© 2026 MAYDAY</span></span></div><div><a href="https://github.com/MayDayCom/mayday-obi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.youtube.com/@batterist_mayday" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div></footer>
-  <script type="module" src="assets/firmware-installer-public-r4.js?v=20261102-version-check"></script>
+  <script type="module" src="assets/firmware-installer-public-r4.js?v=20261102-dialog-version"></script>
 </body>
 </html>
