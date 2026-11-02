@@ -1,6 +1,6 @@
 {
   "name": "MAYDAY OBI",
-  "version": "current",
+  "version": "v1.10c",
   "new_install_prompt_erase": true,
   "new_install_improv_wait_time": 0,
   "builds": [
