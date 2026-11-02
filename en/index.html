@@ -56,8 +56,10 @@
             <span slot="not-allowed">Open this page over HTTPS.</span>
           </esp-web-install-button>
           <a class="btn btn-secondary" id="firmware-download" hidden download="mayday-obi-firmware.bin">Download firmware ↓</a>
+          <button class="btn btn-secondary" id="firmware-check-device" type="button" disabled>Check device version</button>
           <button class="install-retry" id="firmware-retry" type="button" hidden>Check again</button>
         </div>
+        <p class="install-note" id="firmware-device-version" role="status" aria-live="polite">Connect the board, then choose “Check device version” to read the installed version.</p>
         <details class="install-help"><summary>USB port not listed or connection failed?</summary><p>Use a data cable, not a charge-only cable, and close other serial monitor programs. If the board still does not appear, hold BOOT, briefly press RESET, release BOOT, then reconnect. Button names and steps can vary by board.</p></details>
         <noscript><p class="install-note">JavaScript is required for web installation. Enable JavaScript in your browser and reload this page.</p></noscript>
       </article>
