@@ -73,7 +73,8 @@ checkDeviceButton.addEventListener('click', async () => {
   try {
     const device = await readDeviceVersion();
     deviceVersionChecked = true;
-    const same = device.app.toLowerCase() === manifestVersion.toLowerCase();
+    const normalizeVersion = value => value.trim().toLowerCase().replace(/^v\\./, 'v');
+    const same = normalizeVersion(device.app) === normalizeVersion(manifestVersion);
     sayDevice(same
       ? t(`기기 ${device.app} · 웹 ${manifestVersion} — 같은 버전입니다.`, `Device ${device.app} · Website ${manifestVersion} — versions match.`)
       : t(`기기 ${device.app} · 웹 ${manifestVersion} — 버전이 다릅니다. 설치 전 확인해 주세요.`, `Device ${device.app} · Website ${manifestVersion} — versions differ. Check before installing.`));
