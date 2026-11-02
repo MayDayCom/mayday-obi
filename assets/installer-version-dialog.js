@@ -125,6 +125,34 @@ function observeVersionPanel(dialog) {
   refresh();
 }
 
+
+// The stock completion action returns to its dashboard. After a successful
+// install, show the completed screen briefly and close the whole dialog instead.
+function finishInstallDialog(dialog) {
+  let closed = false;
+  let timer;
+  const close = () => {
+    if (closed) return;
+    closed = true;
+    clearTimeout(timer);
+    if (dialog.isConnected) dialog._closeDialog();
+  };
+  const button = dialog.shadowRoot.querySelector('div[slot="actions"] ew-text-button');
+  if (button) {
+    button.textContent = t('닫기', 'Close');
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      close();
+    }, {capture: true});
+  }
+  dialog.addEventListener('closed', () => {
+    closed = true;
+    clearTimeout(timer);
+  }, {once: true});
+  timer = setTimeout(close, 1600);
+}
+
 export async function installVersionDialogIntegration(manifestURL) {
   // Pinned ESP Web Tools 10.4.0 dialog entry, also used by its connect module.
   await import('https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-dialog-im156JnI.js?module');
@@ -142,7 +170,13 @@ export async function installVersionDialogIntegration(manifestURL) {
     }
     if (justInstalled) {
       this._maydayVersionReport = null;
-      return initialize.call(this, justInstalled);
+      await initialize.call(this, justInstalled);
+      await this.updateComplete;
+      if (!this._error && this._state === 'INSTALL' &&
+          this._installConfirmed && this._client !== undefined) {
+        finishInstallDialog(this);
+      }
+      return;
     }
     if (!this._maydayVersionReport) {
       observeVersionPanel(this);
