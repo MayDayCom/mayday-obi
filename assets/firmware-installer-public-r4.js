@@ -1,5 +1,5 @@
 import './installer-theme-public-r4.js';
-import { installVersionDialogIntegration } from './installer-version-dialog.js?v=20261102-popup';
+import { installVersionDialogIntegration } from './installer-version-dialog.js?v=20261102-popup-autoclose';
 // The release contract is a merged ESP32-S3 image starting at flash address 0.
 const status = document.querySelector('#firmware-status');
 const message = document.querySelector('#firmware-message');
