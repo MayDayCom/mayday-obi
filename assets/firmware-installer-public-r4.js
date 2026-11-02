@@ -73,7 +73,7 @@ checkDeviceButton.addEventListener('click', async () => {
   try {
     const device = await readDeviceVersion();
     deviceVersionChecked = true;
-    const normalizeVersion = value => value.trim().toLowerCase().replace(/^v\\./, 'v');
+    const normalizeVersion = value => value.trim().toLowerCase().replace(/^v\./, 'v');
     const same = normalizeVersion(device.app) === normalizeVersion(manifestVersion);
     sayDevice(same
       ? t(`기기 ${device.app} · 웹 ${manifestVersion} — 같은 버전입니다.`, `Device ${device.app} · Website ${manifestVersion} — versions match.`)
