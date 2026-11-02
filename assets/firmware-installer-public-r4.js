@@ -15,11 +15,38 @@ const t = (ko, en) => english ? en : ko;
 const manifestURL = new URL('../firmware/manifest.json', import.meta.url);
 
 const checkDeviceButton = document.querySelector('#firmware-check-device');
+const updateAnywayButton = document.querySelector('#firmware-update-anyway');
+const cancelUpdateButton = document.querySelector('#firmware-cancel-update');
 const deviceVersionMessage = document.querySelector('#firmware-device-version');
 let manifestVersion = '';
-let deviceVersionChecked = false;
+let versionCheckComplete = false;
+let versionDecisionRequired = false;
+let updateAnywayConfirmed = false;
 function sayDevice(text) {
   deviceVersionMessage.textContent = text;
+}
+function updateInstallAvailability() {
+  installButton.disabled = !ready || !confirmation.checked || !versionCheckComplete ||
+    (versionDecisionRequired && !updateAnywayConfirmed);
+}
+function hideVersionDecision() {
+  updateAnywayButton.hidden = true;
+  cancelUpdateButton.hidden = true;
+}
+function compareVersions(left, right) {
+  const parse = value => {
+    const match = String(value).trim().toLowerCase().match(/^v\.?(\d+(?:\.\d+)*)([a-z]*)$/);
+    if (!match) return null;
+    return {numbers: match[1].split('.').map(Number), suffix: match[2]};
+  };
+  const a = parse(left);
+  const b = parse(right);
+  if (!a || !b) return null;
+  for (let i = 0; i < Math.max(a.numbers.length, b.numbers.length); i++) {
+    const delta = (a.numbers[i] || 0) - (b.numbers[i] || 0);
+    if (delta) return Math.sign(delta);
+  }
+  return a.suffix === b.suffix ? 0 : a.suffix > b.suffix ? 1 : -1;
 }
 async function readDeviceVersion() {
   let port;
@@ -68,41 +95,84 @@ async function readDeviceVersion() {
 }
 checkDeviceButton.addEventListener('click', async () => {
   checkDeviceButton.disabled = true;
-  deviceVersionChecked = false;
+  versionCheckComplete = false;
+  versionDecisionRequired = false;
+  updateAnywayConfirmed = false;
+  hideVersionDecision();
+  updateInstallAvailability();
   sayDevice(t('USB 포트를 선택해 주세요.', 'Select the board’s USB port.'));
   try {
     const device = await readDeviceVersion();
-    deviceVersionChecked = true;
-    const normalizeVersion = value => value.trim().toLowerCase().replace(/^v\./, 'v');
-    const same = normalizeVersion(device.app) === normalizeVersion(manifestVersion);
-    sayDevice(same
-      ? t(`기기 ${device.app} · 웹 ${manifestVersion} — 같은 버전입니다.`, `Device ${device.app} · Website ${manifestVersion} — versions match.`)
-      : t(`기기 ${device.app} · 웹 ${manifestVersion} — 버전이 다릅니다. 설치 전 확인해 주세요.`, `Device ${device.app} · Website ${manifestVersion} — versions differ. Check before installing.`));
+    const order = compareVersions(device.app, manifestVersion);
+    versionCheckComplete = true;
+    if (order === null || order >= 0) {
+      versionDecisionRequired = true;
+      const state = order === 0
+        ? t('기기와 웹 버전이 같습니다.', 'The device and website versions match.')
+        : order > 0
+          ? t('기기 버전이 웹 버전보다 높습니다.', 'The device version is newer than the website version.')
+          : t('버전 순서를 판별하지 못했습니다.', 'The version order could not be determined.');
+      sayDevice(t(
+        '기기 ' + device.app + ' · 웹 ' + manifestVersion + ' — ' + state + ' 그래도 업데이트할까요?',
+        'Device ' + device.app + ' · Website ' + manifestVersion + ' — ' + state + ' Update anyway?'
+      ));
+      updateAnywayButton.hidden = false;
+      cancelUpdateButton.hidden = false;
+    } else {
+      sayDevice(t(
+        '기기 ' + device.app + ' · 웹 ' + manifestVersion + ' — 웹 버전이 더 높습니다. 업데이트할 수 있습니다.',
+        'Device ' + device.app + ' · Website ' + manifestVersion + ' — the website version is newer. You can update.'
+      ));
+    }
   } catch (error) {
     const cancelled = error?.name === 'NotFoundError';
-    deviceVersionChecked = !cancelled && error?.message === 'no_response';
-    sayDevice(cancelled
-      ? t('USB 포트 선택을 취소했습니다.', 'USB port selection was cancelled.')
-      : error?.message === 'no_response'
-        ? t('기기에서 버전 응답이 없습니다. 현재 펌웨어가 조회를 지원하지 않을 수 있습니다. 설치 확인 절차를 거쳐 계속할 수 있습니다.', 'The device did not return a version. Its firmware may not support this check. You can continue after the installation confirmation.')
-        : t('USB 연결을 확인하지 못했습니다. 연결을 확인한 뒤 다시 시도해 주세요.', 'Could not read the USB connection. Check the connection and try again.'));
+    if (cancelled) {
+      sayDevice(t('USB 포트 선택을 취소했습니다.', 'USB port selection was cancelled.'));
+    } else if (error?.message === 'no_response') {
+      versionCheckComplete = true;
+      versionDecisionRequired = true;
+      sayDevice(t(
+        '기기에서 버전 응답이 없습니다. 버전을 확인하지 못한 상태로 업데이트를 진행할까요?',
+        'The device did not return a version. Continue without checking the installed version?'
+      ));
+      updateAnywayButton.hidden = false;
+      cancelUpdateButton.hidden = false;
+    } else {
+      sayDevice(t('USB 연결을 확인하지 못했습니다. 연결을 확인한 뒤 다시 시도해 주세요.', 'Could not read the USB connection. Check it and try again.'));
+    }
   } finally {
     checkDeviceButton.disabled = !ready;
-    installButton.disabled = !ready || !confirmation.checked || !deviceVersionChecked;
+    updateInstallAvailability();
   }
+});
+updateAnywayButton.addEventListener('click', () => {
+  updateAnywayConfirmed = true;
+  versionDecisionRequired = false;
+  hideVersionDecision();
+  sayDevice(t('업데이트 진행을 선택했습니다. 설치 버튼을 누르면 설치를 시작합니다.', 'You chose to update. Select Install to continue.'));
+  updateInstallAvailability();
+});
+cancelUpdateButton.addEventListener('click', () => {
+  versionCheckComplete = false;
+  versionDecisionRequired = false;
+  updateAnywayConfirmed = false;
+  hideVersionDecision();
+  sayDevice(t('업데이트를 취소했습니다. 설치하려면 기기 버전을 다시 확인해 주세요.', 'Update cancelled. Check the device version again if you want to proceed.'));
+  updateInstallAvailability();
 });
 function say(label, detail) {
   status.textContent = label;
   message.textContent = detail;
 }
-confirmation.addEventListener('change', () => {
-  installButton.disabled = !ready || !confirmation.checked || !deviceVersionChecked;
-});
+confirmation.addEventListener('change', updateInstallAvailability);
 async function checkRelease() {
   if (checking) return;
   checking = true;
   ready = false;
-  deviceVersionChecked = false;
+  versionCheckComplete = false;
+  versionDecisionRequired = false;
+  updateAnywayConfirmed = false;
+  hideVersionDecision();
   checkDeviceButton.disabled = true;
   installer.hidden = true;
   download.hidden = true;
@@ -164,9 +234,9 @@ async function checkRelease() {
     installer.setAttribute('manifest', manifestURL.href);
     ready = true;
     checkDeviceButton.disabled = !('serial' in navigator);
-    installButton.disabled = !confirmation.checked || !deviceVersionChecked;
+    updateInstallAvailability();
     if (!('serial' in navigator)) {
-      sayDevice(t('기기 버전 확인은 PC Chrome 또는 Edge에서 사용할 수 있습니다.', 'Device version check requires desktop Chrome or Edge.'));
+      sayDevice(t('기기 버전 확인은 PC Chrome 또는 Edge에서 사용할 수 있습니다.', 'Device version check requires desktop Chrome 또는 Edge.'));
     }
     installer.hidden = false;
     placeholder.hidden = true;
