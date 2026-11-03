@@ -149,6 +149,22 @@ function translateTree(root) {
    if (labels.has(label)) field.setAttribute('label', labels.get(label));
  }
 }
+// Keep the percentage text stable without replacing Lit's managed text nodes.
+function formatProgress(root) {
+ const label = root.querySelector('ew-circular-progress + div');
+ if (!label || !/^\d+(?:\.\d+)?%$/.test(label.textContent.trim())) return;
+ label.style.fontVariantNumeric = 'tabular-nums';
+ label.style.minWidth = '6ch';
+ label.style.display = 'inline-block';
+ const walker = document.createTreeWalker(label, NodeFilter.SHOW_TEXT);
+ let node;
+ while ((node = walker.nextNode())) {
+   const value = node.nodeValue.trim();
+   if (!/^\d+(?:\.\d+)?$/.test(value)) continue;
+   const formatted = Number(value).toFixed(1);
+   if (value !== formatted) node.nodeValue = node.nodeValue.replace(value, formatted);
+ }
+}
 function decorate(dialog) {
  const root = dialog.shadowRoot;
  if (!root || root.querySelector('[data-mayday-theme]')) return;
@@ -165,10 +181,14 @@ function decorate(dialog) {
      await page.updateComplete;
      const pageRoot = page.shadowRoot;
      if (!pageRoot) return;
-     translateTree(pageRoot);
+     function refreshPage() {
+       translateTree(pageRoot);
+       if (page.localName === 'ewt-page-progress') formatProgress(pageRoot);
+     }
+     refreshPage();
      if (observedRoots.has(pageRoot)) return;
      observedRoots.add(pageRoot);
-     const observer = new MutationObserver(() => translateTree(pageRoot));
+     const observer = new MutationObserver(refreshPage);
      observer.observe(pageRoot, {childList:true,subtree:true,characterData:true});
      pageObservers.push(observer);
    });
