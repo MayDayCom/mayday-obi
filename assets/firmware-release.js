@@ -32,7 +32,7 @@ export async function readFirmwareRelease(baseURL, legacyManifest, signal, fetch
   }
   const factory = await read('firmware.factory.bin');
   if (!factory) {
-    // Transition support for the existing v1.10c merged image named firmware.bin.
+    // Legacy-only fallback for the historical v1.10c single merged-image release.
     const oldPart = legacyManifest.builds?.find(item => item.chipFamily === 'ESP32-S3')?.parts?.[0];
     if (oldPart?.path !== 'firmware.bin' || oldPart.offset !== 0) throw new Error('missing_factory');
     const old = await read('firmware.bin');
