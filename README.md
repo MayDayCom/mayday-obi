@@ -8,7 +8,11 @@
 
 ## 펌웨어 상태
 
-**배포 준비 중** — 다운로드 파일과 웹 설치 기능은 아직 공개되지 않았습니다.
+**펌웨어 배포 중 · v1.10c**
+
+ESP32-S3용 펌웨어 파일이 GitHub에 등록되어 있습니다. PC Chrome/Edge에서 [홈페이지의 USB 설치 메뉴](https://maydaycom.github.io/mayday-obi/#firmware)를 이용하거나 [펌웨어 폴더](firmware/)에서 파일을 확인할 수 있습니다.
+
+최신 배포 버전의 기준은 [`firmware/manifest.json`](firmware/manifest.json)의 `version`입니다. README의 버전 표기는 자동 갱신되지 않으므로, 실제 최신 버전은 manifest에서 확인하세요.
 
 ## 사용 보드와 연결
 
