@@ -122,7 +122,8 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
       const saved = await stageUsbFirmware(dialog.port, release, device, (percent, state = {}) => {
         if (state.phase === 'writing') {
           progress.value = percent;
-          start.textContent = t('저장 중 ' + percent + '%', 'Saving ' + percent + '%');
+          const percentText = Number(percent).toFixed(1);
+          start.textContent = t('저장 중 ' + percentText + '%', 'Saving ' + percentText + '%');
           note.textContent = t('반대편 파티션에 저장 중', 'Saving to inactive partition') +
             ' · ' + (state.sent / 1024).toFixed(1) + ' / ' + (state.total / 1024).toFixed(1) + ' KB';
         } else {
@@ -155,7 +156,11 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
       button(t('닫기', 'Close'), () => dialog._closeDialog());
     } finally { setBusy(false); }
   }, true);
+  start.style.minWidth = '200px';
+  start.style.whiteSpace = 'nowrap';
+  start.style.fontVariantNumeric = 'tabular-nums';
 }
+
 
 function observeVersionPanel(dialog) {
   const root = dialog.shadowRoot;
