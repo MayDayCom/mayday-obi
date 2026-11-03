@@ -12,8 +12,6 @@
 
 ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은 [홈페이지의 USB 펌웨어 설치 영역](https://maydaycom.github.io/mayday-obi/#firmware)에서 자동으로 확인**할 수 있습니다.
 
-홈페이지는 `firmware.bin`(업데이트용)과 `firmware.factory.bin`(최초 설치·복구용) 내부의 `MAYDAY_OBI_META_V1` 버전·빌드 정보를 읽고 두 파일이 일치하는지 검사합니다. `manifest.json`의 `v1.10c`는 과거 배포본 호환용 정보이며 최신 버전 기준이 아닙니다.
-
 [펌웨어 파일과 설치 안내](firmware/)
 
 ## 사용 보드와 연결
