@@ -1,14 +1,14 @@
 # MAYDAY OBI USB 웹 설치 배포
 
-웹 설치는 ESP Web Tools를 사용합니다. **펌웨어 파일이 이미 GitHub에 배포되어 있습니다.** 현재 `manifest.json`에 표시된 버전은 **v1.10c**입니다.
+웹 설치는 ESP Web Tools를 사용합니다. **펌웨어 파일이 이미 GitHub에 배포되어 있습니다.** 현재 펌웨어 버전은 [홈페이지의 USB 설치 영역](https://maydaycom.github.io/mayday-obi/#firmware)에서 실제 BIN 파일을 검사해 자동 표시합니다.
 
 ## 배포 파일
-- `firmware.bin` — 현재 등록된 펌웨어 파일
-- `firmware.factory.bin` — 현재 등록된 팩토리 이미지
-- `manifest.json` — 웹 설치에서 사용하는 파일 경로 및 배포 버전 정보
+- `firmware.bin` — 현재 등록된 앱 단독 업데이트 이미지
+- `firmware.factory.bin` — 현재 등록된 최초 설치·복구용 통합 이미지
+- `manifest.json` — 구형 배포본(v1.10c) 호환을 위한 정보. 현재 버전의 기준 아님
 - 설치: [MAYDAY OBI 홈페이지](https://maydaycom.github.io/mayday-obi/#firmware)
 
-PC Chrome/Edge에서 홈페이지를 열고 안내에 따라 USB로 설치할 수 있습니다. 새 파일을 배포할 때는 실제 바이너리 구성과 `manifest.json`의 버전·경로가 일치하도록 관리하세요.
+PC Chrome/Edge에서 홈페이지를 열고 안내에 따라 USB로 설치할 수 있습니다. 새 버전 배포 시 동일 빌드에서 생성된 두 BIN 파일을 함께 올리세요. 자세한 내용은 [펌웨어 두 파일 배포 안내](UPLOAD_GUIDE.md)를 확인하세요.
 
 ## 반드시 맞춰야 할 바이너리 형식
 - 홈페이지에 안내된 ESP32-S3 3.5인치 보드용 빌드여야 합니다.
@@ -19,7 +19,7 @@ PC Chrome/Edge에서 홈페이지를 열고 안내에 따라 USB로 설치할 �
 - ESP Web Tools의 칩 식별은 ESP32-S3 계열을 구별할 뿐, 같은 칩을 쓴 다른 보드 모델은 구별하지 못합니다.
 
 ## 버전 관리
-현재 [`manifest.json`](manifest.json)의 `version`은 **v1.10c**입니다. **실제 최신 버전은 이 파일에서 확인**하세요. README의 버전 표기는 자동 갱신되지 않습니다. 웹 설치용 바이너리 경로는 manifest 기준 `firmware.bin`, offset은 `0`입니다. 다른 배포 형식을 사용할 경우 설치 스크립트의 검증 조건도 함께 수정해야 합니다.
+최신 버전은 **`firmware.bin` 및 `firmware.factory.bin` 내부의 `MAYDAY_OBI_META_V1` 메타데이터**에서 자동 추출합니다. 홈페이지가 버전·빌드 번호와 두 파일의 일치 여부를 검사하고, 확인된 버전을 화면에 표시합니다. **`manifest.json`의 버전은 구형 통합 BIN을 위한 호환값일 뿐, 최신 배포 버전을 뜻하지 않습니다.** README에는 버전 번호를 고정하지 않습니다.
 기존 설정 삭제는 설치 대화상자에서 사용자가 선택합니다. "지우지 않음"이 모든 버전 간 설정 보존을 보장하지는 않습니다.
 
 ## 배포 확인
