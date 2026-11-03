@@ -53,7 +53,7 @@ async function checkRelease() {
   const controller = new AbortController();
   timer = setTimeout(() => controller.abort(), 30000);
   try {
-    // This JSON is only a compatibility fallback for the old, untagged v1.10c file.
+    // Legacy-only JSON fallback for the historical untagged v1.10c firmware.
     let legacyManifest = {};
     try {
       const response = await fetch(legacyManifestURL, {cache: 'no-store', signal: controller.signal});
