@@ -14,16 +14,21 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 
 [펌웨어 파일과 설치 안내](firmware/)
 
-## v1.10t 진단 기능 · Diagnostic features
+## v1.10u 변경 사항 · What's new
 
-기기 검증용 v1.10t에 추가된 기능입니다. 공개 펌웨어 버전은 위 설치 영역에서 확인할 수 있습니다.
+**빌드 `2026.11.06-1300`**
 
-- **잠금 원인** — 기기 상태 배지나 Wi-Fi 배터리 화면에서 충전기 잠금, 내부 오류 플래그, 체크섬 불일치를 확인할 수 있습니다.
-- **오류 초기화 결과** — 같은 배터리를 초기화 전후에 다시 읽어 상태 코드와 잠금 원인을 비교합니다. 초기화 후 다시 읽지 못하면 확인 불가로 표시합니다.
-- **진단 기록과 CSV** — 기기에서 **펌웨어 업데이트 & 배터리 상태 확인**을 시작하고, 같은 Wi-Fi에서 기기 주소를 열어 배터리 상태 화면으로 이동합니다. **결과 저장**을 누르면 기록이 ROM ID별로 쌓입니다. 저장된 팩을 선택하면 CSV를 내려받을 수 있습니다. 최근 300건은 사용한 브라우저와 접속 주소별로 보관됩니다.
-- **Wi-Fi 디버그 로그** — 배터리 상태 화면과 펌웨어 업데이트 화면 하단에서 최근 기기 동작을 확인할 수 있습니다.
+- **잠금 이력** — 기기에서 **데이터읽기**를 하면 잠금 원인이 확인된 팩만 ROM ID별로 저장합니다. **락 해제** 결과는 전후 상태 코드와 잠금 원인을 같은 기록에 남깁니다. 최근 32건은 기기에 저장되어 재부팅 후에도 남습니다.
+- **CSV 현지 시각** — 기기에서 **펌웨어 업데이트 & 배터리 상태 확인**을 시작한 뒤 같은 Wi-Fi에서 기기 주소를 열고 **잠금 및 해제 기록**에서 팩을 선택합니다. **CSV 다운로드**를 누르면 브라우저의 시간대 기준으로 `YYYY-MM-DD HH:mm:ss` 형식의 시각이 저장됩니다. 기기 시각을 확인할 수 없었던 기록은 시각을 빈칸으로 표시합니다.
+- **화면보호기** — 기기 시각이 유효해지기 전에는 **MAYDAY OBI** 로고가 천천히 움직입니다. 유효한 시각이 있으면 시계를 표시하며, Wi-Fi가 끊겨도 기기 시계가 유효한 동안 계속 표시합니다. **화면 보호 설정 → 미리보기**에서 확인할 수 있습니다.
+- **진단 표시** — 상태 배지와 Wi-Fi 배터리 화면에서 잠금 원인을 볼 수 있습니다. 오류 초기화는 전후 상태를 화면에 표시하며, Wi-Fi 페이지 하단에서 최근 디버그 로그를 볼 수 있습니다.
 
-The v1.10t device test build adds lock-cause details, before-and-after error-reset checks, and per-battery history with CSV export. Start **Firmware Update & Battery Status** on the device, open its address on the same Wi-Fi network, and choose **Save Result** in the battery monitor. The latest 300 records are stored per browser and device address. Recent device events are available in the debug log.
+**Build `2026.11.06-1300`**
+
+- **Lock history** — OBI records the last 32 abnormal reads by battery ROM ID. An unlock attempt adds the before-and-after status codes, lock causes, and outcome to the same record. History survives a reboot.
+- **Local CSV timestamps** — Start **Firmware Update & Battery Status** on the device and open its address on the same Wi-Fi network. Select a pack under **Lock and unlock history**, then choose **Download CSV**. Times use the browser's time zone in `YYYY-MM-DD HH:mm:ss` format. Entries without a valid device time have blank timestamps.
+- **Screensaver** — The **MAYDAY OBI** logo moves across the screen until the device has a valid time. The clock then appears and keeps running if Wi-Fi disconnects. Check it under **Display → Preview**.
+- **Diagnostics** — View lock causes and before-and-after error-reset results on the device or the Wi-Fi dashboard. Recent device events appear in the web debug log.
 
 ## 사용 보드와 연결
 
