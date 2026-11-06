@@ -14,6 +14,17 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 
 [펌웨어 파일과 설치 안내](firmware/)
 
+## v1.10t 진단 기능 · Diagnostic features
+
+기기 검증용 v1.10t에 추가된 기능입니다. 공개 펌웨어 버전은 위 설치 영역에서 확인할 수 있습니다.
+
+- **잠금 원인** — 기기 상태 배지나 Wi-Fi 배터리 화면에서 충전기 잠금, 내부 오류 플래그, 체크섬 불일치를 확인할 수 있습니다.
+- **오류 초기화 결과** — 같은 배터리를 초기화 전후에 다시 읽어 상태 코드와 잠금 원인을 비교합니다. 초기화 후 다시 읽지 못하면 확인 불가로 표시합니다.
+- **진단 기록과 CSV** — 기기에서 **펌웨어 업데이트 & 배터리 상태 확인**을 시작하고, 같은 Wi-Fi에서 기기 주소를 열어 배터리 상태 화면으로 이동합니다. **결과 저장**을 누르면 기록이 ROM ID별로 쌓입니다. 저장된 팩을 선택하면 CSV를 내려받을 수 있습니다. 최근 300건은 사용한 브라우저와 접속 주소별로 보관됩니다.
+- **Wi-Fi 디버그 로그** — 배터리 상태 화면과 펌웨어 업데이트 화면 하단에서 최근 기기 동작을 확인할 수 있습니다.
+
+The v1.10t device test build adds lock-cause details, before-and-after error-reset checks, and per-battery history with CSV export. Start **Firmware Update & Battery Status** on the device, open its address on the same Wi-Fi network, and choose **Save Result** in the battery monitor. The latest 300 records are stored per browser and device address. Recent device events are available in the debug log.
+
 ## 사용 보드와 연결
 
 - ESP32-S3 3.5인치 터치스크린 보드
