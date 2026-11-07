@@ -30,3 +30,19 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.5;cur
 esp-web-install-button{--esp-tools-button-color:var(--teal);--esp-tools-button-text-color:var(--paper);--esp-tools-button-border-radius:3px}
 
 .release-version{display:inline-block;margin-left:7px;padding:3px 8px;border-radius:999px;background:#e3ecdf;color:var(--teal);font-size:11px;line-height:1.2;font-weight:700;vertical-align:2px;white-space:nowrap}
+/* Footer page-view badge */
+.footer-line .footer-links {
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+.footer-links .footer-hits {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  line-height: 1;
+}
+.footer-hits img {
+  display: block;
+  width: auto;
+  height: 20px;
+}
