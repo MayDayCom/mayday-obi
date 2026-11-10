@@ -39,7 +39,7 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 - **P3:** GND → 배터리 B−, 3.3V → 4.7kΩ 저항 → DATA
 - **18V B+를 ESP32에 직접 연결하지 마세요.**
 
-[실제 보드 후면 사진](assets/esp32-s3-3.5-back.jpg) · [마끼다 LXT 배선도](https://maydaycom.github.io/mayday-obi/#wiring) · [사용 보드 구매처](https://s.click.aliexpress.com/e/_c4naCAr1)
+[실제 보드 후면 사진](assets/esp32-s3-3.5-back.jpg) · [마끼다 LXT 배선도](https://maydaycom.github.io/mayday-obi/#wiring) · [사용 보드 구매처](https://s.click.aliexpress.com/e/_c4VYI0z1)
 
 연결 전에 사용 중인 보드의 핀 방향과 펌웨어 설정을 확인하세요.
 
