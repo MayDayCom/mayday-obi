@@ -71,18 +71,28 @@ export async function stageUsbFirmware(port, release, device, progress = () => {
     if (ready.TARGET !== device.target || Number(ready.SIZE) !== bytes.length) throw new Error('USB_TARGET_CHANGED');
     const advertisedChunk = Number(ready.CHUNK || device.chunkSize || 128);
     if (!Number.isInteger(advertisedChunk) || advertisedChunk < 1 || advertisedChunk > 4096) throw new Error('USB_CHUNK_INVALID');
-    const chunkSize = Math.min(advertisedChunk, 1024);
+    const chunkSize = Math.min(advertisedChunk, 4096);
+    const encoder = new TextEncoder();
+    let lastProgressAt = 0;
     wantsDevicePrompt = wantsDevicePrompt || ready.DEVICE_PROMPT === '1';
     for (let offset = 0; offset < bytes.length;) {
       const chunk = bytes.subarray(offset, Math.min(offset + chunkSize, bytes.length));
       boundary = false;
-      await session.write('MAYDAY_OTA_DATA|OFFSET=' + offset + '|SIZE=' + chunk.length);
-      await session.write(chunk);
+      const header = encoder.encode('MAYDAY_OTA_DATA|OFFSET=' + offset + '|SIZE=' + chunk.length + '\n');
+      const packet = new Uint8Array(header.length + chunk.length);
+      packet.set(header);
+      packet.set(chunk, header.length);
+      await session.write(packet);
       const ack = await session.response(line => line.startsWith('MAYDAY_OTA|ACK='));
       offset += chunk.length;
       if (Number(ack.slice('MAYDAY_OTA|ACK='.length)) !== offset) throw new Error('USB_ACK_MISMATCH');
       boundary = true;
-      progress(Math.round(offset * 1000 / bytes.length) / 10, {phase: 'writing', sent: offset, total: bytes.length});
+      const now = Date.now();
+      if (offset === bytes.length || now - lastProgressAt >= 100) {
+        lastProgressAt = now;
+        progress(Math.round(offset * 1000 / bytes.length) / 10,
+          {phase: 'writing', sent: offset, total: bytes.length});
+      }
     }
     progress(null, {phase: 'verifying', sent: bytes.length, total: bytes.length});
     const deviceAutoBoot = options.autoRestart && ready.AUTO_BOOT === '1';

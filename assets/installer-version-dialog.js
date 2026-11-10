@@ -1,4 +1,4 @@
-import { stageUsbFirmware } from './usb-ota-client.js?v=20261102-auto-boot';
+import { stageUsbFirmware } from './usb-ota-client.js?v=20261110-transfer-speed';
 const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
 
