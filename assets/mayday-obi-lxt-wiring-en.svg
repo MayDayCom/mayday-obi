@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="870" viewBox="0 0 1400 870" role="img" aria-labelledby="title description">
+<title id="title">MAYDAY OBI — Makita LXT communication wiring</title>
+<desc id="description">The yellow Makita LXT connector has seven communication pins. Main B− is a separate terminal to the left of pin 1. Connect GND to B−, IO5 to DATA pin 2, and IO6 to ENABLE pin 6. Board labels: P3 GND and 3.3V, P2 IO5 and IO6. Fit a 4.7kΩ pull-up between 3.3V and DATA. Never connect 18V B+ directly to ESP32.</desc>
+<style>text{font-family:'Noto Sans KR','Malgun Gothic','Nanum Gothic',sans-serif}.b{font-weight:750}</style>
+<rect width="1400" height="870" fill="#081c2b"/>
+<text x="54" y="65" font-size="40" fill="#eaf5ff" class="b">MAYDAY OBI</text>
+<text x="346" y="65" font-size="33" fill="#eaf5ff" class="b">LXT communication wiring</text>
+<text x="54" y="102" font-size="18" fill="#acc3d5" >Main B−  |  Communication pins 1–7  |  Toward B+</text>
+<rect x="46" y="143" width="405" height="565" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
+<rect x="798" y="143" width="552" height="565" rx="12" fill="#10283b" stroke="#35556a" stroke-width="2"/>
+<text x="74" y="185" font-size="26" fill="#eaf5ff" class="b">ESP32-S3 · 3.5-inch</text>
+<text x="74" y="213" font-size="16" fill="#acc3d5" >Board labels: P3 GND / 3.3V · P2 IO5 / IO6</text>
+<rect x="72" y="250" width="337" height="74" rx="11" fill="#14334b" stroke="#b5cbd4" stroke-width="2"/>
+<text x="93" y="277" font-size="18" fill="#acc3d5" >P3</text>
+<text x="93" y="305" font-size="22" fill="#b5cbd4" class="b">GND (common ground)</text>
+<circle cx="452" cy="288" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
+<rect x="72" y="348" width="337" height="74" rx="11" fill="#14334b" stroke="#ff8a8c" stroke-width="2"/>
+<text x="93" y="375" font-size="18" fill="#acc3d5" >P3</text>
+<text x="93" y="403" font-size="22" fill="#ff8a8c" class="b">3.3V supply</text>
+<circle cx="452" cy="386" r="8" fill="#ff8a8c" stroke="#081c2b" stroke-width="3"/>
+<rect x="72" y="446" width="337" height="74" rx="11" fill="#14334b" stroke="#3ddbe5" stroke-width="2"/>
+<text x="93" y="473" font-size="18" fill="#acc3d5" >P2</text>
+<text x="93" y="501" font-size="22" fill="#3ddbe5" class="b">IO5 / DATA</text>
+<circle cx="452" cy="484" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
+<rect x="72" y="544" width="337" height="74" rx="11" fill="#14334b" stroke="#f8c861" stroke-width="2"/>
+<text x="93" y="571" font-size="18" fill="#acc3d5" >P2</text>
+<text x="93" y="599" font-size="22" fill="#f8c861" class="b">IO6 / ENABLE</text>
+<circle cx="452" cy="582" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
+<text x="825" y="184" font-size="26" fill="#eaf5ff" class="b">Makita LXT battery</text>
+<text x="825" y="213" font-size="16" fill="#acc3d5" >Pin 1 is next to main B−</text>
+<rect x="827" y="307" width="145" height="124" rx="12" fill="#183444" stroke="#b5cbd4" stroke-width="2.3"/>
+<text x="899" y="353" font-size="29" fill="#b5cbd4" text-anchor="middle" class="b">B−</text>
+<text x="899" y="383" font-size="17" fill="#eaf5ff" text-anchor="middle">Main negative</text>
+<text x="899" y="409" font-size="13" fill="#acc3d5" text-anchor="middle">Separate terminal</text>
+<rect x="997" y="258" width="327" height="193" rx="14" fill="#10313c" stroke="#61e2cc" stroke-width="2.5"/>
+<text x="1016" y="288" font-size="18" fill="#61e2cc" class="b">Communication pins 1–7</text>
+<rect x="1007" y="316" width="308" height="84" rx="9" fill="#64511f" stroke="#bc9243" stroke-width="2"/>
+<text x="1030" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">1</text>
+<rect x="1015" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1030 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1074" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">2</text>
+<rect x="1059" y="340" width="30" height="47" rx="5" fill="#145969" stroke="#3ddbe5" stroke-width="3"/>
+<path d="M1074 347 V381" stroke="#3ddbe5" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1118" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">3</text>
+<rect x="1103" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1118 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1162" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">4</text>
+<rect x="1147" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1162 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1206" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">5</text>
+<rect x="1191" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1206 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1250" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">6</text>
+<rect x="1235" y="340" width="30" height="47" rx="5" fill="#665124" stroke="#f8c861" stroke-width="3"/>
+<path d="M1250 347 V381" stroke="#f8c861" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1294" y="331" font-size="17" fill="#eaf5ff" text-anchor="middle" class="b">7</text>
+<rect x="1279" y="340" width="30" height="47" rx="5" fill="#283e51" stroke="#7d91a1" stroke-width="1.5"/>
+<path d="M1294 347 V381" stroke="#a4b3c0" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1017" y="430" font-size="16" fill="#3ddbe5" class="b">2 DATA</text>
+<text x="1160" y="430" font-size="16" fill="#f8c861" class="b">6 ENABLE</text>
+<path d="M973 371 H991" stroke="#b5cbd4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 288 H784 V370 H827" stroke="#b5cbd4" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 385 H581" stroke="#ff8a8c" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="581" y="371" width="92" height="28" rx="6" fill="#e9ce9a" stroke="#b98c53" stroke-width="2"/>
+<path d="M595 376 V393" stroke="#8d623f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M610 376 V393" stroke="#bb8254" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M625 376 V393" stroke="#8d623f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M640 376 V393" stroke="#bb8254" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M655 376 V393" stroke="#8d623f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M673 385 H752 V483" stroke="#ff8a8c" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 483 H1074 V387" stroke="#3ddbe5" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M452 581 H1250 V387" stroke="#f8c861" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="752" cy="483" r="10" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
+<circle cx="827" cy="370" r="8" fill="#b5cbd4" stroke="#081c2b" stroke-width="3"/>
+<circle cx="1074" cy="387" r="8" fill="#3ddbe5" stroke="#081c2b" stroke-width="3"/>
+<circle cx="1250" cy="387" r="8" fill="#f8c861" stroke="#081c2b" stroke-width="3"/>
+<text x="585" y="360" font-size="17" fill="#ff8a8c" class="b">4.7kΩ pull-up</text>
+<rect x="826" y="629" width="498" height="70" rx="10" fill="#482838" stroke="#ff8a8c" stroke-width="1.5"/>
+<text x="849" y="659" font-size="20" fill="#ff8a8c" class="b">Never connect 18V B+ to ESP32</text>
+<text x="849" y="685" font-size="15" fill="#acc3d5" >Keep communication and power terminals separate.</text>
+<rect x="46" y="751" width="1304" height="88" rx="13" fill="#133248" stroke="#35556a" stroke-width="1.5"/>
+<text x="71" y="789" font-size="20" fill="#61e2cc" class="b">Orientation</text>
+<text x="198" y="788" font-size="18" fill="#eaf5ff" >Main B− → yellow connector pins 1 to 7</text>
+<text x="198" y="815" font-size="15" fill="#acc3d5" >Layouts may vary. Check terminal orientation, pinout and GPIO settings before connecting power.</text>
+</svg>
