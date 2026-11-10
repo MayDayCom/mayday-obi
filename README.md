@@ -14,6 +14,22 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 
 [펌웨어 파일과 설치 안내](firmware/)
 
+## v1.10v · USB 업데이트 속도 개선
+
+**빌드 `2026.11.10-1502`**
+
+- 기기의 수신 버퍼에 맞춰 최대 4KB씩 전송해 응답을 기다리는 횟수를 줄였습니다.
+- USB 수신 중 화면 갱신과 주변 작업의 대기를 줄이고, 웹 진행률은 최대 초당 10회 갱신합니다. 퍼센트는 소수점 한 자리로 표시합니다.
+- 기존 기기가 알리는 1KB·128바이트 전송도 지원합니다. v1.10v를 설치한 기기는 다음 업데이트부터 개선된 4KB 전송을 사용할 수 있습니다.
+- 최초 설치는 `firmware.factory.bin`, 기존 기기의 업데이트는 `firmware.bin`을 사용합니다.
+
+**Build `2026.11.10-1502`**
+
+- Transfers negotiate up to 4KB per block according to the device's receive buffer, reducing acknowledgement waits.
+- The device prioritizes USB reception while periodically refreshing its display. Web progress refreshes up to 10 times per second and retains one decimal place.
+- Existing 1KB and 128-byte receivers remain supported. Devices running v1.10v can use the improved 4KB transfer mode for subsequent updates.
+- Use `firmware.factory.bin` for first installation and `firmware.bin` for updates.
+
 ## v1.10u 변경 사항 · What's new
 
 **빌드 `2026.11.07-0945`**
