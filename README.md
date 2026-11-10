@@ -14,6 +14,18 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 
 [펌웨어 파일과 설치 안내](firmware/)
 
+## v1.10v · 영문 표시 보완 / English display fixes
+
+**빌드 / Build `2026.11.10-1546` · 버전은 v1.10v로 유지합니다. / Version remains v1.10v.**
+
+- ENG 제조일을 `10 Nov 2026` 형식으로 표시합니다. 배터리를 다시 읽지 않아도 언어 전환 즉시 날짜 표시가 바뀝니다.
+- Wi-Fi 검색 결과와 웹 페이지 제목의 누락 번역을 추가하고, 긴 상태 문구가 잘려 번역되지 않던 문제를 수정했습니다. F0513의 영문 안내를 읽기 전용으로 바로잡았습니다.
+- 최대 4KB USB 전송 및 소수점 한 자리 진행률 처리는 유지합니다.
+
+- ENG manufacture dates use `10 Nov 2026`. Switching languages updates the date immediately without another battery read.
+- Added missing Wi-Fi search and web-page title translations, prevented truncated status messages from bypassing translation, and corrected the F0513 read-only description.
+- USB transfers still support up to 4KB per block and progress retains one decimal place.
+
 ## v1.10v · USB 업데이트 속도 개선
 
 **빌드 `2026.11.10-1502`**
