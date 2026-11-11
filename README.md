@@ -6,6 +6,15 @@
 
 ![ESP32-S3에서 실행 중인 MAYDAY OBI v1.10c](assets/mayday-obi-running-v1.10c.jpg)
 
+## 2026-11-12 · 홈페이지 화면 개선 / Homepage design update
+
+- 첫 화면의 반복 문구와 여백을 줄이고 **USB로 설치** 버튼을 눈에 잘 띄게 배치했습니다.
+- USB 설치 절차, 주의사항, 확인 체크박스를 한곳에 정리했습니다. 보드 구매처와 마끼다 통신단자 링크는 연한 녹색 버튼으로 표시합니다.
+- Reduced repeated copy and spacing on the homepage and made **Install over USB** the primary action.
+- Grouped the installation steps, precautions, and confirmation checkbox. The board and Makita connector links use pale green buttons.
+
+[화면 변경 커밋 / Design commit](https://github.com/MayDayCom/mayday-obi/commit/2a69425051f909848a8f2e81e34c0c68ad36354a) · [이전 홈페이지 백업 / Previous design backup](https://github.com/MayDayCom/mayday-obi/tree/backup/before-workbench-design-20261112)
+
 ## 펌웨어 상태
 
 **펌웨어 배포 중**
