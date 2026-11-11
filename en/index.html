@@ -13,10 +13,10 @@
   <meta name="theme-color" content="#f5f3ec">
   <title>MAYDAY OBI | Makita LXT Battery Diagnostics</title>
   <link rel="icon" type="image/jpeg" href="../assets/batterist-mayday-logo.jpg">
-  <link rel="stylesheet" href="../styles.css?v=20261111-usb-outline">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../workbench.css?v=20261112">
 </head>
-<body>
-  <div class="background-grid" aria-hidden="true"></div>
+<body class="workbench-design">
   <header class="site-header">
     <div class="container nav-bar">
       <a href="#top" class="wordmark" aria-label="MAYDAY OBI home"><img src="../assets/batterist-mayday-logo.jpg" alt="Batterist Mayday original logo" class="brand-logo" width="48" height="48"><span>MAYDAY<span class="brand-accent"> OBI</span></span></a>
@@ -29,11 +29,10 @@
   <main id="top">
     <section class="hero container" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="hero-project">MAYDAY OBI</p>
         <h1 id="hero-title">Batterist Mayday</h1>
         <p class="hero-product">Makita LXT Battery Reset</p>
-        <p class="hero-subtitle"><strong>MAYDAY OBI</strong> is an ESP32-S3 battery diagnostic tool for Makita LXT packs. Check battery information on a 3.5-inch touchscreen.</p>
-        <div class="hero-cta"><a class="btn btn-primary" href="#firmware">Firmware status <span aria-hidden="true">↓</span></a><a class="btn btn-secondary" href="#hardware">Board &amp; wiring <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-subtitle">An ESP32-S3 diagnostic tool with a 3.5-inch touchscreen for checking battery voltage and status.</p>
+        <div class="hero-cta"><a class="btn btn-primary" href="#firmware">Install over USB <span aria-hidden="true">↓</span></a><a class="btn btn-secondary" href="#hardware">Board &amp; wiring <span aria-hidden="true">↓</span></a></div>
         </div>
       <div class="hero-visual" aria-label="MAYDAY OBI running on a 3.5-inch ESP32-S3 device">
         <figure class="hero-product-photo">
@@ -50,8 +49,8 @@
         <h3>MAYDAY OBI · ESP32-S3 <span class="release-version">Checking</span></h3>
         <p id="firmware-message" role="status" aria-live="polite">Checking for available firmware.</p>
         <ol class="install-steps"><li>Open this page in Chrome or Edge on a computer.</li><li>Connect the board with a USB data cable.</li><li>Click Install, select the board's USB port, and review the versions in the dialog.</li><li>Keep the cable connected until installation is complete.</li></ol>
-        <p class="install-note">For the <a class="inline-jump" href="#hardware">3.5-inch board shown below</a>. Disconnect the Makita battery before installation. Depending on the install option, existing settings may be erased.</p>
-        <label class="install-confirm"><input type="checkbox" id="firmware-confirm"> I have the supported board, disconnected the battery, and understand that saved settings may be erased.</label>
+        <div class="install-safety"><p class="install-note">For the <a class="inline-jump" href="#hardware">3.5-inch board shown below</a>. Disconnect the Makita battery before installation. Depending on the install option, existing settings may be erased.</p>
+        <label class="install-confirm"><input type="checkbox" id="firmware-confirm"> I have the supported board, disconnected the battery, and understand that saved settings may be erased.</label></div>
         <div class="install-actions">
           <button class="btn btn-primary" id="firmware-pending" type="button" disabled>Install firmware over USB</button>
           <esp-web-install-button id="usb-installer" hidden>
@@ -73,7 +72,7 @@
 
     <section class="section section-muted" id="hardware" aria-labelledby="hardware-title"><div class="container">
       <div class="section-heading"><h2 id="hardware-title">Board &amp; wiring</h2><p>ESP32-S3 with a 3.5-inch touchscreen. See the board photos, <a class="inline-jump" href="#wiring">Makita communication wiring</a>, and <a class="inline-jump" href="#battery-power">battery power wiring</a>.</p></div>
-      <div class="hardware-purchase"><div><strong>3.5-inch ESP32-S3 board used</strong><p>Before buying, check that the board dimensions and connectors match the photos. (Search for the same product and choose a lower-priced listing.)</p></div><div class="hardware-purchase-links"><a class="btn btn-primary" href="https://s.click.aliexpress.com/e/_c4VYI0z1" target="_blank" rel="noopener noreferrer sponsored">Board source ↗</a><a class="btn btn-primary" href="https://s.click.aliexpress.com/e/_c4NlfP7p" target="_blank" rel="noopener noreferrer sponsored">Makita communication connector ↗</a></div></div>
+      <div class="hardware-purchase"><div><strong>3.5-inch ESP32-S3 board used</strong><p>Before buying, check that the board dimensions and connectors match the photos. (Search for the same product and choose a lower-priced listing.)</p></div><div class="hardware-purchase-links"><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4VYI0z1" target="_blank" rel="noopener noreferrer sponsored">Board source ↗</a><a class="btn btn-secondary" href="https://s.click.aliexpress.com/e/_c4NlfP7p" target="_blank" rel="noopener noreferrer sponsored">Makita communication connector ↗</a></div></div>
       <div class="board-photo-gallery">
         <figure class="board-photo-card">
           <div class="board-image"><img src="../assets/esp32-s3-3.5-front.jpg" width="360" height="329" loading="lazy" alt="Front of the ESP32-S3 3.5-inch touchscreen board used for MAYDAY OBI"></div>
@@ -87,8 +86,8 @@
           </div>
           <figcaption>
             <strong>Board back · ports used</strong>
-            <span><b>P3</b> · GND / 3.3V</span>
-            <span><b>P2</b> · IO5 / IO6 / IO9</span>
+            <span><b class="port-label">P3</b> · GND / 3.3V</span>
+            <span><b class="port-label">P2</b> · IO5 / IO6 / <b class="port-label">IO9</b></span>
           </figcaption>
         </figure>
       </div>

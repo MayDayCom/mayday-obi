@@ -1,0 +1,115 @@
+/* MAYDAY OBI homepage layout */
+.workbench-design {
+  --bg:#f7f5ee;
+  --paper:#fffdf7;
+  --text:#242b25;
+  --muted:#4e584f;
+  --line:#d8dbd0;
+  --teal:#2d573f;
+  --focus:#2d573f;
+}
+
+.workbench-design .site-header {position:static}
+.workbench-design .nav-bar {min-height:68px;gap:16px}
+.workbench-design .nav-language {background:transparent;border-radius:6px}
+.workbench-design .hero {
+  grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);
+  gap:clamp(24px, 4vw, 48px);
+  padding-block:48px;
+}
+.workbench-design .hero h1 {
+  font-size:clamp(30px, 4.1vw, 50px);
+  font-weight:700;
+  line-height:1.16;
+  letter-spacing:-.045em;
+}
+.workbench-design .hero-product {margin:12px 0 0;color:var(--text);font-weight:600}
+.workbench-design .hero-subtitle {margin:12px 0 0;line-height:1.65;max-width:38ch}
+.workbench-design .hero-cta {margin-top:20px;gap:12px}
+.workbench-design .hero-cta .btn {border-radius:6px}
+.workbench-design .hero-cta .btn-secondary {
+  padding-inline:4px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+}
+.workbench-design .hero-visual {max-width:560px}
+.workbench-design .hero-product-photo {
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+}
+.workbench-design .hero-product-photo img {
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+.workbench-design .hero-product-photo figcaption {padding:8px 0 0}
+
+.workbench-design .section {padding-block:48px}
+.workbench-design .section-heading {margin-bottom:20px}
+.workbench-design .section-heading h2 {margin-top:0}
+.workbench-design #firmware > .container {
+  display:grid;
+  grid-template-columns:minmax(0, 1fr);
+  gap:16px;
+}
+.workbench-design #firmware .section-heading {margin:0}
+.workbench-design .release-main {
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--paper);
+}
+.workbench-design .release-main h3 {margin:8px 0}
+.workbench-design .release-version {background:#e8efe6;border-radius:4px}
+.workbench-design .install-steps {margin:16px 0}
+.workbench-design .install-safety {
+  padding:12px 16px;
+  background:#eeeee5;
+  border-left:3px solid #b9c5b4;
+}
+.workbench-design .install-safety .install-note {margin:0}
+.workbench-design .install-confirm {margin:8px 0 0}
+.workbench-design .install-actions {gap:8px 16px;margin:16px 0}
+.workbench-design .install-actions .btn {min-height:44px}
+.workbench-design .release-main .install-note:empty {display:none}
+.workbench-design .install-help {margin-top:16px}
+
+.workbench-design .hardware-purchase {
+  padding:16px 20px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--paper);
+}
+.workbench-design .hardware-purchase-links .btn {
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#e8efe4;
+}
+.workbench-design .hardware-purchase-links .btn:hover {background:#dce8d7}
+.workbench-design .board-photo-gallery {margin-top:24px;gap:20px}
+.workbench-design .board-image {border-radius:8px;background:#e9ebe3}
+.port-label {
+  display:inline-block;
+  padding:0 4px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  font-family:ui-monospace,Consolas,monospace;
+  line-height:1.5;
+}
+.workbench-design .bms-box {border-radius:8px}
+
+@media (max-width:720px) {
+  .workbench-design .nav-bar {min-height:56px}
+  .workbench-design .hero {grid-template-columns:minmax(0, 1fr);gap:16px;padding-block:24px}
+  .workbench-design .hero-subtitle {font-size:15px}
+  .workbench-design .hero-cta {margin-top:12px}
+  .workbench-design .hero-visual {width:min(100%, 360px);justify-self:start}
+  .workbench-design .hero-product-photo figcaption {font-size:12px}
+  .workbench-design .section {padding-block:32px}
+  .workbench-design .release-main {padding:16px}
+  .workbench-design .install-safety {padding:12px}
+}
