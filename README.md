@@ -14,6 +14,14 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 
 [펌웨어 파일과 설치 안내](firmware/)
 
+## v1.10v · 모바일 배터리 상태 화면 / Mobile battery dashboard
+
+**빌드 / Build `2026.11.11-1804`**
+
+- 스마트폰에서 팩 전압, 잠금 상태, 셀 전압 5개와 조작 버튼을 화면 상단에서 바로 확인할 수 있습니다. 상세 수치는 한 줄씩 정리했습니다.
+- On phones, pack voltage, lock status, all five cell voltages, and battery controls appear near the top. Other readings use compact rows.
+
+
 ## v1.10v · 영문 표시 보완 / English display fixes
 
 **빌드 / Build `2026.11.10-1546` · 버전은 v1.10v로 유지합니다. / Version remains v1.10v.**
