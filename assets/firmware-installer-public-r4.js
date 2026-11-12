@@ -15,6 +15,7 @@ const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
 const releaseBase = new URL('../firmware/', import.meta.url);
 const legacyManifestURL = new URL('manifest.json', releaseBase);
+const releaseDownloads = 'https://github.com/MayDayCom/mayday-obi/releases/download/';
 let checking = false, ready = false;
 const objectURLs = [];
 function objectURL(bytes, type) {
@@ -64,10 +65,11 @@ async function checkRelease() {
     const release = await readFirmwareRelease(releaseBase, legacyManifest, controller.signal);
     showVersion(release.version);
     const factoryURL = objectURL(release.factoryBytes, 'application/octet-stream');
-    download.href = factoryURL;
+    const releaseTag = `${release.version}-${release.build}`;
+    download.href = release.legacy ? factoryURL : `${releaseDownloads}${releaseTag}/firmware.factory.bin`;
     download.hidden = false;
     if (release.appBytes) {
-      appDownload.href = objectURL(release.appBytes, 'application/octet-stream');
+      appDownload.href = `${releaseDownloads}${releaseTag}/firmware.bin`;
       appDownload.hidden = false;
       fileNote.textContent = t(
         '업데이트 파일은 기기의 펌웨어 업데이트 기능에서 사용합니다. USB 업데이트 지원 기기는 일반 파일을 반대편 파티션에 저장합니다. 최초 설치·복구에는 통합 파일을 사용합니다.',
