@@ -1,0 +1,22 @@
+{
+  "name": "mayday-obi-install-counter",
+  "main": "index.mjs",
+  "compatibility_date": "2026-11-12",
+  "workers_dev": true,
+  "preview_urls": false,
+  "d1_databases": [
+    {
+      "binding": "INSTALL_COUNTS",
+      "database_name": "mayday-obi-install-counter",
+      "database_id": "fd0edcaf-fc82-4f44-92ca-505bbc0b9614",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "INSTALL_RATE_LIMIT",
+      "namespace_id": "391012",
+      "simple": {"limit": 12, "period": 60}
+    }
+  ]
+}

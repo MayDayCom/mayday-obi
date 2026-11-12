@@ -1,5 +1,5 @@
 import './installer-theme-public-r4.js?v=20261103-fixed-progress';
-import { installVersionDialogIntegration } from './installer-version-dialog.js?v=20261112-install-analytics';
+import { installVersionDialogIntegration } from './installer-version-dialog.js?v=20261112-d1';
 import { readFirmwareRelease } from './firmware-release.js?v=20261102-auto-release';
 const status = document.querySelector('#firmware-status');
 const message = document.querySelector('#firmware-message');

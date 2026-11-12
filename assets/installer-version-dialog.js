@@ -1,5 +1,5 @@
 import { stageUsbFirmware } from './usb-ota-client.js?v=20261110-transfer-speed';
-import { recordFirmwareInstall } from './firmware-analytics.js?v=20261112';
+import { recordFirmwareInstall } from './firmware-install-counter-client.js?v=20261112-d1';
 const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
 const countedFactoryDialogs = new WeakSet();
@@ -138,7 +138,7 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
         }
       }, {autoRestart: true});
       if (!saved.rebooting) throw new Error('USB_REBOOT_NOT_CONFIRMED');
-      recordFirmwareInstall('update', release);
+      recordFirmwareInstall('update');
       progress.value = 100;
       note.textContent = t('업데이트가 완료되었습니다. 기기가 자동으로 재부팅됩니다.', 'Update complete. The device is restarting automatically.');
       actions.replaceChildren();
@@ -323,7 +323,7 @@ export async function installVersionDialogIntegration(manifestURL, release = nul
           this._installConfirmed && this._client !== undefined) {
         if (didFlash && !countedFactoryDialogs.has(this)) {
           countedFactoryDialogs.add(this);
-          recordFirmwareInstall('factory', this._maydayUsbRelease);
+          recordFirmwareInstall('factory');
         }
         finishInstallDialog(this);
       }

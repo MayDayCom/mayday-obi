@@ -1,8 +1,7 @@
-# USB 설치 집계 자동 갱신
+# USB 설치 집계
 
-MAYDAY OBI GA4 속성(563886388)에서 `firmware_install_success` 이벤트 수를 읽어 홈페이지의 설치 건수를 갱신합니다. 공개 JSON에는 누적 건수와 집계 시작일만 저장합니다.
+공개 홈페이지에서 USB 최초 설치·복구 또는 업데이트가 완료되면 Cloudflare Worker에 설치 완료 요청을 보냅니다. Worker는 D1에 설치 유형과 임의의 요청 ID를 저장합니다. 같은 요청 ID로 재시도해도 건수는 한 번만 올라갑니다.
 
-- Google Cloud의 `mayday-obi-analytics` 프로젝트에서 Google Analytics Data API를 사용합니다.
-- [Workload Identity Federation](https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines)은 이 저장소의 `main` 브랜치에 있는 `firmware-install-count.yml`에만 인증을 허용합니다. GA4 서비스 계정에는 MAYDAY OBI 속성의 **뷰어** 권한을 부여했습니다.
-- 워크플로는 매시간 03분부터 58분까지 5분 간격으로 예약됩니다. GitHub 실행 대기와 GA4 보고서 처리 시간에 따라 홈페이지 반영 시점은 달라질 수 있습니다. 수동 조회는 **Actions → Refresh USB install count → Run workflow**에서 실행할 수 있습니다.
-- 조회에 실패하면 마지막 집계 값을 유지합니다. GitHub Pages 배포를 기다리지 않고 공개 저장소의 집계 JSON을 읽습니다.
+- 시작일은 첫 설치 기록이 들어온 날짜를 한국 시간으로 저장합니다. 같은 기기에 다시 설치하면 별도 건으로 집계합니다.
+- 공개 조회 응답에는 누적 건수와 시작일만 포함됩니다. 이 수치는 홈페이지가 받은 설치 완료 보고를 기준으로 합니다.
+- Worker 코드와 D1 스키마는 [workers/install-counter](../workers/install-counter/)에 있습니다. Worker에는 D1 바인딩 `INSTALL_COUNTS`와 요청 제한 바인딩 `INSTALL_RATE_LIMIT`를 설정합니다.
