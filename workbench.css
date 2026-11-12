@@ -64,6 +64,9 @@
 }
 .workbench-design .release-main h3 {margin:8px 0}
 .workbench-design .release-version {background:#e8efe6;border-radius:4px}
+.workbench-design .release-install-count {margin:8px 0;color:var(--muted);font-size:14px}
+.workbench-design .release-install-count strong {color:#325e49;font-variant-numeric:tabular-nums}
+.workbench-design .release-install-count small {white-space:nowrap;font-size:inherit}
 .workbench-design .install-steps {margin:16px 0}
 .workbench-design .install-safety {
   padding:12px 16px;

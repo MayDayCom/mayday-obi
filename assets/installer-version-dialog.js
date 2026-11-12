@@ -1,6 +1,8 @@
 import { stageUsbFirmware } from './usb-ota-client.js?v=20261110-transfer-speed';
+import { recordFirmwareInstall } from './firmware-analytics.js?v=20261112';
 const english = document.documentElement.lang === 'en';
 const t = (ko, en) => english ? en : ko;
+const countedFactoryDialogs = new WeakSet();
 
 function compareVersions(left, right) {
   const parse = value => {
@@ -136,6 +138,7 @@ function attachUsbUpdate(dialog, card, nativeAction, note, release, device, need
         }
       }, {autoRestart: true});
       if (!saved.rebooting) throw new Error('USB_REBOOT_NOT_CONFIRMED');
+      recordFirmwareInstall('update', release);
       progress.value = 100;
       note.textContent = t('업데이트가 완료되었습니다. 기기가 자동으로 재부팅됩니다.', 'Update complete. The device is restarting automatically.');
       actions.replaceChildren();
@@ -312,11 +315,16 @@ export async function installVersionDialogIntegration(manifestURL, release = nul
     }
     this._maydayUsbRelease = Dialog.prototype._maydayUsbReleases.get(this.manifestPath);
     if (justInstalled) {
+      const didFlash = this._installState?.state === 'finished';
       this._maydayVersionReport = null;
       await initialize.call(this, justInstalled);
       await this.updateComplete;
       if (!this._error && this._state === 'INSTALL' &&
           this._installConfirmed && this._client !== undefined) {
+        if (didFlash && !countedFactoryDialogs.has(this)) {
+          countedFactoryDialogs.add(this);
+          recordFirmwareInstall('factory', this._maydayUsbRelease);
+        }
         finishInstallDialog(this);
       }
       return;
