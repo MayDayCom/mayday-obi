@@ -13,8 +13,6 @@ function showInstallCount(snapshot) {
 
   const locale = document.documentElement.lang;
   counter.querySelector('span').textContent = new Intl.NumberFormat(locale).format(count);
-  counter.querySelector('[data-count-ready]').hidden = false;
-  counter.querySelector('[data-count-pending]').hidden = true;
   const time = counter.querySelector('time');
   time.dateTime = since;
   time.textContent = new Intl.DateTimeFormat(locale, {dateStyle: 'medium', timeZone: 'UTC'}).format(startDate);
