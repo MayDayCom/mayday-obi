@@ -27,6 +27,7 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 
 - 2026년 11월 12일부터 홈페이지의 USB 최초 설치·복구 및 업데이트 완료를 GA4의 `firmware_install_success` 이벤트로 집계합니다. 같은 기기에 다시 설치하면 별도 건으로 집계됩니다.
 - Since November 12, 2026, the website tracks completed USB installs, recoveries, and updates through the GA4 `firmware_install_success` event. Repeat installs count separately.
+- [설치 건수 갱신 안내 / Install count refresh](docs/usb-install-count.md)
 
 ## v1.10v · 모바일 배터리 상태 화면 / Mobile battery dashboard
 
