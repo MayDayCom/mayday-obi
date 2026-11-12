@@ -29,3 +29,4 @@ if (!/^\d+$/.test(value) || !Number.isSafeInteger(count)) {
   throw new Error('GA4 did not return a valid event count');
 }
 await writeFile(snapshotPath, JSON.stringify({count, since}) + '\n', 'utf8');
+console.log(`GA4 reported ${count} completed USB installs since ${since}.`);
