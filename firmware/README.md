@@ -7,7 +7,6 @@
 - `firmware.factory.bin` — 현재 등록된 최초 설치·복구용 통합 이미지
 - `manifest.json` — 구형 배포본(v1.10c) 호환을 위한 정보. 현재 버전의 기준 아님
 - 설치: [MAYDAY OBI 홈페이지](https://maydaycom.github.io/mayday-obi/#firmware)
-- 직접 다운로드: [GitHub Releases](https://github.com/MayDayCom/mayday-obi/releases)
 
 PC Chrome/Edge에서 홈페이지를 열고 안내에 따라 USB로 설치할 수 있습니다. 새 버전 배포 시 동일 빌드에서 생성된 두 BIN 파일을 함께 올리세요. 자세한 내용은 [펌웨어 두 파일 배포 안내](UPLOAD_GUIDE.md)를 확인하세요.
 
