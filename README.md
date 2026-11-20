@@ -29,6 +29,13 @@ ESP32-S3용 펌웨어가 GitHub에 등록되어 있습니다. **현재 버전은
 - The website records completed USB installs, recoveries, and updates in Cloudflare D1 through a Worker. Repeat installs count separately.
 - [설치 건수 갱신 안내 / Install count refresh](docs/usb-install-count.md)
 
+## v1.10w · Wi-Fi 업데이트 및 펌웨어 정보 / Wi-Fi updater and firmware details
+
+- Wi-Fi 업데이트 웹서버 접속에 8자리 PIN 로그인을 추가했습니다. 기기 정보 화면에 OBI 이름, 버전, 빌드 날짜와 시각을 표시합니다.
+- 웹 업데이트에서 OBI/PXL 펌웨어를 구분하며, 기기 정보에 현재·다른 파티션의 제품명, 버전, 빌드 시각과 파티션 전환 기능을 표시합니다.
+- Added 8-digit PIN login to the Wi-Fi update server. The device information screen now shows the OBI name, version, and build date/time.
+- The web updater distinguishes OBI and PXL firmware. Device information shows product, version, and build time for both app slots, with a slot-switch option.
+
 ## v1.10v · 모바일 배터리 상태 화면 / Mobile battery dashboard
 
 **빌드 / Build `2026.11.11-1804`**
