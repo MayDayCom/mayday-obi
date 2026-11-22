@@ -4,6 +4,8 @@
 
 **[MAYDAY OBI 홈페이지 바로가기](https://maydaycom.github.io/mayday-obi/)** · [배터리스트 메이데이 YouTube](https://www.youtube.com/@batterist_mayday)
 
+같은 보드의 탁상 디스플레이 펌웨어 **[Mayday Deskgear](https://maydaycom.github.io/mayday-deskgear/)**는 Wi-Fi 업데이트로 반대편 슬롯에 설치하고 OBI와 전환할 수 있습니다. [English guide](https://maydaycom.github.io/mayday-deskgear/en/)
+
 ![ESP32-S3에서 실행 중인 MAYDAY OBI v1.10c](assets/mayday-obi-running-v1.10c.jpg)
 
 ## 2026-11-12 · 홈페이지 화면 개선 / Homepage design update
